@@ -1,13 +1,14 @@
 cask "kitty" do
-  version "0.33.1"
-  sha256 "eb04ca89453f1c84408ac1d698045f6fca48c7bd84ccb8c5372903b0b8c771c5"
+  version "0.38.1"
+  sha256 "2971db2c2220a9f353efcc1d58d8b88462dc5a2a992adea9c051bf6e54c90e52"
 
   url "https://github.com/kovidgoyal/kitty/releases/download/v#{version}/kitty-#{version}.dmg"
   name "kitty"
   desc "GPU-based terminal emulator"
   homepage "https://github.com/kovidgoyal/kitty"
 
-  depends_on macos: ">= :sierra"
+  conflicts_with cask: "kitty@nightly"
+  depends_on macos: ">= :big_sur"
 
   app "kitty.app"
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)

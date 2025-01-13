@@ -19,7 +19,7 @@ cask "secure-pipes" do
       headers = Homebrew::Livecheck::Strategy.page_headers(download_url)
       next if headers.blank?
 
-      match = headers.first["content-disposition"].match(regex)
+      match = headers.first["content-disposition"]&.match(regex)
       next if match.blank?
 
       "#{match[1]},#{download_hash}"
@@ -27,4 +27,8 @@ cask "secure-pipes" do
   end
 
   app "Secure Pipes.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

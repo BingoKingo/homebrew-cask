@@ -1,6 +1,6 @@
 cask "scroll" do
-  version "2.4.3"
-  sha256 "92c8e9aa0ef9fc7a485eeb51a275e40bb6a8d92a73f0e89edc1c877fff5e4f78"
+  version "2.4.7"
+  sha256 "eb6a37cc0d2436d96da496b29d9d5083dc4dabff764422d1bf29db8688d8bc51"
 
   url "https://ryanhanson.dev/scroll/downloads/Scroll#{version}.dmg"
   name "Scroll"
@@ -13,7 +13,7 @@ cask "scroll" do
   end
 
   auto_updates true
-  depends_on macos: ">= :mojave"
+  depends_on macos: ">= :catalina"
 
   app "Scroll.app"
 

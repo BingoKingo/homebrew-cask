@@ -11,4 +11,14 @@ cask "tikzit" do
   depends_on macos: ">= :sierra"
 
   app "TikZiT.app"
+
+  zap trash: [
+    "~/Library/Preferences/com.tikzit.tikzit.plist",
+    "~/Library/Preferences/io.github.tikzit.plist",
+    "~/Library/Saved Application State/io.github.tikzit.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

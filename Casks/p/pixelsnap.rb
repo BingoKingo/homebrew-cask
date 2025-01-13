@@ -1,6 +1,6 @@
 cask "pixelsnap" do
-  version "2.5.4"
-  sha256 "cc87e808901c88aa8cf7ac4a068655c89c52b4ddbb8c0ea667cbcf0247a6bcbb"
+  version "2.6.1"
+  sha256 "248e903546d09f9d0388f8ddf720f0becbe14ea64a3f00bf61c5490069ee023c"
 
   url "https://updates.getpixelsnap.com/v#{version.major}/PixelSnap-#{version.major}-#{version}.dmg"
   name "PixelSnap"
@@ -19,7 +19,7 @@ cask "pixelsnap" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :mojave"
 
   app "PixelSnap #{version.major}.app"
 

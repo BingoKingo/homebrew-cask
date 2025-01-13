@@ -13,4 +13,10 @@ cask "au-lab" do
   end
 
   app "AU Lab.app"
+
+  zap trash: "~/Library/Preferences/com.apple.aulab.plist"
+
+  caveats do
+    requires_rosetta
+  end
 end

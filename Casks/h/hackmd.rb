@@ -7,10 +7,16 @@ cask "hackmd" do
   desc "Desktop Software for HackMD Note-Taking and Collaboration"
   homepage "https://github.com/hackmdio/hackmd-desktop"
 
+  deprecate! date: "2024-07-17", because: :unmaintained
+
   app "HackMD.app"
 
   zap trash: [
     "~/Library/Application Support/HackMD",
     "~/Library/Saved Application State/com.hackmd.desktop.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

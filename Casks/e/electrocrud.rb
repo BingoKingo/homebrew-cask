@@ -12,6 +12,8 @@ cask "electrocrud" do
     strategy :github_latest
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "electrocrud.app"
 
   zap trash: [
@@ -19,4 +21,8 @@ cask "electrocrud" do
     "~/Library/Preferences/com.garrylachman.electrocrud.plist",
     "~/Library/Saved Application State/com.garrylachman.electrocrud.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

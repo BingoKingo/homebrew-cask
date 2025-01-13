@@ -15,13 +15,49 @@ cask "sip" do
       skip "Legacy version"
     end
   end
-  on_mojave :or_newer do
-    version "3.4.1"
-    sha256 "88f4e1d07f8c3b54e461403d9ac4a669991e5bdfeaa75dd860a766d2ba769e56"
+  on_mojave do
+    version "2.5.5"
+    sha256 "a67550abe2f43981b7b41827ee9ccc0f826383cc1d146e748bde399f3c352d62"
 
     livecheck do
-      url "https://sipapp.io/updates/"
-      regex(%r{href=.*?/sip[._-]v?(\d+(?:\.\d+)*)\.dmg}i)
+      skip "Legacy version"
+    end
+  end
+  on_catalina do
+    version "2.8"
+    sha256 "95e2bd14ce3de9743304efee4fb9964f00fc9505401f1e036de8175616ca58dd"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_big_sur do
+    version "2.8"
+    sha256 "95e2bd14ce3de9743304efee4fb9964f00fc9505401f1e036de8175616ca58dd"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_monterey do
+    version "3.5.1"
+    sha256 "8dd74db34c925c9712c5b383bae43dc9cb2339ed3af2ad0a8677e0a22815f35f"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_ventura :or_newer do
+    version "3.6"
+    sha256 "dd13b765993963e2b6088d57c06d597b06ff732aaea42002420a2206a984e854"
+
+    # Some older items in the Sparkle feed have a more recent pubDate, so it's necessary to
+    # work with all of the items in the feed (not just the newest one).
+    livecheck do
+      url "https://sipapp.fra1.digitaloceanspaces.com/updates/v#{version.major}/sip.xml"
+      strategy :sparkle do |items|
+        items.map(&:short_version)
+      end
     end
   end
 

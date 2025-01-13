@@ -1,6 +1,6 @@
 cask "easyeda" do
-  version "6.5.40"
-  sha256 "ae32b49d9e6c220483ead73ad66b106d367f13fa444982d2585a7c43c62d6acd"
+  version "6.5.46"
+  sha256 "11272b280295c2eb9c7540d21cb83fcd8495941f386d09a60b0618981acdbfee"
 
   url "https://image.easyeda.com/files/easyeda-mac-x64-#{version}.zip"
   name "EasyEDA"
@@ -21,4 +21,8 @@ cask "easyeda" do
     "~/Library/Preferences/com.easyeda.editor.plist",
     "~/Library/Saved Application State/com.easyeda.editor.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

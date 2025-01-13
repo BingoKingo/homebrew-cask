@@ -1,6 +1,6 @@
 cask "amneziavpn" do
-  version "4.4.0.0"
-  sha256 "2f7c13cceef59c4c72b551e2a2abbaf7cde823a564ed7166f17e56f008a7fff5"
+  version "4.8.2.3"
+  sha256 "eb65c0347d3a0a5880046acb3bb4e672fb6c4d5e23e901177e6945842ff19e75"
 
   url "https://github.com/amnezia-vpn/amnezia-client/releases/download/#{version}/AmneziaVPN_#{version}.dmg",
       verified: "github.com/amnezia-vpn/amnezia-client/"
@@ -21,11 +21,18 @@ cask "amneziavpn" do
               "AmneziaVPN",
               "AmneziaVPN-service",
             ],
-            delete: "/Applications/AmneziaVPN.app"
+            delete: [
+              "/Applications/AmneziaVPN.app",
+              "/Library/LaunchDaemons/AmneziaVPN.plist",
+            ]
 
   zap trash: [
     "~/Library/Caches/AmneziaVPN.ORG",
     "~/Library/Preferences/AmneziaVPN.plist",
     "~/Library/Preferences/org.amneziavpn.AmneziaVPN.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

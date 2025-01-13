@@ -7,10 +7,11 @@ cask "logicsniffer" do
   desc "Software client for the Open Bench Logic Sniffer logic analyser hardware"
   homepage "https://lxtreme.nl/projects/ols/"
 
-  livecheck do
-    url :homepage
-    regex(%r{href=.*?/ols-(\d+(?:\.\d+)*)-full\.dmg}i)
-  end
+  deprecate! date: "2024-09-08", because: :unmaintained
 
   app "LogicSniffer.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

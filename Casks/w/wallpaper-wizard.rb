@@ -13,6 +13,8 @@ cask "wallpaper-wizard" do
     strategy :sparkle
   end
 
+  depends_on macos: ">= :sierra"
+
   app "Wallpaper Wizard.app"
 
   uninstall quit: "com.macpaw.WallWiz-site"
@@ -25,4 +27,8 @@ cask "wallpaper-wizard" do
     "~/Library/Logs/com.macpaw.WallWiz-site",
     "~/Library/Preferences/com.macpaw.WallWiz-site.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

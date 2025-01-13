@@ -4,11 +4,12 @@ cask "atom" do
 
   url "https://github.com/atom/atom/releases/download/v#{version}/atom-mac.zip",
       verified: "github.com/atom/atom/"
-  name "Github Atom"
+  name "GitHub Atom"
   desc "Text editor"
   homepage "https://atom.io/"
 
   deprecate! date: "2023-12-17", because: :discontinued
+  disable! date: "2024-12-21", because: :discontinued
 
   auto_updates true
 
@@ -32,4 +33,8 @@ cask "atom" do
     "~/Library/Saved Application State/com.github.atom.savedState",
     "~/Library/WebKit/com.github.atom",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

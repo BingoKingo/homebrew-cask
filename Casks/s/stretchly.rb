@@ -1,9 +1,9 @@
 cask "stretchly" do
   arch arm: "-arm64"
 
-  version "1.15.1"
-  sha256 arm:   "d08038378687ff109d75e4a67ca83cca9b096256d2345986ce40b93e5ee7f805",
-         intel: "cdb9e9c186262539aa1acf049491a1a3ccd12e9732245fef94d7f9e282198218"
+  version "1.17.1"
+  sha256 arm:   "4dc6ff48143f97eeae0db674f9472c74fb0e8af0ecd26429343d99bcb9584241",
+         intel: "79e9715634197f459d6d988db08a2c61620aea1ccd3b88d43e296ee61c4914fa"
 
   url "https://github.com/hovancik/stretchly/releases/download/v#{version}/stretchly-#{version}#{arch}.dmg",
       verified: "github.com/hovancik/stretchly/"
@@ -11,7 +11,7 @@ cask "stretchly" do
   desc "Break time reminder app"
   homepage "https://hovancik.net/stretchly/"
 
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Stretchly.app"
 

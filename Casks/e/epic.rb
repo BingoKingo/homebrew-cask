@@ -15,5 +15,13 @@ cask "epic" do
     regex(%r{href=.*?/epic[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "Epic.app"
+
+  zap trash: [
+    "~/Library/Application Support/HiddenReflex/Epic",
+    "~/Library/Preferences/com.hiddenreflex.Epic.plist",
+    "~/Library/Saved Application State/com.hiddenreflex.Epic.savedState",
+  ]
 end

@@ -9,9 +9,11 @@ cask "quodlibet" do
   homepage "https://quodlibet.readthedocs.io/"
 
   livecheck do
-    url "https://quodlibet.readthedocs.io/en/latest/downloads.html"
-    regex(/QuodLibet[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
+    url "https://quodlibet.github.io/appcast/osx-quodlibet.rss"
+    strategy :sparkle
   end
+
+  auto_updates true
 
   app "QuodLibet.app"
 

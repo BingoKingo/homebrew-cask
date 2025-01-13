@@ -1,9 +1,9 @@
 cask "zed" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "0.129.1"
-  sha256 arm:   "f154bfe5fd29fe6193cfe53bd044f3889ad6c5b423ed4314dea2648e310a430e",
-         intel: "264138a58a90f3a8327239fd991d99724ad67a18c243830c9d39eb0b6dd13ac1"
+  version "0.168.2"
+  sha256 arm:   "719e42359b06c65ae5904fac787e65ebbd782b53252c8ce60804b3a201cc3a58",
+         intel: "3b5ddde053bb648dd5476bca295d781556ea313d4403c2be57124144ab7cc36d"
 
   url "https://zed.dev/api/releases/stable/#{version}/Zed-#{arch}.dmg"
   name "Zed"
@@ -11,8 +11,10 @@ cask "zed" do
   homepage "https://zed.dev/"
 
   livecheck do
-    url "https://zed.dev/releases/stable"
-    regex(%r{href=.*?/stable/(\d+(?:\.\d+)+)/Zed.dmg}i)
+    url "https://zed.dev/api/releases/latest?asset=Zed.dmg&stable=1&os=macos&arch=#{arch}"
+    strategy :json do |json|
+      json["version"]
+    end
   end
 
   auto_updates true

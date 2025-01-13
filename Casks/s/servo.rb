@@ -1,5 +1,5 @@
 cask "servo" do
-  version "0.0.1"
+  version :latest
   sha256 :no_check
 
   url "https://download.servo.org/nightly/mac/servo-latest.dmg"
@@ -7,10 +7,9 @@ cask "servo" do
   desc "Parallel browser engine"
   homepage "https://servo.org/"
 
-  livecheck do
-    url :url
-    strategy :extract_plist
-  end
-
   app "Servo.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -1,6 +1,6 @@
 cask "jumpshare" do
-  version "3.3.5"
-  sha256 "7f00f518302d62466b60daa71c8b9ea679324735e19e77e520600dc1d662b49f"
+  version "3.3.11"
+  sha256 "1c6fa2685cd1605f98e1b4b02a4f0d487831b3d7650e78fc2ee57690f300133b"
 
   url "https://d21hi1or3tbtjm.cloudfront.net/desktop/mac/updates/Jumpshare-#{version}.tar.bz2",
       verified: "d21hi1or3tbtjm.cloudfront.net/desktop/mac/updates/"
@@ -13,7 +13,7 @@ cask "jumpshare" do
     strategy :sparkle, &:short_version
   end
 
-  depends_on macos: ">= :mojave"
+  depends_on macos: ">= :catalina"
 
   app "Jumpshare.app"
 

@@ -1,5 +1,5 @@
 cask "sqlitemanager" do
-  version "4.8.4"
+  version "4.9.2"
   sha256 :no_check
 
   url "https://www.sqlabs.com/download/SQLiteManager.zip"
@@ -11,6 +11,8 @@ cask "sqlitemanager" do
     url "https://www.sqlabs.com/sqlitemanager#summary"
     regex(/version\s+(\d+(?:\.\d+)*)/i)
   end
+
+  depends_on macos: ">= :mojave"
 
   app "SQLiteManager.app"
 

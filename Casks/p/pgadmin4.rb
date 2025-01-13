@@ -1,9 +1,9 @@
 cask "pgadmin4" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "8.4"
-  sha256 arm:   "2f657fb3db6ce2585995f2b9a3b9b489e6b8866f00871f02b9aed43d6693a1d3",
-         intel: "d06e52b0661cbae8182411f9e3c556d686ee426851733c9bdb019309099db489"
+  version "8.14"
+  sha256 arm:   "176b07fa00af22d161c1054ae6df8445e1aec40872294ced339265d7bb85e588",
+         intel: "f30f5558fd07c6b5db6a0eb841de036c74b08ef06b123b3c0e70198efebc3ce4"
 
   url "https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v#{version}/macos/pgadmin4-#{version}-#{arch}.dmg",
       verified: "ftp.postgresql.org/pub/pgadmin/pgadmin4/"
@@ -13,7 +13,7 @@ cask "pgadmin4" do
 
   livecheck do
     url "https://ftp.postgresql.org/pub/pgadmin/pgadmin4/"
-    regex(/href="v?(\d+(?:\.\d+)+)/i)
+    regex(%r{href=["']?v?(\d+(?:\.\d+)+)/?["' >]}i)
   end
 
   app "pgAdmin 4.app"
@@ -21,6 +21,8 @@ cask "pgadmin4" do
   zap trash: [
     "~/.pgadmin",
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.pgadmin.pgadmin4.sfl*",
+    "~/Library/Application Support/pgAdmin 4",
+    "~/Library/Caches/pgAdmin 4",
     "~/Library/Preferences/org.pgadmin.pgadmin4.plist",
     "~/Library/Saved Application State/org.pgadmin.pgAdmin4.savedState",
   ]

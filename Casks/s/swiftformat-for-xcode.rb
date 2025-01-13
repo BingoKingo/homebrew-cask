@@ -1,8 +1,8 @@
 cask "swiftformat-for-xcode" do
-  version "0.53.5"
-  sha256 "dce4098566dad11bc07883420811721e1282060e9f8641b536dcdb6af1b167a2"
+  version "0.55.4"
+  sha256 "629e9893fabaa68e54197002bcf36eb281d52138d88a93b8a2bbe58aadd0afbc"
 
-  url "https://github.com/nicklockwood/SwiftFormat/releases/download/#{version}/SwiftFormat.for.Xcode.app.zip"
+  url "https://github.com/nicklockwood/SwiftFormat/releases/download/#{version}/SwiftFormat.for.Xcode.zip"
   name "SwiftFormat for Xcode"
   desc "Xcode Extension for reformatting Swift code"
   homepage "https://github.com/nicklockwood/SwiftFormat"

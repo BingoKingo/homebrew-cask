@@ -7,10 +7,11 @@ cask "coccinellida" do
   desc "Simple SSH tunnel manager"
   homepage "https://coccinellida.sourceforge.net/"
 
-  livecheck do
-    url "https://raw.githubusercontent.com/troydm/coccinellida/master/sparkle.xml"
-    strategy :sparkle
-  end
+  deprecate! date: "2024-09-01", because: :unmaintained
 
   app "Coccinellida.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

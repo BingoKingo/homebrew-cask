@@ -1,6 +1,6 @@
 cask "kodelife" do
-  version "1.1.4,183"
-  sha256 "a176b8ddc51fb93094f408e231dd937429a713d309c595c5a2e5a6035a5889fe"
+  version "1.1.9,194"
+  sha256 "3f8827f24887182a03aa4a686db4bb7b0fc12181f24d13616f64c2d77686539f"
 
   url "https://hexler.net/pub/kodelife/kodelife-#{version.csv.first}.#{version.csv.second}-macos.dmg"
   name "KodeLife"
@@ -13,6 +13,7 @@ cask "kodelife" do
   end
 
   auto_updates true
+  depends_on macos: ">= :high_sierra"
 
   app "KodeLife.app"
 

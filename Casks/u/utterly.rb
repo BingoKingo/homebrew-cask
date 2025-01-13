@@ -1,17 +1,22 @@
 cask "utterly" do
-  version "0.9.0-SNAPSHOT-140e1bc"
+  version "1.5.0"
   sha256 :no_check
 
-  url "https://www.utterly.app/Utterly.pkg"
+  url "https://www.utterly.app/Utterly-Elevate.pkg"
   name "Utterly"
   desc "Remove background noise during your calls in any audio or video conferencing app"
   homepage "https://www.utterly.app/"
 
   livecheck do
-    skip "No version information available"
+    url "https://www.utterly.app/full_minimum_version.json"
+    strategy :json do |json|
+      json["latest_version"]
+    end
   end
 
-  pkg "Utterly.pkg"
+  depends_on macos: ">= :catalina"
+
+  pkg "Utterly-Elevate.pkg"
 
   uninstall launchctl: "app.utterly.Utterly.XPCHelper",
             quit:      "app.utterly.Utterly.App",
@@ -25,4 +30,8 @@ cask "utterly" do
             ]
 
   zap trash: "~/Library/Preferences/app.utterly.Utterly.App.plist"
+
+  caveats do
+    requires_rosetta
+  end
 end

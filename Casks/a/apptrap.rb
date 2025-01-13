@@ -6,16 +6,15 @@ cask "apptrap" do
   name "AppTrap"
   homepage "http://onnati.net/apptrap/"
 
-  livecheck do
-    url "http://onnati.net/apptrap/ReleaseNotes.xml"
-    strategy :sparkle do |item|
-      item.url[/AppTrap(\d+(?:-\d+)*)\.zip/i, 1].tr("-", ".")
-    end
-  end
+  deprecate! date: "2024-11-02", because: :unmaintained
 
   prefpane "AppTrap.prefPane"
 
   uninstall login_item: "AppTrap"
 
   zap trash: "~/Library/Preferences/com.KumaranVijayan.AppTrap.prefpanel.plist"
+
+  caveats do
+    requires_rosetta
+  end
 end

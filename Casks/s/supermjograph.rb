@@ -13,10 +13,16 @@ cask "supermjograph" do
     regex(%r{url=.*?/SuperMjograph[._-]v?(\d+(?:\.\d+)+)\.zip}i)
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "SuperMjograph.app"
 
   zap trash: [
     "~/Library/Caches/com.mjo.SuperMjograph",
     "~/Library/Preferences/com.mjo.SuperMjograph.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

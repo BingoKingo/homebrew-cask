@@ -7,7 +7,13 @@ cask "bossa" do
   name "bossa"
   homepage "https://www.shumatech.com/web/products/bossa"
 
+  deprecate! date: "2024-11-03", because: :unmaintained
+
   app "BOSSA.app"
   binary "bossac"
   binary "bossash"
+
+  caveats do
+    requires_rosetta
+  end
 end

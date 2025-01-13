@@ -1,9 +1,9 @@
 cask "clearvpn" do
-  version "3.0.0,202403.21.1808,1711062454"
-  sha256 "8b20eba3df6e0109aee4f041db52007d0c5672b78599ecdd9e3d1140b123a835"
+  version "3.2.1,202411.11.2003,1731425033"
+  sha256 "fc89f2db960390fddc20bd15ab2a03598d24cac83c00dd3874b3be494aa57084"
 
   url "https://dl.devmate.com/com.macpaw.clearvpn.macos-site-ver/#{version.csv.second}/#{version.csv.third}/ClearVPN-#{version.csv.second}.zip",
-      verified: "dl.devmate.com/"
+      verified: "dl.devmate.com/com.macpaw.clearvpn.macos-site-ver/"
   name "ClearVPN"
   desc "VPN client"
   homepage "https://clearvpn.com/"
@@ -20,7 +20,7 @@ cask "clearvpn" do
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  depends_on macos: ">= :ventura"
 
   app "ClearVPN.app"
 

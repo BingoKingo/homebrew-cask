@@ -1,6 +1,6 @@
 cask "oxygen-xml-editor" do
-  version "26.1,2024031806"
-  sha256 "1ed7773245d98966c7c17f153f26887aaeac6567f93f9dad1356633c8384743f"
+  version "27.0,2024121306"
+  sha256 :no_check # required as upstream package is updated in-place
 
   url "https://archives.oxygenxml.com/Oxygen/Editor/InstData#{version.csv.first}/MacOSX/VM/oxygen-openjdk.dmg"
   name "oXygen XML Editor"
@@ -9,12 +9,21 @@ cask "oxygen-xml-editor" do
 
   livecheck do
     url "https://www.oxygenxml.com/rssBuildID.xml"
-    strategy :page_match do |page|
-      version = page.match(/Oxygen\sXML\sEditor\sversion\s(\d+(?:\.\d+)+)/i)
-      build = page.match(/build\sid:\s(\d+)/i)
+    regex(/Oxygen\s+XML\s+Editor\s+(?:version\s+)?v?(\d+(?:\.\d+)+)/i)
+    strategy :xml do |xml, regex|
+      versions = xml.get_elements("//description").filter_map do |item|
+        match = item.text&.strip&.match(regex)
+        next if match.blank?
+
+        match[1]
+      end
+      builds = xml.get_elements("//guid").map { |item| item.text&.strip }
+
+      version = versions.max_by { |v| Version.new(v) }
+      build = builds.max
       next if version.blank? || build.blank?
 
-      "#{version[1]},#{build[1]}"
+      "#{version},#{build}"
     end
   end
 

@@ -3,16 +3,16 @@ cask "avast-secure-browser" do
   livecheck_arch = on_arch_conditional arm: "-arm"
 
   on_arm do
-    version "122.0.5287.130"
-    sha256 "acf1380a8e1438f5bc6b5827102f3805e2460c7f7d6ff4ad698a64db3f6dd996"
+    version "131.0.6139.140"
+    sha256 "a74a51b8d4f379f2b7953c6078fe854e2d7eaf03f1e9f59789169d1996a67582"
   end
   on_intel do
-    version "122.0.5288.130"
-    sha256 "8dcd39f00da935c77ffa90d14ab093ee3398927bc0f270190c0ec012ee5554a8"
+    version "131.0.6147.140"
+    sha256 "9b30828b329ee295a8c063f317bcbf368c204a387e2b47f99efaab3e4e0e77da"
   end
 
   url "https://cdn-update.avast.securebrowser.com/browser/mac/#{arch}/#{version}/AvastSecureBrowser.dmg",
-      verified: "cdn-update.avast.securebrowser.com/"
+      verified: "cdn-update.avast.securebrowser.com/browser/mac/"
   name "Avast Secure Browser"
   desc "Web browser focusing on privacy"
   homepage "https://www.avast.com/secure-browser#mac"
@@ -23,6 +23,7 @@ cask "avast-secure-browser" do
   end
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   app "Avast Secure Browser.app"
 

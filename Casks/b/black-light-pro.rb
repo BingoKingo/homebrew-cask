@@ -7,10 +7,7 @@ cask "black-light-pro" do
   desc "Colour effects on a schedule"
   homepage "https://michelf.ca/software/black-light-pro/"
 
-  livecheck do
-    url :homepage
-    regex(/href=.*?black[._-]light[._-]pro[._-]v?(\d+(?:\.\d+)+)\.zip/i)
-  end
+  deprecate! date: "2024-07-17", because: :discontinued
 
   app "BLack Light Pro.app"
 
@@ -18,4 +15,8 @@ cask "black-light-pro" do
     "~/Library/Application Scripts/ca.michelf.BlackLight.Pro",
     "~/Library/Containers/ca.michelf.BlackLight.Pro",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -8,5 +8,11 @@ cask "trolcommander" do
   desc "Fork of the muCommander file manager"
   homepage "https://trolsoft.ru/en/soft/trolcommander"
 
+  deprecate! date: "2024-10-27", because: :unmaintained
+
   app "trolCommander.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

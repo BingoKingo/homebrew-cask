@@ -1,6 +1,6 @@
 cask "gog-galaxy" do
-  version "2.0.73.27"
-  sha256 "d321a8dffcd7c5b3085c5b76d1390160515c2a14d30cb474d845f3047fe276ec"
+  version "2.0.80.33"
+  sha256 "df7f51a5da53b65ed56f67ba1dce28f00b544d40b25655ebce0ce99abb460e86"
 
   url "https://cdn.gog.com/open/galaxy/client/#{version.chomp("a")}/galaxy_client_#{version}.pkg"
   name "GOG Galaxy"
@@ -32,4 +32,8 @@ cask "gog-galaxy" do
     "~/Library/Preferences/com.gog.galaxy.plist",
     "~/Library/Saved Application State/com.gog.galaxy.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

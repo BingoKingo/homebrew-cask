@@ -2,40 +2,41 @@ cask "xpra" do
   arch arm: "arm64", intel: "x86_64"
 
   on_arm do
-    version "5.0.7,0"
-    sha256 "cfd8a0b514bfc00b087093df47771514fa9728db019b4bb36d399ebe35275eca"
+    version "6.2.2,0"
+    sha256 "89a721cafde955ed2a3936fd9710a1bcaf9bb2845610f98ccffe9d7f34c9b795"
   end
   on_intel do
-    version "6.0,35230"
-    sha256 "e6554c7a28ad266b48cdff2f08d060223cb0ba3656cad945df885be630bfd3cb"
+    version "6.2.2,0"
+    sha256 "522a43bdb9d1a687b2a4c2ce3dc167d5bb830b973d17bfeb2e16253ee53270c9"
   end
 
-  url "https://www.xpra.org/dists/osx/#{arch}/Xpra-#{arch}-#{version.csv.first}-r#{version.csv.second}.pkg"
+  url "https://xpra.org/dists/MacOS/#{arch}/Xpra-#{arch}-#{version.csv.first}-r#{version.csv.second}.dmg",
+      verified: "xpra.org/"
   name "Xpra"
   desc "Screen and application forwarding system"
-  homepage "https://www.xpra.org/"
+  homepage "https://github.com/Xpra-org/xpra/"
 
   livecheck do
-    url "https://www.xpra.org/dists/osx/#{arch}/Xpra-#{arch}.pkg.sha1"
-    regex(/#{arch}[._-]v?(\d+(?:\.\d+)+)[._-]r(\d+)\.pkg/i)
+    url "https://xpra.org/dists/MacOS/#{arch}/"
+    regex(/href=.*?Xpra-#{arch}[._-]v?(\d+(?:\.\d+)+)(?:[._-]r(\d+))?\.dmg/i)
     strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+      page.scan(regex).map do |match|
+        match[1] ? "#{match[0]},#{match[1]}" : match[0]
+      end
     end
   end
 
   depends_on macos: ">= :sierra"
 
-  pkg "Xpra-#{arch}-#{version.csv.first}-r#{version.csv.second}.pkg"
-
-  uninstall pkgutil: "org.xpra.pkg",
-            delete:  [
-              "/Applications/Xpra.app",
-              "/usr/local/bin/Xpra*",
-            ]
+  app "Xpra.app"
 
   zap delete: "/Library/Application Support/Xpra",
       trash:  [
         "~/Library/Application Support/Xpra",
         "~/Library/Saved Application State/org.xpra.xpra.savedState",
       ]
+
+  caveats do
+    requires_rosetta
+  end
 end

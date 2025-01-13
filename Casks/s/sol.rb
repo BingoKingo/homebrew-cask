@@ -1,9 +1,8 @@
 cask "sol" do
-  version "2.1.35"
-  sha256 "252cf5b05378a20aeec57d4ad283d5a79be80db61d864f01ec78145c319483fe"
+  version "2.1.163"
+  sha256 "5c3940412f02ff6d10877b1ce795a54af5f6299595b235d19b389dc8bf2f0c5f"
 
-  url "https://raw.githubusercontent.com/ospfranco/sol/main/releases/#{version}.zip",
-      verified: "raw.githubusercontent.com/ospfranco/sol/"
+  url "https://github.com/ospfranco/sol/releases/download/#{version}/#{version}.zip"
   name "Sol"
   desc "Launcher & command palette"
   homepage "https://github.com/ospfranco/sol"

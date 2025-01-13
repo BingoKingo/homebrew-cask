@@ -7,6 +7,8 @@ cask "ascension" do
   desc "ANSI/ASCII art viewer"
   homepage "https://github.com/ansilove/Ascension"
 
+  deprecate! date: "2024-09-08", because: :unmaintained
+
   app "Ascension.app"
 
   zap trash: [
@@ -15,4 +17,8 @@ cask "ascension" do
     "~/Library/Preferences/com.byteproject.Ascension.plist",
     "~/Library/Saved Application State/com.byteproject.Ascension.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

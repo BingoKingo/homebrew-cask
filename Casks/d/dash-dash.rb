@@ -1,9 +1,9 @@
 cask "dash-dash" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "20.1.0"
-  sha256 arm:   "74e5ea72b8221bfbe9f60130798009733ce385b268a2b025f52d2d6942d70c91",
-         intel: "73811ba3200c9a3938b5d139697b3f46a261ecb0eb75ce485e310f33166c57b3"
+  version "22.0.0"
+  sha256 arm:   "8411b317a2c4cb5cf279a667b72203f308d58701d58dfbebc3a999113d0cfda4",
+         intel: "647ba48f9555de99bb19c1a6538044ddf255aa49a851ea74d3d2d03aab28d463"
 
   url "https://github.com/dashpay/dash/releases/download/v#{version}/dashcore-#{version}-#{arch}-apple-darwin.dmg",
       verified: "github.com/dashpay/dash/"
@@ -16,7 +16,7 @@ cask "dash-dash" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Dash-Qt.app"
 

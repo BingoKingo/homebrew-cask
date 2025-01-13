@@ -1,9 +1,9 @@
 cask "cncjs" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.10.3"
-  sha256 arm:   "68f07fdcdb4e87107a18123e41560ddd36687fbde14e6c11c8e4404fea24c7a0",
-         intel: "29a0471b9096618743ca71465c7b3a8844b9531c3077a2f25e96015fab15c1e2"
+  version "1.10.5"
+  sha256 arm:   "1badd649a8137c3f6c9356f6aaacd0380a5a1f2906da0e93357997f638a4a4d0",
+         intel: "9232d24fe72866baab424df7ae1b160e74baee26215b342bb1353218d0280a58"
 
   url "https://github.com/cncjs/cncjs/releases/download/v#{version}/cncjs-app-#{version}-macos-#{arch}.dmg",
       verified: "github.com/cncjs/cncjs/"
@@ -19,4 +19,11 @@ cask "cncjs" do
   depends_on macos: ">= :high_sierra"
 
   app "CNCjs.app"
+
+  zap trash: [
+    "~/.cncjs-sessions",
+    "~/Library/Application Support/CNCjs",
+    "~/Library/Preferences/org.cncjs.plist",
+    "~/Library/Saved Application State/org.cncjs.savedState",
+  ]
 end

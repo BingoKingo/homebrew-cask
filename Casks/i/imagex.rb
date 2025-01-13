@@ -5,7 +5,7 @@ cask "imagex" do
   url "https://visual-computing.com/files/imagex/ImageX-v#{version}-macos.zip"
   name "ImageX"
   desc "Visually explore and search an image collection"
-  homepage "https://visual-computing.com/project/imagex/"
+  homepage "https://visual-computing.com/projects/imagex"
 
   livecheck do
     url :homepage
@@ -20,4 +20,8 @@ cask "imagex" do
     "~/Library/Preferences/de.htw.lcs.imagex.plist",
     "~/Library/Saved Application State/de.htw.lcs.imagex.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

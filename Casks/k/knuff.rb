@@ -7,5 +7,19 @@ cask "knuff" do
   desc "Debug application for Apple Push Notification Service (APNs)"
   homepage "https://github.com/KnuffApp/Knuff"
 
+  depends_on macos: ">= :sierra"
+
   app "Knuff.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.madebybowtie.knuff-osx.sfl*",
+    "~/Library/Application Support/com.makebybowtie.Knuff-OSX",
+    "~/Library/Caches/com.crashlytics.data/com.madebybowtie.Knuff-OSX",
+    "~/Library/HTTPStorages/com.madebybowtie.Knuff-OSX",
+    "~/Library/Preferences/com.madebybowtie.Knuff-OSX.plist",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

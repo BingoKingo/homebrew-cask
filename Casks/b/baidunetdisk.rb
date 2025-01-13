@@ -1,9 +1,9 @@
 cask "baidunetdisk" do
   arch arm: "arm64", intel: "x64"
 
-  version "4.32.1"
-  sha256 arm:   "a4d45b7597dbec03328cab4ab096f431f46995d244c90094438f9e0701e500db",
-         intel: "17eb8db71e5416ebae92394fcf63b7bacc4859c24aa1263fedccdeeaac0c66e1"
+  version "4.44.1"
+  sha256 arm:   "e6ddd7eec06d413ed7a01e5d9ae14ce844e68c14acdd2ff7c851e88dbc3e03eb",
+         intel: "11b9ac54a0b3709d4b1bf6cf15eb667b747aecfe4db2c507fdaf9298a7dfa86e"
 
   url "https://issuepcdn.baidupcs.com/issue/netdisk/MACguanjia/#{version}/BaiduNetdisk_mac_#{version}_#{arch}.dmg",
       verified: "issuepcdn.baidupcs.com/issue/netdisk/MACguanjia/"
@@ -18,6 +18,7 @@ cask "baidunetdisk" do
   end
 
   auto_updates true
+  depends_on macos: ">= :high_sierra"
 
   app "BaiduNetdisk_mac.app"
 

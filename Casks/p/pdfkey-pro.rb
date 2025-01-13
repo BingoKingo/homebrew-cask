@@ -13,4 +13,14 @@ cask "pdfkey-pro" do
   end
 
   app "PDFKey Pro.app"
+
+  zap trash: [
+    "~/Library/Preferences/com.bitgamma.pdfkeypro.plist",
+    "~/Library/Preferences/com.pdfkey.pdfkeypro.plist",
+    "~/Library/Saved Application State/com.pdfkey.pdfkeypro.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

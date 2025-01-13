@@ -1,7 +1,7 @@
 cask "neo4j" do
   # NOTE: "4" is not a version number, but an intrinsic part of the product name
-  version "1.5.9"
-  sha256 "d72d80255bedf4546a8c09b4db42d616c2586a394dd90cfa06b195b1f26d3840"
+  version "1.6.1"
+  sha256 "da8e8506e49461b03256cb4053034869e7d46f88090e1c81c8669dc2e6b5c2c1"
 
   url "https://dist.neo4j.org/neo4j-desktop/mac/Neo4j%20Desktop-#{version}.dmg",
       verified: "dist.neo4j.org/neo4j-desktop/mac/"
@@ -24,4 +24,8 @@ cask "neo4j" do
     "~/Library/Preferences/com.neo4j.neo4j-desktop.plist",
     "~/Library/Saved Application State/com.neo4j.neo4j-desktop.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

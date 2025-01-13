@@ -1,6 +1,6 @@
 cask "cardpresso" do
-  version "1.7.70"
-  sha256 "0b97dda95c18f9bd21089b73af7ebfe009d5295d116d5dc26cc2d6965d5b1dac"
+  version "1.7.100"
+  sha256 "779b7cae52a763d1a302f00e11cbeabb1584b7a2fee64a04304b9d21a02834a6"
 
   url "https://www.cardpresso.com/downloads/cardpresso_releases/for_mac_osx/cardPresso#{version}.dmg"
   name "cardpresso"
@@ -23,4 +23,8 @@ cask "cardpresso" do
     "~/Library/Preferences/com.cardpresso.cardPresso.plist",
     "~/Library/Saved Application State/com.cardpresso.cardPresso.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

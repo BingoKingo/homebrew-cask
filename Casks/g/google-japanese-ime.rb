@@ -1,5 +1,5 @@
 cask "google-japanese-ime" do
-  version "2.29.5330"
+  version "2.30.5590"
   sha256 :no_check
 
   url "https://dl.google.com/japanese-ime/latest/GoogleJapaneseInput.dmg",
@@ -11,7 +11,7 @@ cask "google-japanese-ime" do
   livecheck do
     url :url
     strategy :extract_plist do |items|
-      items["com.google.inputmethod.Japanese"].short_version
+      items["com.google.inputmethod.Japanese"]&.short_version
     end
   end
 

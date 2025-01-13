@@ -1,6 +1,6 @@
 cask "bisq" do
-  version "1.9.14"
-  sha256 "9289a41f653377d2a34cb0256f531b8ec57edc09311da85db8d084ee2e81d1f8"
+  version "1.9.18"
+  sha256 "522996cf070f0eb50d4f7f4872e6b4907351616e8e92b7215fb867d4a366d284"
 
   url "https://github.com/bisq-network/bisq/releases/download/v#{version}/Bisq-#{version}.dmg",
       verified: "github.com/bisq-network/bisq/"
@@ -19,4 +19,8 @@ cask "bisq" do
     "~/Library/Application Support/Bisq",
     "~/Library/Saved Application State/io.bisq.CAT.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

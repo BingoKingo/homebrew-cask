@@ -1,6 +1,6 @@
 cask "sound-control" do
-  version "3.1.7"
-  sha256 "ca7eecd0c38dba9105f91fde0e93156083f5e8fbddbc2afa35d46d4bd5311da5"
+  version "3.2.0"
+  sha256 "4e8e2d00efc0f7a57826a96ba2cb20260e47d5304f68df3ef712a075d56b8d89"
 
   url "https://s3.amazonaws.com/staticz.net/downloads/soundcontrol/SoundControl_#{version}.dmg",
       verified: "s3.amazonaws.com/staticz.net/downloads/soundcontrol/"
@@ -10,12 +10,9 @@ cask "sound-control" do
 
   livecheck do
     url :homepage
-    regex(%r{/download/(\d+)}i)
-    strategy :page_match do |page, _regex|
-      version = page[/Sound Control v?(\d+(?:\.\d+)+) Release Notes/i, 1]
-      next if version.blank?
-
-      version.to_s
+    regex(/Sound\s+Control\s+v?(\d+(?:\.\d+)+)\s+Release\s+Notes/im)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map { |match| match[0] }
     end
   end
 

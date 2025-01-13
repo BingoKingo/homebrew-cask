@@ -1,6 +1,6 @@
 cask "ddpm" do
-  version "1.3.0.0029"
-  sha256 "f86a3346663c817147fa8db263f5a5157f221b133dd15da556a828fc17dd066d"
+  version "1.3.2.0015"
+  sha256 "d015a871642bdb65391d6dba23c2dc1c7e86058d91083afe7312601046417ca4"
 
   url "https://www.delldisplaymanagermac.com/DDPM/DDPMv#{version}.zip",
       verified: "delldisplaymanagermac.com/"
@@ -16,7 +16,7 @@ cask "ddpm" do
     end
   end
 
-  pkg "DDPM_Installer.pkg"
+  pkg "DDPMv#{version}/DDPM_Installer.pkg"
   binary "/Applications/DDPM/DDPM.app/Contents/MacOS/DDPM"
 
   uninstall pkgutil: "Qisda.pkg.DDPM",

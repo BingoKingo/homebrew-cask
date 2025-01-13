@@ -1,6 +1,6 @@
 cask "endless-sky" do
-  version "0.10.6"
-  sha256 "97aee28ba528a417852e408685d39c2bc7b1c555b942a1e3c7340cb540ee1f52"
+  version "0.10.10"
+  sha256 "5f5a61a0360d76e4e66f3e20e04b626f0cd2341804b741726a05ae6a8050c01d"
 
   url "https://github.com/endless-sky/endless-sky/releases/download/v#{version}/Endless-Sky-v#{version}.dmg",
       verified: "github.com/endless-sky/endless-sky/"

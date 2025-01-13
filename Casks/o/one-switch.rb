@@ -8,15 +8,16 @@ cask "one-switch" do
   homepage "https://fireball.studio/oneswitch"
 
   livecheck do
-    url "https://fireball.studio/api/release_manager/downloads/studio.fireball.OneSwitchOfficial.dmg"
-    strategy :extract_plist
+    url "https://fireball.studio/api/release_manager/studio.fireball.OneSwitchOfficial.xml"
+    strategy :sparkle
   end
 
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "One Switch.app"
 
   zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/studio.fireball.oneswitch.sfl*",
     "~/Library/Application Support/One Switch",
     "~/Library/Application Support/studio.fireball.OneSwitch",
     "~/Library/Caches/studio.fireball.OneSwitch",

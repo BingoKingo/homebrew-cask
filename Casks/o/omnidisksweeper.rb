@@ -40,14 +40,17 @@ cask "omnidisksweeper" do
     end
   end
   on_big_sur :or_newer do
-    version "1.14"
-    sha256 "0b1ccb9c9c47306a3e8c9147f61a3ca1d329338612f438f863b19cc34dbca0f1"
+    version "1.15.1b"
+    sha256 "e079d644e8c0d64a4926d4b426bb0e4932a1b25707901a07c3a227cfdf7574f0"
 
     url "https://downloads.omnigroup.com/software/macOS/11/OmniDiskSweeper-#{version}.dmg"
 
     livecheck do
       url "https://update.omnigroup.com/appcast/com.omnigroup.OmniDiskSweeper"
-      regex(/OmniDiskSweeper[._-](\d+(?:\.\d+)+)\.dmg/i)
+      regex(/OmniDiskSweeper[._-]v?(\d+(?:\.\d+)+[a-z]?)\.dmg/i)
+      strategy :sparkle do |item, regex|
+        item.url[regex, 1]
+      end
     end
   end
 

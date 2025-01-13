@@ -12,7 +12,8 @@ cask "lo-rain" do
     strategy :sparkle, &:short_version
   end
 
-  depends_on macos: ">= :monterey"
+  auto_updates true
+  depends_on macos: ">= :sonoma"
 
   app "lo-rain.app"
 

@@ -1,5 +1,5 @@
 cask "bridge" do
-  version "2023.1.0"
+  version "2024.0.7"
   sha256 :no_check
 
   url "https://d2shgxa8i058x8.cloudfront.net/bridge/mac/Bridge.dmg",
@@ -20,4 +20,8 @@ cask "bridge" do
     "~/Library/Preferences/se.quixel.bridge.plist",
     "~/Library/Saved Application State/se.quixel.bridge.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

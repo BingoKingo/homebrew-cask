@@ -1,6 +1,6 @@
 cask "multipass" do
-  version "1.13.1"
-  sha256 "0b1bc65df103c44d7e10a4afacd6c379a8ecc48d86b318b6540c382419749a89"
+  version "1.15.0"
+  sha256 "b2a37d3b0f663c2baac12bf1a2eb76323297345e69b48eeec65583cb36566edc"
 
   on_arm do
     postflight do
@@ -35,9 +35,11 @@ cask "multipass" do
             ]
 
   zap trash: [
+    "~/Library/Application Support/com.canonical.multipassGui",
     "~/Library/Application Support/multipass",
     "~/Library/Application Support/multipass-gui",
     "~/Library/LaunchAgents/com.canonical.multipass.gui.autostart.plist",
     "~/Library/Preferences/multipass",
+    "~/Library/Saved Application State/com.canonical.multipassGui.savedState",
   ]
 end

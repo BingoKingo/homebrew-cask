@@ -1,6 +1,6 @@
 cask "colour-contrast-analyser" do
-  version "3.5.1"
-  sha256 "1216e8e7e2b00940c0a6dd848ba9c5badacaa2408dc4a5433d9195c31f20630c"
+  version "3.5.4"
+  sha256 "726faf5687a088025cb0168739334539140904369ceba5f3cde5e2193a374eba"
 
   url "https://github.com/ThePacielloGroup/CCAe/releases/download/v#{version}/CCA-#{version}.dmg",
       verified: "github.com/ThePacielloGroup/CCAe/"
@@ -13,7 +13,7 @@ cask "colour-contrast-analyser" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "Colour Contrast Analyser.app"
 

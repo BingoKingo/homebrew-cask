@@ -6,10 +6,11 @@ cask "supersync" do
   name "SuperSync"
   homepage "https://supersync.com/"
 
-  livecheck do
-    url "https://supersync.com/downloads.php"
-    regex(%r{href=.*?/SuperSync_(\d+(?:\.\d+)*)\.dmg}i)
-  end
+  deprecate! date: "2024-09-08", because: :unmaintained
 
   app "SuperSync.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

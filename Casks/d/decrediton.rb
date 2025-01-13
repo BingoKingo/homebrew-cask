@@ -1,14 +1,16 @@
 cask "decrediton" do
   arch arm: "arm64", intel: "amd64"
 
-  version "1.8.1"
-  sha256 arm:   "1dfcd6d5fa42aed03e56c90a908ef0afb5080344487f6ccd57c9ad75ea314ce9",
-         intel: "25980c946e846d11689131358ef98079dbd0af9fa263765c8147009b50c1bfa4"
+  version "2.0.5"
+  sha256 arm:   "f1c7ab512666ae29f146e67cb7c32f2979abffe7b18443eb2ff684a9726fa312",
+         intel: "116575be3f4b8baa56c47e49e7acbc1d35f67c434e31bc3b9c2cdb2b599a54a5"
 
-  url "https://github.com/decred/decred-binaries/releases/download/v#{version}/decrediton-#{arch}-v#{version}.dmg"
+  url "https://github.com/decred/decred-binaries/releases/download/v#{version}/decrediton-darwin-#{arch}-v#{version}.dmg"
   name "Decrediton"
   desc "GUI for the Decred wallet"
   homepage "https://github.com/decred/decrediton"
+
+  depends_on macos: ">= :high_sierra"
 
   app "decrediton.app"
 

@@ -1,18 +1,18 @@
 cask "orka3" do
   arch arm: "arm64", intel: "amd64"
 
-  version "3.0.2"
-  sha256 arm:   "e0df788e6c83f7c854fa3a54b02377256c47aac11c7ae58324c46d39e3d791a4",
-         intel: "f69f8bb3c8b416ae4ba99c9cc6d4158add02027a137abb83e14f58647cab03cc"
+  version "3.2.0"
+  sha256 arm:   "6da6577be695e1214fbe469d8189d8459210c1d6292ebdcdca8e38bd68858d45",
+         intel: "e7df8d497fe6bd77f17ebbe16f0ab01fc674dc6335a1ec9b4aab723306ef2f11"
 
-  url "https://cli-builds-public.s3.eu-west-1.amazonaws.com/official/#{version}/orka3/macos/#{arch}/orka3.pkg",
-      verified: "cli-builds-public.s3.eu-west-1.amazonaws.com/official/"
+  url "https://cli-builds-public.s3.amazonaws.com/official/#{version}/orka3/macos/#{arch}/orka3.pkg",
+      verified: "cli-builds-public.s3.amazonaws.com/official/"
   name "Orka3 CLI"
   desc "Orchestration with Kubernetes on Apple"
   homepage "https://orkadocs.macstadium.com/docs"
 
   livecheck do
-    url "https://cli-builds-public.s3.eu-west-1.amazonaws.com/official/latest.json"
+    url "https://cli-builds-public.s3.amazonaws.com/official/latest.json"
     strategy :json do |json|
       json["version"]
     end

@@ -9,8 +9,8 @@ cask "psi-plus" do
   homepage "https://psi-plus.com/"
 
   livecheck do
-    url "https://sourceforge.net/projects/psiplus/files/macOS/tehnick/"
-    regex(/Psi%2B[._-]?(\d+(?:\.\d+)+)[._-]?macOS.*-x86_64\.dmg/i)
+    url "https://sourceforge.net/projects/psiplus/rss?path=/macOS/tehnick"
+    regex(%r{url=.*?/Psi%2B[._-]?v?(\d+(?:\.\d+)+)[._-]?macOS[^"' >]*?\.dmg}i)
   end
 
   depends_on macos: ">= :catalina"
@@ -24,4 +24,8 @@ cask "psi-plus" do
     "~/Library/Caches/Psi+",
     "~/Library/Saved Application State/com.psi-plus.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

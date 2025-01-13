@@ -8,7 +8,13 @@ cask "flameshot" do
   desc "Screenshot software"
   homepage "https://flameshot.org/"
 
+  depends_on macos: ">= :catalina"
+
   app "flameshot.app"
 
   zap trash: "~/.config/flameshot/flameshot.ini"
+
+  caveats do
+    requires_rosetta
+  end
 end

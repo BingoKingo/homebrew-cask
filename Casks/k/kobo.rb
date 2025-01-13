@@ -12,4 +12,15 @@ cask "kobo" do
   end
 
   app "Kobo.app"
+
+  zap trash: [
+    "~/Library/Application Support/Kobo",
+    "~/Library/Preferences/com.kobo.Analytics.plist",
+    "~/Library/Preferences/com.kobobooks.Kobo Desktop Edition.plist",
+    "~/Library/Saved Application State/com.kobo.desktop.kobo.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

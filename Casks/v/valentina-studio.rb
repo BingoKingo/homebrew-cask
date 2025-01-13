@@ -1,6 +1,6 @@
 cask "valentina-studio" do
-  version "13.9.1"
-  sha256 "490d91c06252a9081fc6b5389499628ec033d8c9aed70597e3e80570f8439a2f"
+  version "14.7"
+  sha256 "e79f95477b4b1790e89f57353660b78bee89eff952038cfd22e5444cdc536ac9"
 
   url "https://valentina-db.com/download/prev_releases/#{version}/mac_64/vstudio_x64_#{version.major}_mac.dmg"
   name "Valentina Studio"
@@ -12,7 +12,7 @@ cask "valentina-studio" do
     regex(%r{href=['"]?/en/all-downloads/vstudio/current['"]?>\s*(\d+(?:\.\d+)+)}i)
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :mojave"
 
   app "Valentina Studio.app"
 

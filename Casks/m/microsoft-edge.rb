@@ -2,28 +2,32 @@ cask "microsoft-edge" do
   linkid = on_arch_conditional arm: "2093504", intel: "2069148"
 
   on_arm do
-    version "123.0.2420.65,7bbba6d8-bd7d-473a-82fe-c136ab40996b"
-    sha256 "cb7b2c0166e04bbfd23a2e1b60d6ec782381104c76a5e0e2ae4520dcb3d3b563"
+    version "131.0.2903.147,52545162-4ec1-44f4-98ac-448ed05cf300"
+    sha256 "b9a37574187b6cb0de0a90a6f24e7694e7a064409ba0d9fbc2432599c49f4154"
   end
   on_intel do
-    version "123.0.2420.65,8f1ad675-1a7c-4962-ae05-578e1d8950e5"
-    sha256 "bdd120ef69fc0b5cdbcb9bda4eb28b138eb01e54071d863a4cf10d1e7a2dd4c9"
+    version "131.0.2903.147,427d7d34-ae5f-4852-a5ba-b5e4c76f9b15"
+    sha256 "1dea1e252561540dcfc050aca3d2b4f2b92b9335ea2b80efeaf96fcf71ffbaab"
   end
 
   url "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/#{version.csv.second}/MicrosoftEdge-#{version.csv.first}.pkg"
   name "Microsoft Edge"
-  desc "Web browser"
+  desc "Multi-platform web browser"
   homepage "https://www.microsoft.com/en-us/edge?form="
 
   livecheck do
     url "https://go.microsoft.com/fwlink/?linkid=#{linkid}"
     regex(%r{/([^/]+)/MicrosoftEdge[._-]v?(\d+(?:\.\d+)+)\.pkg}i)
     strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map { |match| "#{match[1]},#{match[0]}" }
+      match = headers["location"]&.match(regex)
+      next if match.blank?
+
+      "#{match[2]},#{match[1]}"
     end
   end
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   pkg "MicrosoftEdge-#{version.csv.first}.pkg",
       choices: [
@@ -45,17 +49,18 @@ cask "microsoft-edge" do
       trash:  [
         "~/Library/Application Scripts/com.microsoft.edgemac.wdgExtension",
         "~/Library/Application Support/Microsoft Edge",
-        "~/Library/Application Support/Microsoft/EdgeUpdater",
         "~/Library/Caches/com.microsoft.edgemac",
-        "~/Library/Caches/com.microsoft.EdgeUpdater",
         "~/Library/Caches/Microsoft Edge",
         "~/Library/Containers/com.microsoft.edgemac.wdgExtension",
-        "~/Library/HTTPStorages/com.microsoft.edge*",
+        "~/Library/HTTPStorages/com.microsoft.edgemac",
         "~/Library/LaunchAgents/com.microsoft.EdgeUpdater.*.plist",
-        "~/Library/Microsoft/EdgeUpdater",
+        "~/Library/Microsoft/MicrosoftSoftwareUpdate/Actives/com.microsoft.edgemac",
         "~/Library/Preferences/com.microsoft.edgemac.plist",
-        "~/Library/Saved Application State/com.microsoft.edgemac.*",
+        "~/Library/Saved Application State/com.microsoft.edgemac.savedState",
         "~/Library/WebKit/com.microsoft.edgemac",
       ],
-      rmdir:  "/Library/Application Support/Microsoft"
+      rmdir:  [
+        "/Library/Application Support/Microsoft",
+        "~/Library/Microsoft",
+      ]
 end

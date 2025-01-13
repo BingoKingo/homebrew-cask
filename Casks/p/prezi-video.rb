@@ -1,6 +1,6 @@
 cask "prezi-video" do
-  version "2.24.1"
-  sha256 "9a484a2ad6c467a763bd890c3987935413c991bf987f24160090f74b3d9abe3b"
+  version "2.29.2"
+  sha256 "d46048e2693fcc47ad95dce74c993aa307927b406209abb11455428bd27f648a"
 
   url "https://desktopassets.prezi.com/mac/prezi-video/releases/Prezi_Video_#{version}.zip"
   name "Prezi Video"
@@ -8,7 +8,7 @@ cask "prezi-video" do
   homepage "https://prezi.com/video/"
 
   livecheck do
-    url "https://s3.amazonaws.com/prezidesktop/assets/mac/prezi-video/updates/prezi-video.xml"
+    url "https://prezidesktop.s3.amazonaws.com/assets/mac/prezi-video/updates/prezi-video.xml"
     strategy :sparkle, &:short_version
   end
 

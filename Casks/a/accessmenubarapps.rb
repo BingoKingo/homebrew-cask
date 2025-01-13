@@ -12,6 +12,8 @@ cask "accessmenubarapps" do
     strategy :sparkle, &:short_version
   end
 
+  auto_updates true
+
   app "AccessMenuBarApps#{version}/AccessMenuBarApps.app"
 
   uninstall quit: "de.ortisoft.AccessMenuBarApps"
@@ -21,4 +23,8 @@ cask "accessmenubarapps" do
     "~/Library/HTTPStorages/de.ortisoft.AccessMenubarApps",
     "~/Library/Preferences/de.ortisoft.AccessMenuBarApps.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -1,6 +1,6 @@
 cask "weiyun" do
-  version "5.2.1423"
-  sha256 "2159b494872b1749e3a850ca786b247a5340a1ca38257fb03f57cfc0198fa1fc"
+  version "5.2.1485"
+  sha256 "8320d1d307950e36c9dff419f7c03289dee03b67e7b6552505dadad1a67e547b"
 
   url "https://dldir1.qq.com/weiyun/electron-update/release/#{version}/Weiyun-mac-x64-#{version}.dmg",
       verified: "dldir1.qq.com/weiyun/"
@@ -13,6 +13,8 @@ cask "weiyun" do
     regex(/Weiyun[._-]mac[._-]x64[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "Weiyun.app"
 
   uninstall quit: "com.tencent.MacWeiyun"
@@ -21,4 +23,8 @@ cask "weiyun" do
     "~/Library/Preferences/com.tencent.MacWeiyun.plist",
     "~/Library/Saved Application State/com.tencent.MacWeiyun.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

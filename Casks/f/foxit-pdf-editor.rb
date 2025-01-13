@@ -1,8 +1,8 @@
 cask "foxit-pdf-editor" do
-  version "13.0.1"
-  sha256 "8a78d21be27174bec15ca0dc06526d164e74754243b711407a30c3ae3b2f2e0c"
+  version "13.1.5"
+  sha256 "238af81982bfd2284f2db93378822a25a588e7cb6fb3642d777c980dfc2df66c"
 
-  url "https://cdn01.foxitsoftware.com/pub/foxit/phantomPDF/desktop/mac/#{version.major}.x/FoxitPDFEditor#{version.no_dots}.L10N.Setup.pkg",
+  url "https://cdn01.foxitsoftware.com/pub/foxit/phantomPDF/desktop/mac/#{version.major}.x/#{version}/FoxitPDFEditor#{version.no_dots}.L10N.Setup.pkg",
       verified: "cdn01.foxitsoftware.com/pub/foxit/phantomPDF/desktop/mac/"
   name "Foxit PDF Editor"
   desc "PDF Editor"
@@ -12,9 +12,10 @@ cask "foxit-pdf-editor" do
     url "https://www.foxit.com/downloads/latest.html?product=Foxit-PDF-Editor-Mac&platform=Mac-OS-X&language=English"
     regex(/FoxitPDFEditor(\d{2})(\d)(\d)\.L10N\.Setup\.pkg/i)
     strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map do |match|
-        "#{match[0]}.#{match[1]}.#{match[2]}"
-      end
+      match = headers["location"]&.match(regex)
+      next if match.blank?
+
+      "#{match[1]}.#{match[2]}.#{match[3]}"
     end
   end
 

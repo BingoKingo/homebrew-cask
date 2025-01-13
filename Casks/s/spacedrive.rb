@@ -1,9 +1,9 @@
 cask "spacedrive" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "0.2.10"
-  sha256 arm:   "fd4744ea59637717f77cb85a0ba09539e81b99225367dee3f6dd8c4d7a7f0de1",
-         intel: "b72fc6d912a7c8f9754294e9dbae60df4ad76b23b0ab48a76c2f7aeb17e6f979"
+  version "0.4.2"
+  sha256 arm:   "5b49c5366060af2a538f563aafabecb5d2f451468ff634ce1f9460022af0c6c6",
+         intel: "897eda52cda4d5f8cea03c648176de3c461760a14adeb18594df5bd3e833dfbf"
 
   url "https://github.com/spacedriveapp/spacedrive/releases/download/#{version}/Spacedrive-darwin-#{arch}.dmg"
   name "Spacedrive"
@@ -14,6 +14,9 @@ cask "spacedrive" do
     url :url
     strategy :github_latest
   end
+
+  auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "Spacedrive.app"
 

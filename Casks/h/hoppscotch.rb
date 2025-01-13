@@ -1,14 +1,15 @@
 cask "hoppscotch" do
   arch arm: "aarch64", intel: "x64"
 
-  version "24.3.0-1"
-  sha256 arm:   "a9df2badbda55e945c1a115395a0c35c7b9d9e0da090a996a34e84f4acc32c3d",
-         intel: "8a76d24294d5c28f54728da62137a015e443006feed1992eb178451f0fafc48e"
+  version "24.12.0-0"
+  sha256 arm:   "a4cf6ce6b45bfd5b3024408ae382aedab49ae1aee4a4a84933db7ab91ffa07d0",
+         intel: "bd76527a8816049b7b7afd1b99607931661c78f82ad67a06ddd8d4f248d9ba64"
 
-  url "https://github.com/hoppscotch/releases/releases/download/v#{version}/Hoppscotch_mac_#{arch}.dmg"
+  url "https://github.com/hoppscotch/releases/releases/download/v#{version}/Hoppscotch_mac_#{arch}.dmg",
+      verified: "github.com/hoppscotch/releases/"
   name "Hoppscotch"
   desc "Open source API development ecosystem"
-  homepage "https://github.com/hoppscotch/hoppscotch"
+  homepage "https://hoppscotch.com/"
 
   depends_on macos: ">= :high_sierra"
 

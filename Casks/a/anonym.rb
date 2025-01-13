@@ -7,10 +7,7 @@ cask "anonym" do
   desc "Network access anonymiser"
   homepage "https://www.hanynet.com/anonym/"
 
-  livecheck do
-    url :homepage
-    regex(%r{href=.*?/anonym[._-]v?(\d+(?:\.\d+)+)\.zip}i)
-  end
+  disable! date: "2024-07-09", because: "is 32-bit only"
 
   app "Anonym.app"
 end

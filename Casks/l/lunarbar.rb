@@ -1,13 +1,18 @@
 cask "lunarbar" do
-  version "1.2.1"
-  sha256 "47af325b18fb3350cc9092432583cc3be72677ef41828b9ffbced5d0a4f4b897"
+  version "1.4.1"
+  sha256 "8e48b51fde0cfc4cce5ae4566593e2301e20835befedb4821237c3c361272ef3"
 
   url "https://github.com/LunarBar-app/LunarBar/releases/download/v#{version}/LunarBar-#{version}.dmg"
   name "LunarBar"
   desc "Lunar calendar for menu bar"
   homepage "https://github.com/LunarBar-app/LunarBar"
 
-  depends_on macos: ">= :ventura"
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
+  depends_on macos: ">= :sonoma"
 
   app "LunarBar.app"
 

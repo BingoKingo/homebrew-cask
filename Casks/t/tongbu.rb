@@ -13,4 +13,15 @@ cask "tongbu" do
   end
 
   app "Tongbu.app"
+
+  zap trash: [
+        "~/Library/Caches/com.tongbu.assistant2",
+        "~/Library/HTTPStorages/com.tongbu.assistant2",
+        "~/Library/WebKit/com.tongbu.assistant2",
+      ],
+      rmdir: "~/Music/Tongbu"
+
+  caveats do
+    requires_rosetta
+  end
 end

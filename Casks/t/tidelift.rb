@@ -1,6 +1,6 @@
 cask "tidelift" do
-  version "1.13.30"
-  sha256 "c0381c0d2bc2906835b65af0b16fb392275595179db2811c57598c411d93ec88"
+  version "1.13.56"
+  sha256 "f18308cb4d63482f2976c25b10add14cb42b3e7819e9c604173ddc304280d69e"
 
   url "https://download.tidelift.com/cli/#{version}/darwin_homebrew/tidelift"
   name "Tidelift CLI"
@@ -19,4 +19,8 @@ cask "tidelift" do
   end
 
   # No zap stanza required
+
+  caveats do
+    requires_rosetta
+  end
 end

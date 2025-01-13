@@ -1,9 +1,9 @@
 cask "heynote" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.7.0"
-  sha256 arm:   "c82de320188a5422c8fb0dff2bc11b69a114433b7a5b02bd99acb41152061500",
-         intel: "656d44c6f6d8beadb34eee30181a3d9d677d8173846f692c622980f16bc12127"
+  version "2.1.0"
+  sha256 arm:   "41289eb0f7c0269c1e89f2fa9ccee986e5536cfec283767248caeab09be3fba6",
+         intel: "3140766d44dc4f1d778378bdec90e1a9e55d6a387f35a28c682544a98026a14a"
 
   url "https://github.com/heyman/heynote/releases/download/v#{version}/Heynote_#{version}_#{arch}.dmg",
       verified: "github.com/heyman/heynote/"
@@ -11,6 +11,12 @@ cask "heynote" do
   desc "Dedicated scratchpad for developers"
   homepage "https://heynote.com/"
 
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
+  auto_updates true
   depends_on macos: ">= :catalina"
 
   app "Heynote.app"

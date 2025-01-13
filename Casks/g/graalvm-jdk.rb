@@ -1,9 +1,9 @@
 cask "graalvm-jdk" do
   arch arm: "aarch64", intel: "x64"
 
-  version "22"
-  sha256 arm:   "61632065cfcdc4e121362f1fd25a543955836bbacd6c1aadbcbe0d469d5ab8a3",
-         intel: "5b83f20dbc4c636ed41f19c3309f09839d4f5c6442dba986f460589c494a476c"
+  version "23.0.1"
+  sha256 arm:   "c00a7a62ce453aa026bff65e5a18c63464f725c01e5a71771856226928ba5b0f",
+         intel: "539699d8ff4979623bc7bdf8282ac6f76cd2560f47d14ec5438bada24f136f96"
 
   url "https://download.oracle.com/graalvm/#{version.major}/archive/graalvm-jdk-#{version}_macos-#{arch}_bin.tar.gz",
       verified: "download.oracle.com/"
@@ -16,7 +16,7 @@ cask "graalvm-jdk" do
     regex(/GraalVM\s+for\s+JDK\s+v?(\d+(?:\.\d+)*)\s+downloads/im)
   end
 
-  artifact "graalvm-jdk-#{version}+36.1", target: "/Library/Java/JavaVirtualMachines/graalvm-#{version.major}.jdk"
+  artifact "graalvm-jdk-#{version}+11.1", target: "/Library/Java/JavaVirtualMachines/graalvm-#{version.major}.jdk"
 
   # No zap stanza required
 

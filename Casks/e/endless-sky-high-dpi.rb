@@ -1,12 +1,17 @@
 cask "endless-sky-high-dpi" do
-  version "0.10.6"
-  sha256 "c297e6278697ab62714d67e05b2acfb5283bc5fcab86d45bd606bb02d90c9a75"
+  version "0.10.10"
+  sha256 "b10d61befc3a63d64ef23de0dda53f0da1dad297459987927b170b17c2654a00"
 
   url "https://github.com/endless-sky/endless-sky-high-dpi/archive/refs/tags/v#{version}.tar.gz",
       verified: "github.com/endless-sky/endless-sky-high-dpi/"
   name "Endless Sky High-DPI"
   desc "High-DPI plugin for Endless Sky"
   homepage "https://endless-sky.github.io/"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
   depends_on cask: "endless-sky"
 

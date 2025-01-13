@@ -1,9 +1,9 @@
 cask "clion" do
   arch arm: "-aarch64"
 
-  version "2023.3.4,233.14475.31"
-  sha256 arm:   "340d239008c38743a10e51ae609ec3bf3dd732cf2042ef997532c6b8ed272b1a",
-         intel: "2eb149d2bbf1c778f3386bc9cf7b11741b4372e69c680def31260b9aa213159e"
+  version "2024.3.1.1,243.22562.225"
+  sha256 arm:   "57d7040f197dc1859ab16636bbb7006acc542eb15d1892692e78dc205bae2502",
+         intel: "276ae335421b6eddd1d7fbdc27fc826bf7ffa68e32a23f9335ff8be88d89b747"
 
   url "https://download.jetbrains.com/cpp/CLion-#{version.csv.first}#{arch}.dmg"
   name "CLion"
@@ -13,8 +13,12 @@ cask "clion" do
   livecheck do
     url "https://data.services.jetbrains.com/products/releases?code=CL&latest=true&type=release"
     strategy :json do |json|
-      json["CL"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+      json["CL"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
@@ -29,9 +33,7 @@ cask "clion" do
     "~/Library/Application Support/JetBrains/CLion#{version.major_minor}",
     "~/Library/Caches/JetBrains/CLion#{version.major_minor}",
     "~/Library/Logs/JetBrains/CLion#{version.major_minor}",
-    "~/Library/Preferences/CLion#{version.major_minor}",
     "~/Library/Preferences/com.jetbrains.CLion.plist",
-    "~/Library/Preferences/jetbrains.clion.*.plist",
     "~/Library/Saved Application State/com.jetbrains.CLion.savedState",
   ]
 end

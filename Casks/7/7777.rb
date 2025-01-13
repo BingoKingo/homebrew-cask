@@ -1,6 +1,6 @@
 cask "7777" do
-  version "1.1.14"
-  sha256 "f6a52881729d65c59a42dfc18bb7cf37e65987bc4850e79a35eba5350d482fd4"
+  version "1.1.18"
+  sha256 "276e3a0d340c7d8e32a811198b67bf5e85bba2a2ee61acd45bc8e0b1347283e8"
 
   url "https://releases.port7777.com/#{version}/macos/7777"
   name "7777"
@@ -15,4 +15,8 @@ cask "7777" do
   binary "7777"
 
   # No zap stanza required
+
+  caveats do
+    requires_rosetta
+  end
 end

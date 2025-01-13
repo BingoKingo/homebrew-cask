@@ -38,15 +38,13 @@ cask "itsycal" do
     end
   end
   on_big_sur :or_newer do
-    version "0.15.3"
-    sha256 "e5a2734aeaaadf5077de35b8955f2fb94ddebaba59068c885bf00e0bdfe9c678"
+    version "0.15.5"
+    sha256 "f3fc3c8fe6bb8bcbf8e97faf055506d796f05bd1b2258c972ed19213c898cd18"
 
     livecheck do
       url "https://itsycal.s3.amazonaws.com/itsycal.xml"
       strategy :sparkle, &:short_version
     end
-
-    depends_on macos: ">= :big_sur"
   end
 
   url "https://itsycal.s3.amazonaws.com/Itsycal-#{version}.zip",

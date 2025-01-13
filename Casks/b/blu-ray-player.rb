@@ -9,8 +9,9 @@ cask "blu-ray-player" do
 
   livecheck do
     url "https://cdn.macblurayplayer.com/mac-bluray-player-pro#{version.major}/appcast/Appcast.xml"
-    strategy :sparkle do |item|
-      match = item.url.match(/_(\d(?:\.\d+)*)_(.*?)\.dmg/)
+    regex(/_(\d(?:\.\d+)*)_(.*?)\.dmg/i)
+    strategy :sparkle do |item, regex|
+      match = item.url.match(regex)
       next if match.blank?
 
       "#{match[1]},#{match[2]}"
@@ -20,4 +21,8 @@ cask "blu-ray-player" do
   auto_updates true
 
   app "Blu-ray Player.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

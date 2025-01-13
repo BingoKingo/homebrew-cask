@@ -1,9 +1,9 @@
 cask "mochi" do
   arch arm: "-arm64"
 
-  version "1.17.3"
-  sha256 arm:   "7315767c8392bdcd04ae60b6aa0c5978855215c5140d29c3c1d974f64d8d40f6",
-         intel: "05d7078432d29163fa7e0b4f78be8a6b2272be7507b6af0c0ca864b72dd20d9d"
+  version "1.18.3"
+  sha256 arm:   "01a2b06737e6c2147cf782253520f4e97dccd7d7e579f57a7a273056c43650ff",
+         intel: "f23204199d05ea7d4961ea51d715fbc797bf7e2e27e354b9a6ddffc1cec0fb17"
 
   url "https://mochi.cards/releases/Mochi-#{version}#{arch}.dmg"
   name "Mochi"
@@ -11,8 +11,8 @@ cask "mochi" do
   homepage "https://mochi.cards/"
 
   livecheck do
-    url :homepage
-    regex(/href=.*?Mochi[._-]?v?(\d+(?:\.\d+)+)#{arch}\.dmg/i)
+    url "https://mochi.cards/releases/latest-mac.yml"
+    strategy :electron_builder
   end
 
   app "Mochi.app"

@@ -6,23 +6,28 @@ cask "nextcloud" do
     livecheck do
       skip "Legacy version"
     end
-
-    depends_on macos: ">= :mojave"
   end
   on_monterey :or_newer do
-    version "3.12.3"
-    sha256 "1c020cb3163b9c1da950f8a6c4876e58f80ebdc59b07b38c742c5159d0112e06"
+    version "3.15.3"
+    sha256 "0a205646371515a4d92a4dbb91898b97b773ddd0bcc2d64e65ad84d772a222c4"
 
+    # Upstream publishes releases for multiple different minor versions and the
+    # "latest" release is sometimes a lower version. Until the "latest" release
+    # is reliably the highest version, we have to check multiple releases.
     livecheck do
       url :url
       regex(/^Nextcloud[._-]v?(\d+(?:\.\d+)+)\.pkg$/i)
-      strategy :github_latest do |json, regex|
-        json["assets"]&.map do |asset|
-          match = asset["name"]&.match(regex)
-          next if match.blank?
+      strategy :github_releases do |json, regex|
+        json.map do |release|
+          next if release["draft"] || release["prerelease"]
 
-          match[1]
-        end
+          release["assets"]&.map do |asset|
+            match = asset["name"]&.match(regex)
+            next if match.blank?
+
+            match[1]
+          end
+        end.flatten
       end
     end
   end
@@ -34,13 +39,16 @@ cask "nextcloud" do
   homepage "https://nextcloud.com/"
 
   auto_updates true
+  conflicts_with cask: "nextcloud-vfs"
+  depends_on macos: ">= :mojave"
 
   pkg "Nextcloud-#{version}.pkg"
   binary "/Applications/Nextcloud.app/Contents/MacOS/nextcloudcmd"
 
-  uninstall quit:    "com.nextcloud.desktopclient",
-            pkgutil: "com.nextcloud.desktopclient",
-            delete:  "/Applications/Nextcloud.app"
+  uninstall launchctl: "com.nextcloud.desktopclient",
+            quit:      "com.nextcloud.desktopclient",
+            pkgutil:   "com.nextcloud.desktopclient",
+            delete:    "/Applications/Nextcloud.app"
 
   zap trash: [
     "~/Library/Application Scripts/com.nextcloud.desktopclient.FinderSyncExt",

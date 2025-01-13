@@ -7,5 +7,11 @@ cask "jewelrybox" do
   desc "RVM manager"
   homepage "https://github.com/remear/jewelrybox"
 
+  deprecate! date: "2024-10-12", because: :unmaintained
+
   app "JewelryBox.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

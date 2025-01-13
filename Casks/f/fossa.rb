@@ -1,10 +1,13 @@
 cask "fossa" do
-  version "3.9.10"
-  sha256 "aa381f660190e445e66fe9d397c4e23f3b8813557c124d2914762f2b120ef0d3"
+  arch arm: "arm64", intel: "amd64"
 
-  url "https://github.com/fossas/fossa-cli/releases/download/v#{version}/fossa_#{version}_darwin_amd64.zip",
+  version "3.9.42"
+  sha256 arm:   "59473bd1647edc7d78478159179f6193db5426e95d840512ff98b4682c18ed64",
+         intel: "cac7fc6926dbf6c31e86186c9492a2d7a4f091790268d2a7d2431c995441b0f8"
+
+  url "https://github.com/fossas/fossa-cli/releases/download/v#{version}/fossa_#{version}_darwin_#{arch}.zip",
       verified: "github.com/fossas/fossa-cli/"
-  name "fossa"
+  name "FOSSA"
   desc "Zero-configuration polyglot dependency analysis tool"
   homepage "https://fossa.com/"
 
@@ -16,8 +19,4 @@ cask "fossa" do
   binary "fossa"
 
   # No zap stanza required
-
-  caveats do
-    requires_rosetta
-  end
 end

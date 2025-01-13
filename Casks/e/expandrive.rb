@@ -9,11 +9,16 @@ cask "expandrive" do
 
   livecheck do
     url "https://updates.expandrive.com/apps/expandrive#{version.csv.first}/download_latest"
-    strategy :header_match do |headers|
-      matches = headers["location"].scan(/expandrive(\d+).*ExpanDrive[._-](\d+\.\d+\.\d+)\.dmg/).flatten
-      "#{matches[0]},#{matches[1]}"
+    regex(%r{expandrive(\d+)/.*/ExpanDrive[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
+    strategy :header_match do |headers, regex|
+      match = headers["location"]&.match(regex)
+      next if match.blank?
+
+      "#{match[1]},#{match[2]}"
     end
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "ExpanDrive.app"
 
@@ -23,4 +28,8 @@ cask "expandrive" do
     "~/Library/Preferences/com.expandrive.ExpanDrive*.plist",
     "~/Library/Preferences/com.expandrive.ExpanDrive.helper.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

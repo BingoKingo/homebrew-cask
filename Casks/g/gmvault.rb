@@ -7,5 +7,11 @@ cask "gmvault" do
   name "Gmvault"
   homepage "http://gmvault.org/"
 
+  deprecate! date: "2024-11-02", because: :unmaintained
+
   binary "gmvault-v#{version}/gmvault"
+
+  caveats do
+    requires_rosetta
+  end
 end

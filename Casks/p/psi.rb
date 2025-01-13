@@ -9,7 +9,7 @@ cask "psi" do
   homepage "https://psi-im.org/"
 
   livecheck do
-    url "https://psi-im.org/download/"
+    url "https://psi-im.org/downloads/"
     regex(/psi[._-]?(\d+(?:\.\d+)*)[._-]?mac\.dmg/i)
   end
 
@@ -22,4 +22,8 @@ cask "psi" do
     "~/Library/Caches/Psi",
     "~/Library/Saved Application State/org.psi-im.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

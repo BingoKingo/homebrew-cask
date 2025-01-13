@@ -1,14 +1,14 @@
 cask "ivpn" do
   arch arm: "-arm64"
 
-  version "3.14.12"
-  sha256 arm:   "eb41d2049ae30518b940eafc439043d527729070dea6b8df0165923055b64949",
-         intel: "802426e0ab7eacd1bb2b9da39eb31d59cf3c0d250073b77692449a4d9ec77dbe"
+  version "3.14.29"
+  sha256 arm:   "96aab10b7436473951131a06350291726b6387b4413e6a74b6a85cd0a8ac7a3c",
+         intel: "74c4466f858ffd584d04d3c51d5ad51289dca7a73ff89b5db7818d4179e18acf"
 
   url "https://repo.ivpn.net/macos/bin/IVPN-#{version}#{arch}.dmg"
   name "IVPN"
   desc "VPN client"
-  homepage "https://www.ivpn.net/apps-macos"
+  homepage "https://www.ivpn.net/en/apps-macos"
 
   livecheck do
     url :homepage
@@ -16,7 +16,7 @@ cask "ivpn" do
   end
 
   auto_updates true
-  depends_on macos: ">= :mojave"
+  depends_on macos: ">= :high_sierra"
 
   app "IVPN.app"
 
