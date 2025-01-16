@@ -1,6 +1,6 @@
 cask "speedify" do
-  version "13.2.1,9474"
-  sha256 "e683cbd1f3b67a89039d8105a20fce72d30232b7cc81c3b2151f0d9e78ac1b6b"
+  version "15.1.1,10495"
+  sha256 "ff4fdcf8e0ae67cd7d5c6079c8fa1da38815c7f6aa90e696a2c599a6156eaf15"
 
   url "https://downloads.speedify.com/Speedify-#{version.csv.first}.#{version.csv.second}.dmg"
   name "Speedify"
@@ -12,7 +12,7 @@ cask "speedify" do
     strategy :extract_plist
   end
 
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :high_sierra"
 
   app "Speedify.app"
 
@@ -23,4 +23,8 @@ cask "speedify" do
   ]
 
   zap trash: "~/Library/Speedify"
+
+  caveats do
+    requires_rosetta
+  end
 end

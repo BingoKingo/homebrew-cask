@@ -2,7 +2,7 @@ cask "spideroakone" do
   version "7.5.0"
   sha256 :no_check
 
-  on_high_sierra :or_older do
+  on_high_sierra do
     url "https://spideroak.com/release/spideroak/osx_hs"
   end
   on_mojave :or_newer do
@@ -13,10 +13,7 @@ cask "spideroakone" do
   desc "Cloud backup and storage"
   homepage "https://spideroak.com/"
 
-  livecheck do
-    url :url
-    strategy :header_match
-  end
+  disable! date: "2024-06-07", because: :no_longer_available
 
   depends_on macos: ">= :high_sierra"
 

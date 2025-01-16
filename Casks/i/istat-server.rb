@@ -14,4 +14,16 @@ cask "istat-server" do
   end
 
   app "iStat Server.app"
+
+  zap trash: [
+    "~/Library/Caches/com.bjango.iStatServer",
+    "~/Library/HTTPStorages/com.bjango.iStatServer",
+    "~/Library/Logs/iStat Server",
+    "~/Library/Preferences/com.bjango.iStatServer.plist",
+    "~/Library/Saved Application State/com.bjango.iStatServer.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

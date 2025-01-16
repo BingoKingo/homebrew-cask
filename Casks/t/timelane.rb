@@ -10,4 +10,15 @@ cask "timelane" do
   depends_on macos: ">= :mojave"
 
   app "Timelane.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.underplot.timelane.sfl*",
+    "~/Library/HTTPStorages/com.underplot.timelane",
+    "~/Library/Preferences/com.underplot.timelane.plist",
+    "~/Library/Saved Application State/com.underplot.timelane.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

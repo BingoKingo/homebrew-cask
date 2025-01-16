@@ -1,11 +1,11 @@
 cask "aleph-one" do
-  version "20240119"
-  sha256 "5652b4f38cad56bc7bee3b5221407512daa46b6e668c821246962264c17e0363"
+  version "20240822"
+  sha256 "3374f3b639f8db1792b8215e23ab5959979b7349e3bf223463880caed9d2a2ae"
 
   url "https://github.com/Aleph-One-Marathon/alephone/releases/download/release-#{version}/AlephOne-#{version}-Mac.dmg",
       verified: "github.com/Aleph-One-Marathon/alephone/"
   name "Aleph One"
-  desc "Open-source continuation of Bungie’s Marathon 2 game engine"
+  desc "Open-source continuation of Bungie's Marathon 2 game engine"
   homepage "https://alephone.lhowon.org/"
 
   livecheck do

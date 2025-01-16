@@ -1,6 +1,6 @@
 cask "data-science-studio" do
-  version "1.3.7"
-  sha256 "19aaf9a6b4bc1d80148427ce4c978e57f2178a207a78f09bc5300bf3e35e4a1a"
+  version "13.0.0"
+  sha256 "5d946312589de764fee7a379ed936b794e0e1f1a0f88dcaaa47afff1396f4932"
 
   url "https://cdn.downloads.dataiku.com/public/launcher/macos/DataScienceStudio-#{version}-mac.zip"
   name "Dataiku Data Science Studio"
@@ -12,6 +12,8 @@ cask "data-science-studio" do
     strategy :electron_builder
   end
 
+  depends_on macos: ">= :catalina"
+
   app "DataScienceStudio.app"
 
   zap trash: [
@@ -20,4 +22,8 @@ cask "data-science-studio" do
     "~/Library/Preferences/com.dataiku.datasciencestudio.plist",
     "~/Library/Saved Application State/com.dataiku.datasciencestudio.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

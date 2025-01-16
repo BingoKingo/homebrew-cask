@@ -1,6 +1,6 @@
 cask "gitdock" do
-  version "0.1.31"
-  sha256 "84fda7d603ff6f42a91b0e876d074e7bf2d320560b1cd9380547061ccf109d69"
+  version "0.1.32"
+  sha256 "b20f1d2022a34a0882121e4a690702564a6f37780aaa70d7ad3719f585763a21"
 
   url "https://gitlab.com/mvanremmerden/gitdock/-/releases/v#{version}/downloads/GitDock-#{version}.dmg"
   name "GitDock"
@@ -11,6 +11,8 @@ cask "gitdock" do
     url "https://gitlab.com/mvanremmerden/gitdock.git"
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "GitDock.app"
 
   zap trash: [
@@ -18,4 +20,8 @@ cask "gitdock" do
     "~/Library/Preferences/com.electron.gitdock.plist",
     "~/Library/Saved Application State/com.electron.gitdock.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

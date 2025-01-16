@@ -1,8 +1,8 @@
 cask "jyutping" do
-  version "0.39.0"
-  sha256 "240025d478654f7819a350b4b63dc6a5450fc6270e288e83bbcc21a8c456d717"
+  version "0.53.0"
+  sha256 "6c8a11a4f1d511a4a2c667f481422e04497ec2e12368d1806124ef779c3416f2"
 
-  url "https://github.com/yuetyam/jyutping/releases/download/#{version}/Jyutping-v#{version}-Mac-IME.pkg.zip",
+  url "https://github.com/yuetyam/jyutping/releases/download/#{version}/Jyutping-v#{version}-Mac-IME.pkg",
       verified: "github.com/yuetyam/jyutping/"
   name "Jyutping"
   desc "Cantonese Jyutping Input Method"

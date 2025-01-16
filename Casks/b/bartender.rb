@@ -4,8 +4,8 @@ cask "bartender" do
     sha256 "f1a2ecf300cf56aaf531324cba646442026cb0b63b4f90f46a1aee5b0804688a"
   end
   on_sonoma :or_newer do
-    version "5.0.49"
-    sha256 "7f91ad8d0aee86f5c784096d0b3d732f518356d3e1b2b3b9db2e196a0740574b"
+    version "5.2.7"
+    sha256 "74b555843002a080c9701b27566f9a9d5a89102b455f4f46ea5ac2636a8df36d"
   end
 
   url "https://macbartender.com/B2/updates/#{version.dots_to_hyphens}/Bartender%20#{version.major}.zip"
@@ -15,9 +15,9 @@ cask "bartender" do
 
   livecheck do
     url "https://www.macbartender.com/B2/updates/AppcastB#{version.major}.xml"
-    regex(%r{https://macbartender.com/B2/updates/(\d+(?:-\d+)+)/Bartender%20#{version.major}.zip}i)
-    strategy :page_match do |page, regex|
-      page.scan(regex)&.map { |match| match[0].tr("-", ".") }
+    regex(%r{/v?(\d+(?:[.-]\d+)+)/Bartender%20#{version.major}\.zip}i)
+    strategy :sparkle do |item, regex|
+      item.url.scan(regex)&.map { |match| match[0].tr("-", ".") }
     end
   end
 

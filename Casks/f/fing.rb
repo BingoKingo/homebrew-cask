@@ -1,6 +1,6 @@
 cask "fing" do
-  version "3.6.2"
-  sha256 "2a9d737855aee90310b67d32a3ef2ddaa4b84014a591d0e52faddcd62987491d"
+  version "3.8.0"
+  sha256 "8b9f6babbe3669a2fd0837bcbb446f4e8eab58266e653c449bb4926b333d7a00"
 
   url "https://get.fing.com/fing-desktop-releases/mac/Fing-#{version}.dmg"
   name "Fing Desktop"
@@ -22,4 +22,8 @@ cask "fing" do
     "~/Library/Preferences/com.fing.app.plist",
     "~/Library/Saved Application State/com.fing.app.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

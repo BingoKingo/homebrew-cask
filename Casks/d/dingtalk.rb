@@ -1,8 +1,8 @@
 cask "dingtalk" do
-  version "7.5.11_35928001"
-  sha256 "605939de0b7f617901de900b716e8ab71aed78100b4908ba005d4054894887f7"
+  version "7.6.35,42453180"
+  sha256 "229aecdf3d187dac91b2c72aa3af957300038733b9b7829acdb2c708c2313add"
 
-  url "https://dtapp-pub.dingtalk.com/dingtalk-desktop/mac_dmg/Release/M1-Beta/DingTalk_v#{version}_universal.dmg"
+  url "https://dtapp-pub.dingtalk.com/dingtalk-desktop/mac_dmg/Release/M1-Beta/DingTalk_v#{version.csv.first}_#{version.csv.second}_universal.dmg"
   name "DingTalk"
   name "钉钉"
   desc "Teamwork app by Alibaba Group"
@@ -10,13 +10,11 @@ cask "dingtalk" do
 
   livecheck do
     url "https://im.dingtalk.com/manifest/appcast_gray_release.xml"
-    regex(/DingTalk[._-]v?(\d+(?:[._]\d+)+)[._-]universal\.dmg/i)
-    strategy :sparkle do |item|
-      item.url[regex, 1]
-    end
+    strategy :sparkle
   end
 
   auto_updates true
+  depends_on macos: ">= :mojave"
 
   app "DingTalk.app"
 

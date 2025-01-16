@@ -9,12 +9,21 @@ cask "ireal-pro" do
     livecheck do
       skip "Legacy version"
     end
-
-    depends_on macos: ">= :high_sierra"
   end
-  on_big_sur :or_newer do
-    version "2024.2,20240213"
-    sha256 "80e400fe6127e5eabfc0383e5daaa8317deb2a4c704ff215624aef3a017159b6"
+  on_big_sur do
+    version "2024.7,20240707"
+    sha256 "19dd261ce559a8c8e1efd49dbc63b55248e7dca75f2b8bf2940ecec08c94ab49"
+
+    url "https://ireal-pro.s3.amazonaws.com/iRealPro#{version.csv.second}.zip",
+        verified: "ireal-pro.s3.amazonaws.com/"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_monterey :or_newer do
+    version "2024.12.2,20241220"
+    sha256 "41cae903b46d9dd603c695f090a259d77ff51ca913eb60d4d945b45c493c795c"
 
     url "https://ireal-pro.s3.amazonaws.com/iRealPro#{version.csv.second}.zip",
         verified: "ireal-pro.s3.amazonaws.com/"
@@ -23,8 +32,6 @@ cask "ireal-pro" do
       url "https://ireal-pro.s3.amazonaws.com/appcast.xml"
       strategy :sparkle
     end
-
-    depends_on macos: ">= :big_sur"
   end
 
   name "iReal Pro"
@@ -32,6 +39,7 @@ cask "ireal-pro" do
   homepage "https://irealpro.com/"
 
   auto_updates true
+  depends_on macos: ">= :high_sierra"
 
   app "iReal Pro.app"
 

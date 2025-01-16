@@ -1,6 +1,6 @@
 cask "tribler" do
-  version "7.13.3"
-  sha256 "2c5d539b5e3de4de8d3584fd0071cfbe911791c0fc048bd92649a8e91afd979e"
+  version "8.0.7"
+  sha256 "6f235240385ec55cf0e8685ad6ee1024980c6bc7ef55fd16c1cbfe07f02c6fda"
 
   url "https://github.com/Tribler/tribler/releases/download/v#{version}/Tribler-#{version}.dmg",
       verified: "github.com/Tribler/tribler/"
@@ -14,4 +14,15 @@ cask "tribler" do
   end
 
   app "Tribler.app"
+
+  zap trash: [
+    "~/.Tribler",
+    "~/Library/Preferences/com.nl-tudelft-tribler.plist",
+    "~/Library/Preferences/nl.tudelft.tribler.plist",
+    "~/Library/Saved Application State/nl.tudelft.tribler.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

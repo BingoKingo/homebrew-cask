@@ -8,11 +8,11 @@ cask "genymotion" do
     end
   end
   on_ventura :or_newer do
-    version "3.6.0"
-    sha256 "beb88db7cfed503ed95ff68377fac0848256c300caf78b4be7b8b8c62ade80eb"
+    version "3.8.0"
+    sha256 "eda77ba81deb43e221e7e2e1a37f2e6feb362237ed0e160d917e3c7ee277b679"
 
     livecheck do
-      url "https://www.genymotion.com/download/"
+      url "https://www.genymotion.com/product-desktop/download/"
       regex(/href=.*?Genymotion[._-]v?(\d+(?:\.\d+)+)\.(?:dmg|pkg)/i)
     end
   end

@@ -1,6 +1,6 @@
 cask "openshot-video-editor" do
-  version "3.1.1"
-  sha256 "65f5ec72f1be80b61a96da640bb08d8aa5d41d46cfbe12d0ea86f1a6ccfd4680"
+  version "3.3.0"
+  sha256 "bfa2dfbf5e3208ceebaf268e3bb8896e6dcbeb7af6d2c56d7f48c2fd849a3d1e"
 
   url "https://github.com/OpenShot/openshot-qt/releases/download/v#{version}/OpenShot-v#{version}-x86_64.dmg",
       verified: "github.com/OpenShot/openshot-qt/"
@@ -13,7 +13,7 @@ cask "openshot-video-editor" do
     strategy :github_latest
   end
 
-  conflicts_with cask: "homebrew/cask-versions/openshot-video-editor-daily"
+  conflicts_with cask: "openshot-video-editor@daily"
   depends_on macos: ">= :catalina"
 
   app "OpenShot Video Editor.app"
@@ -23,4 +23,8 @@ cask "openshot-video-editor" do
     "~/Library/Application Support/openshot",
     "~/Library/Preferences/openshot-qt.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

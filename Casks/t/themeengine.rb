@@ -7,17 +7,13 @@ cask "themeengine" do
   desc "App to edit compiled .car files"
   homepage "https://github.com/alexzielenski/ThemeEngine/"
 
-  livecheck do
-    url :url
-    strategy :git do |tags|
-      tags.filter_map do |tag|
-        match = tag.match(/^(\d+(?:\.\d+)*)\((\d+)\)$/i)
-        "#{match[1]},#{match[2]}" if match
-      end
-    end
-  end
+  deprecate! date: "2024-10-31", because: :unmaintained
 
   app "ThemeEngine.app"
 
   zap trash: "~/Library/Preferences/com.alexzielenski.ThemeEngine.LSSharedFileList.plist"
+
+  caveats do
+    requires_rosetta
+  end
 end

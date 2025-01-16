@@ -1,6 +1,6 @@
 cask "elecom-mouse-util" do
-  version "5.2.13.000"
-  sha256 "9896a8efa0cb6de3f8e0ecf1d39f21e14f9c2f7a0798dbf36649bcd9d4944e2e"
+  version "5.2.15.000"
+  sha256 "3ab7a2c3338736821be294dd5a4e5d5633e367bd2c51248e3ceee55be8c3e5bb"
 
   url "https://dl.elecom.co.jp/support/download/peripheral/mouse/assistant/mac/ELECOM_Mouse_Installer_#{version}.zip"
   name "ELECOM Mouse Assistant"
@@ -8,7 +8,7 @@ cask "elecom-mouse-util" do
   homepage "https://www.elecom.co.jp/global/download-list/utility/mouse_assistant/mac/"
 
   livecheck do
-    url "https://www.elecom.co.jp/global/download-list/utility/mouse_assistant/mac/"
+    url :homepage
     regex(/ELECOM[._-]Mouse[._-]Installer[._-]v?(\d+(?:\.\d+)+)\.zip/i)
   end
 

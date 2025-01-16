@@ -1,9 +1,8 @@
 cask "geph" do
-  version "4.10.1"
-  sha256 "0094297c40d8a8ebb6721d480a27b9c8d0c2c1cf2a1ec7a6c7727f6d0629aecf"
+  version "4.99.26"
+  sha256 "ced2268f35cf90b9a71d49bf9592d9076fd1e1b17041a7dad92f3b6d8996f6e2"
 
-  url "https://sos-ch-dk-2.exo.io/utopia/geph-releases/macos-stable/#{version}/geph-macos.dmg",
-      verified: "sos-ch-dk-2.exo.io/utopia/geph-releases/"
+  url "https://dl.geph.io/geph-releases/macos-stable/#{version}/geph-macos.dmg"
   name "Geph"
   desc "Modular Internet censorship circumvention system"
   homepage "https://geph.io/en"

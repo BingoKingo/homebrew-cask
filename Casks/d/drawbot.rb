@@ -9,4 +9,14 @@ cask "drawbot" do
   homepage "https://www.drawbot.com/"
 
   app "DrawBot.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.drawbot.sfl*",
+    "~/Library/Preferences/com.drawbot.plist",
+    "~/Library/Saved Application State/com.drawbot.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

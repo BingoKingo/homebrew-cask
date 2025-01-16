@@ -1,6 +1,6 @@
 cask "session" do
-  version "1.12.0"
-  sha256 "180ce32aae9c846e0550e8ecaea25642d8f909c9cb467724633992d7252b41b7"
+  version "1.14.3"
+  sha256 "66b8d5c77efb04a381520d3c7f7ec24a70f5ae803ddc76031519ed6d2f3132f8"
 
   url "https://github.com/oxen-io/session-desktop/releases/download/v#{version}/session-desktop-mac-x64-#{version}.dmg",
       verified: "github.com/oxen-io/session-desktop/"
@@ -13,6 +13,8 @@ cask "session" do
     strategy :github_latest
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "Session.app"
 
   zap trash: [
@@ -21,4 +23,8 @@ cask "session" do
     "~/Library/Preferences/com.loki-project.messenger-desktop.plist",
     "~/Library/Saved Application State/com.loki-project.messenger-desktop.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

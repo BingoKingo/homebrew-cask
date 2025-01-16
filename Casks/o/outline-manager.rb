@@ -1,20 +1,24 @@
 cask "outline-manager" do
-  version "1.14.0"
-  sha256 "148e8359c7351c072e63f613d21899485568b7dcc397fd7a80d9fc10d570baee"
+  version "1.16.0,3"
+  sha256 "d99f271ba178f19a54c94008f2039b2706eb6e3cff420baae16d8fb8c266f1f8"
 
-  url "https://github.com/Jigsaw-Code/outline-server/releases/download/manager-v#{version}/Outline-Manager.dmg",
-      verified: "github.com/Jigsaw-Code/outline-server/"
+  url "https://s3.amazonaws.com/outline-releases/manager/macos/#{version.csv.first}/#{version.csv.second}/Outline-Manager.dmg",
+      verified: "s3.amazonaws.com/outline-releases/manager/macos/"
   name "Outline Manager"
   desc "Tool to create and manage Outline servers, powered by Shadowsocks"
   homepage "https://www.getoutline.org/"
 
-  # The GitHub repository contains tag/releases for other software and the
-  # "latest" release may not be for Outline Manager, so we have to check
-  # multiple releases to identify the latest version.
   livecheck do
-    url :url
-    regex(%r{^(?:manager(?:[._-]macos)?[/._-])?v?(\d+(?:\.\d+)+)$}i)
-    strategy :github_releases
+    url "https://s3.amazonaws.com/outline-releases/manager/latest-mac.yml"
+    regex(%r{/(\d+)/Outline-Manager\.dmg}i)
+    strategy :electron_builder do |yaml, regex|
+      yaml["files"]&.map do |item|
+        match = item["url"]&.match(regex)
+        next if match.blank?
+
+        "#{yaml["version"]},#{match[1]}"
+      end
+    end
   end
 
   app "Outline Manager.app"

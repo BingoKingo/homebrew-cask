@@ -1,6 +1,6 @@
 cask "camtasia" do
-  version "2023.3.11"
-  sha256 "58a2c5ca38a4f6d3a880cd1f0182d45aa0ea0152893742543de8e90b8acb7275"
+  version "2024.1.4"
+  sha256 "6e5675ffe91d5150d52e539992c7e5caaf243451ec2211845ca6b974e7ac95c3"
 
   url "https://download.techsmith.com/camtasiamac/releases/#{version.major[-2..]}#{version.minor_patch.no_dots}/Camtasia.dmg"
   name "Camtasia"
@@ -13,7 +13,7 @@ cask "camtasia" do
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  depends_on macos: ">= :monterey"
 
   app "Camtasia #{version.major}.app"
 

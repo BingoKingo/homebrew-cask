@@ -1,9 +1,9 @@
 cask "signal" do
   arch arm: "arm64", intel: "x64"
 
-  version "7.4.0"
-  sha256 arm:   "38c7dd5eaa36b7108cf13dc12bccafcc9b6144d21a14e9f324cab2b8605a5f21",
-         intel: "c847f8b279c0c165baa52e8e40dd03bb4d997555e46736791e269e156dd59947"
+  version "7.38.0"
+  sha256 arm:   "71720edd43319b75cd2a719991da8d16b1a6624f4178a232bdfa48c30853491c",
+         intel: "62b3aab42e2cf42331a3317b19e043224f7702076ffaf8bee018114831e6b97a"
 
   url "https://updates.signal.org/desktop/signal-desktop-mac-#{arch}-#{version}.dmg"
   name "Signal"
@@ -16,7 +16,7 @@ cask "signal" do
   end
 
   auto_updates true
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Signal.app"
 

@@ -1,5 +1,5 @@
 cask "ultdata" do
-  version "9.7.26.3"
+  version "10.0.4.7"
   sha256 :no_check
 
   url "https://download.tenorshare.com/downloads/ultdata-ios-mac.dmg"
@@ -23,4 +23,8 @@ cask "ultdata" do
     "~/Library/Preferences/com.tenorshare.TenorshareUltData.plist",
     "~/Library/Saved Application State/com.tenorshare.TenorshareUltData.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

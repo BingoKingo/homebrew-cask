@@ -3,12 +3,12 @@ cask "molotov" do
   arch_folder = on_arch_conditional arm: "m1/"
 
   on_arm do
-    version "5.0.1"
-    sha256 "208069a13a02a78e07ba52c15d1c5d7cb7e07fece825cc373fb93c46fad91ec4"
+    version "6.0.1"
+    sha256 "648a1cd4496a23272f10f3af2dc901b3c356933fbc25fbc9b0732c52eeccf5b8"
   end
   on_intel do
-    version "5.0.0"
-    sha256 "adace86201c436439af0c489a648b73c69762b2f53fe6e8232adc7cbda756e8d"
+    version "6.0.2"
+    sha256 "d2eaeb287dc237266b507a8ff603ca108b0cc2cbe06b82567f5b382f65a0988a"
   end
 
   url "https://desktop-auto-upgrade.molotov.tv/mac/#{arch_folder}Molotov-#{version}-mac.zip"
@@ -18,8 +18,25 @@ cask "molotov" do
 
   livecheck do
     url "https://desktop-auto-upgrade.molotov.tv/mac/#{arch_folder}manifest.json"
-    regex(%r{/Molotov-v?(\d+(?:\.\d+)+)-mac\.zip}i)
+    regex(/^\D*(\d+(?:\.\d+)+)$/i)
+    strategy :json do |json, regex|
+      match = json["version"]&.match(regex)
+      next if match.blank?
+
+      match[1]
+    end
   end
 
+  depends_on macos: ">= :catalina"
+
   app "Molotov.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/tv.molotov.molotovdesktopapp.sfl*",
+    "~/Library/Application Support/molotov",
+    "~/Library/Caches/com.apple.nsurlsessiond/Downloads/tv.molotov.MolotovDesktopApp",
+    "~/Library/Logs/molotov",
+    "~/Library/Preferences/tv.molotov.MolotovDesktopApp.plist",
+    "~/Library/Saved Application State/tv.molotov.MolotovDesktopApp.savedState",
+  ]
 end

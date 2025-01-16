@@ -1,20 +1,15 @@
 cask "eudic" do
-  version "4.6.0"
+  version :latest
   sha256 :no_check
 
-  url "https://static.eudic.net/pkg/eudicmac.dmg",
+  url "https://static.frdic.com/pkg/eudicmac.dmg",
+      verified:   "static.frdic.com/",
       user_agent: :fake
   name "Eudic"
   name "欧路词典"
-  desc "European dictionary"
+  desc "English dictionary"
   homepage "https://www.eudic.net/v4/en/app/eudic"
 
-  livecheck do
-    url "https://static.eudic.net/pkg/eudic_mac.xml"
-    strategy :sparkle, &:short_version
-  end
-
-  auto_updates true
   depends_on macos: ">= :high_sierra"
 
   app "Eudic.app"
@@ -26,13 +21,16 @@ cask "eudic" do
 
   zap trash: [
     "~/Library/Application Scripts/com.eusoft.eudic.QuickLook",
+    "~/Library/Application Scripts/group.com.eusoft.eudic",
     "~/Library/Application Support/com.eusoft.eudic",
     "~/Library/Caches/com.eusoft.eudic",
     "~/Library/Caches/com.eusoft.eudic.LightPeek",
     "~/Library/Containers/com.eusoft.eudic.QuickLook",
     "~/Library/Eudb_en",
+    "~/Library/Group Containers/group.com.eusoft.eudic",
     "~/Library/HTTPStorages/com.eusoft.eudic",
     "~/Library/HTTPStorages/com.eusoft.eudic.binarycookies",
+    "~/Library/HTTPStorages/com.eusoft.eudic.LightPeek",
     "~/Library/Preferences/com.eusoft.eudic.LightPeek.plist",
     "~/Library/Preferences/com.eusoft.eudic.plist",
     "~/Library/Preferences/group.com.eusoft.eudic.plist",

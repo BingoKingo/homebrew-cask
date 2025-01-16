@@ -1,6 +1,6 @@
 cask "focus" do
-  version "2.0.8"
-  sha256 "bfbd3ab0c95150afa4c6d439872fb04a20d1cd18b9a1c3ac4dcd26eac5a1f071"
+  version "2.2.0"
+  sha256 "7c2120ab7c030ea6e3f43a71dcaa944715b5cfaaf03fe7dfdf5a758ed0164533"
 
   url "https://heyfocus.com/uploads/Focus-v#{version}.zip"
   name "Focus"
@@ -12,7 +12,7 @@ cask "focus" do
     strategy :header_match
   end
 
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :catalina"
 
   app "Focus.app"
 

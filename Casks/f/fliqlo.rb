@@ -8,8 +8,8 @@ cask "fliqlo" do
     end
   end
   on_sonoma :or_newer do
-    version "1.9.2"
-    sha256 "19e9393c7a2e74c6e8b6c64d8ee9561ec5bebed6a69c6b68a16fbea4d2bdc42c"
+    version "1.9.4"
+    sha256 "55bf6fc9317a27951f33ab474005db4313796c0c9cc367be5f2fe694c30ca40e"
 
     livecheck do
       url :homepage

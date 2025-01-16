@@ -7,10 +7,11 @@ cask "shiori" do
   desc "Pinboard and Delicious client that allows you to find and add bookmarks"
   homepage "https://aki-null.net/shiori/"
 
-  livecheck do
-    url "https://aki-null.net/shiori/appcast.xml"
-    strategy :sparkle
-  end
+  deprecate! date: "2024-10-12", because: :unmaintained
 
   app "Shiori.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

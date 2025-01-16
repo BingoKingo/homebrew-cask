@@ -1,13 +1,15 @@
 cask "localizationeditor" do
-  version "2.9"
-  sha256 "7c7f3c9d64763401fca9921b4c2b4d175b96aacc43d362334dedcba1e62cbb2e"
+  version "2.9.2"
+  sha256 "6415313128c1dbbcc0432e7108c2eba87e558ad0b5f6a4a6c80243ceb97220ea"
 
   url "https://github.com/igorkulman/iOSLocalizationEditor/releases/download/v#{version}/LocalizationEditor.app.zip"
   name "LocalizationEditor"
   desc "iOS app localization manager"
   homepage "https://github.com/igorkulman/iOSLocalizationEditor/"
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :mojave"
 
   app "LocalizationEditor.app"
+
+  # No zap stanza required
 end

@@ -1,9 +1,9 @@
 cask "bitcoin-core" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "26.1"
-  sha256 arm:   "8f0bdc51733a94f83cb96a215943291de64b501bbe0298a9b897f79d8ad517e9",
-         intel: "8fd415bfd0ba2d967d1fd03433b150e9b739a08f86c58c6d4dd0f8506a41fc12"
+  version "28.1"
+  sha256 arm:   "6279d0f4b085e4aed1503024d48c1fdca6c4ea3d143292e64516b4c15cd30334",
+         intel: "03d65a5d31d35d4d8850f43ca2adab98c93b5a623f99d4c31d9f1ee4ff7f3b9b"
 
   url "https://bitcoincore.org/bin/bitcoin-core-#{version}/bitcoin-#{version}-#{arch}-apple-darwin.zip"
   name "Bitcoin Core"
@@ -11,8 +11,8 @@ cask "bitcoin-core" do
   homepage "https://bitcoincore.org/"
 
   livecheck do
-    url "https://bitcoincore.org/en/download/"
-    regex(/href=.*?bitcoin[._-]v?(\d+(?:\.\d+)+)[._-]#{arch}[^"' >]*?\.zip/i)
+    url "https://bitcoincore.org/bin/"
+    regex(/href=.*?bitcoin[._-]core[._-]v?(\d+(?:\.\d+)+)/i)
   end
 
   depends_on macos: ">= :big_sur"
@@ -24,5 +24,12 @@ cask "bitcoin-core" do
     set_permissions "#{staged_path}/Bitcoin-Qt.app", "0755"
   end
 
-  zap trash: "~/Library/Preferences/org.bitcoin.Bitcoin-Qt.plist"
+  # Don't trash directory "~/Library/Application Support/Bitcoin" because it can contain bitcoin wallets
+  zap trash: [
+    "~/Library/Application Support/Bitcoin/blocks",
+    "~/Library/Application Support/Bitcoin/chainstate",
+    "~/Library/Preferences/org.bitcoin.Bitcoin-Qt.plist",
+    "~/Library/Preferences/org.bitcoinfoundation.Bitcoin-Qt.plist",
+    "~/Library/Saved Application State/org.bitcoinfoundation.Bitcoin-Qt.savedState",
+  ]
 end

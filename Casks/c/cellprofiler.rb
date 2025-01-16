@@ -1,6 +1,6 @@
 cask "cellprofiler" do
-  version "4.2.6"
-  sha256 "da25ab0999459f892e31c809593f34d24ffc9cf6deb096bc8059f76688448e0d"
+  version "4.2.8"
+  sha256 "bb9bf8e90cb0271453ec3e77d5f55e923a0d98485d99bde4a877130978efc52c"
 
   url "https://github.com/CellProfiler/CellProfiler/releases/download/v#{version}/CellProfiler-macOS-#{version}.zip",
       verified: "github.com/CellProfiler/CellProfiler/"
@@ -14,4 +14,16 @@ cask "cellprofiler" do
   end
 
   app "CellProfiler.app"
+
+  zap trash: [
+    "~/Library/Caches/org.cellprofiler.CellProfiler",
+    "~/Library/Preferences/CellProfilerLocal.cfg",
+    "~/Library/Preferences/org.cellprofiler.CellProfiler.plist",
+    "~/Library/Saved Application State/org.cellprofiler.CellProfiler.savedState",
+    "~/Library/Webkit/org.cellprofiler.CellProfiler",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

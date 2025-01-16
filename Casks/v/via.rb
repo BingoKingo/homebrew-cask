@@ -8,11 +8,18 @@ cask "via" do
   desc "Keyboard configurator"
   homepage "https://caniusevia.com/"
 
+  depends_on macos: ">= :high_sierra"
+
   app "VIA.app"
 
   zap trash: [
     "~/Library/Application Support/VIA",
+    "~/Library/Application Support/via-nativia",
     "~/Library/Logs/VIA",
     "~/Library/Preferences/org.via.configurator.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

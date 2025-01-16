@@ -1,9 +1,9 @@
 cask "scribus" do
   arch arm: "-arm64"
 
-  version "1.6.1"
-  sha256 arm:   "2de62c9312bc0a9532bf6db6eb479b0cb56b10434a0e6aa47de059d3c881ecc8",
-         intel: "b6f788c30b1ca8f628f3d1851859e1831705520e36b59090e5705b7ebc7fcfeb"
+  version "1.6.3"
+  sha256 arm:   "68929bc13c65c4462e04ae6dd785ce9d9be38c459bac7fe0ef4b6b71bf48d981",
+         intel: "7fc542f8d36b8f8e4ffc345f32e1b34be510fba1cda5d34cddf8876f1b6d7489"
 
   url "https://downloads.sourceforge.net/scribus/scribus/#{version}/scribus-#{version}#{arch}.dmg",
       verified: "sourceforge.net/scribus/"

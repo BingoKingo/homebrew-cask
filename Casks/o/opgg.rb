@@ -1,8 +1,8 @@
 cask "opgg" do
-  version "1.4.4"
-  sha256 "5d0909b6e366fdc5f43b3625afa5ffe99b8747e35b1dd3a3ab7424e3d0537675"
+  version "1.4.30"
+  sha256 "e913ed8899c6e1b776a6e969f745b9678e97b4c0647155ca7d1e50c8dde3af78"
 
-  url "https://desktop-patch.op.gg/update/general/OP.GG-#{version}.dmg"
+  url "https://desktop-patch.op.gg/update/general/OP.GG-#{version}-universal.dmg"
   name "OP.GG Desktop"
   desc "Game records and champion analysis"
   homepage "https://op.gg/desktop/"
@@ -13,6 +13,7 @@ cask "opgg" do
   end
 
   auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "OP.GG.app"
 

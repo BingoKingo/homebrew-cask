@@ -13,6 +13,7 @@ cask "sioyek" do
     strategy :github_latest
   end
 
+  depends_on macos: ">= :catalina"
   container nested: "build/sioyek.dmg"
 
   app "sioyek.app"
@@ -31,4 +32,8 @@ cask "sioyek" do
     "~/Library/Application Support/sioyek",
     "~/Library/Saved Application State/com.yourcompany.sioyek.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

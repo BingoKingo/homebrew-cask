@@ -1,26 +1,26 @@
 cask "ringcentral" do
   arch arm: "-arm64"
 
-  version "24.1.32"
-  sha256 arm:   "6c88fa9a4420a0f5399d43f8499af2f8282fdc5b0858b85059430da6d931328d",
-         intel: "17a63e54e8ce04590fa65a39f9ed11f50c984a0bcef8b99363ac4a2355829cca"
+  version "25.1.10"
+  sha256 :no_check
 
-  url "https://app.ringcentral.com/download/RingCentral-#{version}#{arch}.zip"
+  url "https://app.ringcentral.com/download/RingCentral#{arch}.pkg"
   name "RingCentral"
   desc "Team messaging, video meetings, and business phone"
   homepage "https://www.ringcentral.com/download.html"
 
   livecheck do
-    url "https://app.ringcentral.com/download/latest-mac.yml"
-    strategy :electron_builder
+    url "https://support.ringcentral.com/release-notes/ringex/desktop-webapp.html"
+    regex(/Version[\s\u00A0]+v?(\d+(?:\.\d+)+)/i)
   end
 
   auto_updates true
   depends_on macos: ">= :high_sierra"
 
-  app "RingCentral.app"
+  pkg "RingCentral#{arch}.pkg"
 
-  uninstall quit: "RingCentral"
+  uninstall quit:    "RingCentral",
+            pkgutil: "com.ringcentral.glip"
 
   zap trash: [
         "~/Library/Application Support/RingCentral",

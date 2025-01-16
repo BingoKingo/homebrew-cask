@@ -8,4 +8,13 @@ cask "ksnip" do
   homepage "https://github.com/ksnip/ksnip"
 
   app "ksnip.app"
+
+  zap trash: [
+    "~/Library/Preferences/org.ksnip.*.plist",
+    "~/Library/Saved Application State/org.ksnip.ksnip.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

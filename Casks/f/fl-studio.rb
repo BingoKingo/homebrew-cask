@@ -1,20 +1,26 @@
 cask "fl-studio" do
-  version "21.2.3.3586"
-  sha256 "b4b42643a5e84dc5c24abc4fd988867b2487b32ffc2dd252c5eeb7673fd01e6d"
+  version "24.1.2.4074"
+  sha256 "9171e4d1d11311744ab84e96a591d474a80d9fe83e3054682acfdafc21bba36a"
 
-  url "https://demodownload.image-line.com/flstudio/flstudio_mac_#{version}.dmg"
+  url "https://demodownload.image-line.com/flstudio/flstudio_mac_#{version}.dmg",
+      referer:    "https://www.image-line.com/fl-studio-download/",
+      user_agent: :browser
   name "FL Studio"
   desc "Digital audio production application"
   homepage "https://www.image-line.com/flstudio/"
 
-  livecheck do
-    url "https://support.image-line.com/redirect/flstudio20_mac_installer"
-    strategy :header_match
-  end
+  disable! date: "2024-12-16", because: "cannot be reliably fetched due to Clouflare protections"
 
   pkg "Install FL Studio.pkg"
 
-  uninstall pkgutil: "com.Image-Line.pkg.FL21.2ONLINE"
+  uninstall launchctl: "com.image-line.flc-install-helper-socket",
+            pkgutil:   [
+              "com.image-line.fl-cloud-plugins.app",
+              "com.image-line.fl-cloud-plugins.launchDaemon",
+              "com.Image-Line.pkg.#{version.major}ONLINE",
+              "com.Image-Line.pkg.flcloud.plugins",
+            ],
+            delete:    "/Applications/FL Cloud Plugins.app"
 
   zap trash: [
     "~/Library/Caches/com.image-line.flstudio",

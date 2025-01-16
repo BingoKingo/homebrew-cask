@@ -1,9 +1,10 @@
 cask "feed-the-beast" do
   arch arm: "arm64", intel: "x64"
+  livecheck_arch = on_arch_conditional arm: "arm", intel: "x64"
 
-  version "1.25.6"
-  sha256 arm:   "8cdd030d94efbe67ec0380813caf42f75e579c117810c14edfad08e79d64a03d",
-         intel: "397c25a095c330e63fc18a81afa4d91126563aedceb39e0f2623529a1b98ad49"
+  version "1.26.5"
+  sha256 arm:   "02f2740b4d4cb7f84842703bf58b23fd289bcf949d2a347c93215a56bab9b7a1",
+         intel: "b7caadd99ef446c3d65fe5a738244b49fb50b97605563580eebd67dadca63eba"
 
   url "https://piston.feed-the-beast.com/app/ftb-app-#{version}-#{arch}.dmg"
   name "Feed the Beast"
@@ -13,13 +14,24 @@ cask "feed-the-beast" do
   livecheck do
     url "https://meta.feed-the-beast.com/v1/app/versions"
     regex(/ftb[._-]app[._-]v?(\d+(?:\.\d+)+)[._-]#{arch}\.dmg/i)
+    strategy :json do |json, regex|
+      match = json.dig("macos", livecheck_arch, "dmg", "url")&.match(regex)
+      next if match.blank?
+
+      match[1]
+    end
   end
 
-  app "FTB App.app"
+  auto_updates true
+  depends_on macos: ">= :catalina"
 
-  zap trash: "~/Library/Application Support/ftblauncher"
+  app "FTB Electron App.app"
 
-  caveats do
-    depends_on_java
-  end
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/dev.ftb.app.sfl*",
+    "~/Library/Application Support/FTB Electron App",
+    "~/Library/Logs/FTB Electron App",
+    "~/Library/Preferences/dev.ftb.app.plist",
+    "~/Library/Saved Application State/dev.ftb.app.savedState",
+  ]
 end

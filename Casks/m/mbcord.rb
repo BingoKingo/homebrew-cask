@@ -7,5 +7,11 @@ cask "mbcord" do
   desc "Discord rich presence client for Jellyfin and Emby"
   homepage "https://github.com/oonqt/MBCord"
 
+  deprecate! date: "2024-09-09", because: :unmaintained
+
   app "MBCord.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

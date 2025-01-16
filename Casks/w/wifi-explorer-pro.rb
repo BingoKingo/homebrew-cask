@@ -1,6 +1,6 @@
 cask "wifi-explorer-pro" do
-  version "3.6.2"
-  sha256 "b777d30abbf9d085ebcb6f58e4f5d7d26a24bb5c548de8eb81128f9cf1e15ab5"
+  version "3.6.8"
+  sha256 "5d7db3e95e5540fcde2a8536582da1346ea236552d768597b72dc0c7bc7530bb"
 
   url "https://www.intuitibits.com/downloads/WiFiExplorerPro_#{version}.pkg"
   name "WiFi Explorer Pro"
@@ -24,7 +24,7 @@ cask "wifi-explorer-pro" do
 
   zap trash: [
     "~/Library/Application Support/WiFi Explorer Pro #{version.major}",
-    "~/Library/Caches/com.apple.helpd/Generated/com.intuitibits.wifiexplorerpro#{version.major}.*",
+    "~/Library/Caches/com.apple.helpd/Generated/com.intuitibits.wifiexplorerpro*",
     "~/Library/Caches/com.intuitibits.wifiexplorerpro#{version.major}",
     "~/Library/Group Containers/2B9R362QNU.com.adriangranados.wifiexplorer",
     "~/Library/Preferences/com.intuitibits.wifiexplorerpro#{version.major}.plist",

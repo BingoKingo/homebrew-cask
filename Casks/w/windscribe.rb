@@ -1,6 +1,6 @@
 cask "windscribe" do
-  version "2.9.9"
-  sha256 "683093d718680f1cb8b5fe0c4ec14fd1fdad357c9a9a46438feeb19331ffb185"
+  version "2.12.7"
+  sha256 "e49a734482fb1f6aaf8775ab3138abdd359b2e331519bd8c62ab68650e60b579"
 
   url "https://deploy.totallyacdn.com/desktop-apps/#{version}/Windscribe_#{version}.dmg",
       verified: "deploy.totallyacdn.com/desktop-apps/"
@@ -9,8 +9,8 @@ cask "windscribe" do
   homepage "https://windscribe.com/"
 
   livecheck do
-    url "https://windscribe.com/changelog/mac"
-    regex(%r{>\sv?(\d+(?:\.\d+)+)</a>\s</h3>}i)
+    url "https://windscribe.com/install/desktop/osx"
+    strategy :header_match
   end
 
   auto_updates true

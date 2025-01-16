@@ -1,5 +1,5 @@
 cask "spark-ar-studio" do
-  version "180"
+  version "187"
   sha256 :no_check
 
   url "https://www.facebook.com/sparkarmacos/download/"
@@ -9,9 +9,8 @@ cask "spark-ar-studio" do
 
   livecheck do
     url :url
-    strategy :header_match do |headers|
-      headers["location"][%r{/SparkARStudio[._-]?v?(\d+)\.dmg}i, 1]
-    end
+    regex(/SparkARStudio[._-]?v?(\d+)\.dmg/i)
+    strategy :header_match
   end
 
   app "Meta Spark Studio.app"

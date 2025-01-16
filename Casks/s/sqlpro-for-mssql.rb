@@ -1,6 +1,6 @@
 cask "sqlpro-for-mssql" do
-  version "2023.10"
-  sha256 "23a95acd225049919fb24d1aa9ec0e012ef181ff3885d0b232f84d209a0c215b"
+  version "2024.73"
+  sha256 "59cc4497aa30b76e9f3811413f8d5776a722303b15ba61ef9988baa5c9d75374"
 
   url "https://d3fwkemdw8spx3.cloudfront.net/mssql/SQLProMSSQL.#{version}.app.zip",
       verified: "d3fwkemdw8spx3.cloudfront.net/mssql/"
@@ -12,6 +12,8 @@ cask "sqlpro-for-mssql" do
     url "https://www.macsqlclient.com/download.php"
     strategy :header_match
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "SQLPro for MSSQL.app"
 

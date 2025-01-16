@@ -1,9 +1,9 @@
 cask "blender" do
   arch arm: "arm64", intel: "x64"
 
-  version "4.1.0"
-  sha256 arm:   "277c2618298368d0a80fe4aec89af8e46c441af850a1d34528ad9f7cd6b9b615",
-         intel: "e7575e7bb12715984f1195fba3537cb890e12355b473e47a8f55e7bab184f509"
+  version "4.3.2"
+  sha256 arm:   "32297d20fae74683052267b9171945712c0aeb8a499d8e677e44740d3e30a034",
+         intel: "3894df9f3034b177c96a386ef017aa3a0e9cf1859fedbfe731a19438188ec8c6"
 
   url "https://download.blender.org/release/Blender#{version.major_minor}/blender-#{version}-macos-#{arch}.dmg"
   name "Blender"
@@ -15,8 +15,8 @@ cask "blender" do
     regex(%r{href=.*?/blender[._-]v?(\d+(?:\.\d+)+)[._-]macos[._-]#{arch}\.dmg}i)
   end
 
-  conflicts_with cask: "homebrew/cask-versions/blender-lts"
-  depends_on macos: ">= :high_sierra"
+  conflicts_with cask: "blender@lts"
+  depends_on macos: ">= :big_sur"
 
   app "Blender.app"
   # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)

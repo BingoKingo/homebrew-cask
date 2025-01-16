@@ -1,6 +1,6 @@
 cask "gifox" do
-  version "2.6.4,020604.00"
-  sha256 "bde0124b76de0232f1ba85dcbe95e1cdd9a399e482198eaedfad3b9ae6aa1558"
+  version "2.6.5,020605.00"
+  sha256 "2b4de3907ffd92eabbabb765f874d7968048f257d1bd60c8d5e43589bb634590"
 
   url "https://d1fqctmfkpkkcg.cloudfront.net/gifox/#{version.csv.second}.dmg",
       verified: "d1fqctmfkpkkcg.cloudfront.net/gifox/"
@@ -9,12 +9,10 @@ cask "gifox" do
   homepage "https://gifox.io/"
 
   livecheck do
-    url "https://gifox.io/download/latest"
-    regex(%r{/(\d(\d)\d(\d)\d(\d).\d\d)\.dmg}i)
-    strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map do |match|
-        "#{match[1]}.#{match[2]}.#{match[3]},#{match[0]}"
-      end
+    url "https://gifox.app/changelog/"
+    regex(%r{href=.*?/v?(\d+(?:\.\d+)+)\.dmg.*?Version\s+v?(\d+(?:\.\d+)+)}i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map { |match| "#{match[1]},#{match[0]}" }
     end
   end
 

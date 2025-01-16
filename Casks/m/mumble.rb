@@ -1,19 +1,19 @@
 cask "mumble" do
-  version "1.4.287"
-  sha256 "4294f6a1216f201c66cb94e6753d61df6f39c6a51041a9c746c6dda9f591e107"
+  version "1.5.735"
+  sha256 "9f7e5f0677e577a480269df218349dca4263a3785461294f3c8f26ca4c308641"
 
   url "https://github.com/mumble-voip/mumble/releases/download/v#{version}/mumble_client-#{version}.x64.dmg",
       verified: "github.com/mumble-voip/mumble/"
   name "Mumble"
   desc "Open-source, low-latency, high quality voice chat software for gaming"
-  homepage "https://wiki.mumble.info/wiki/Main_Page"
+  homepage "https://www.mumble.info/"
 
   livecheck do
     url "https://dl.mumble.info/latest/stable/client-macos-x64"
     strategy :header_match
   end
 
-  conflicts_with cask: "homebrew/cask-versions/mumble-snapshot"
+  conflicts_with cask: "mumble@snapshot"
   depends_on macos: ">= :high_sierra"
 
   app "Mumble.app"
@@ -25,4 +25,8 @@ cask "mumble" do
     "~/Library/Preferences/net.sourceforge.mumble.Mumble.plist",
     "~/Library/Saved Application State/net.sourceforge.mumble.Mumble.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

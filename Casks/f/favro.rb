@@ -9,8 +9,12 @@ cask "favro" do
 
   livecheck do
     url "https://download.favro.com/FavroDesktop/macOS/x64/Latest.json"
-    regex(/Favro[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
+    strategy :json do |json|
+      json["VersionString"]
+    end
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "Favro.app"
 

@@ -1,8 +1,8 @@
 cask "chessx" do
-  version "1.6.0"
-  sha256 "40caf7d6fa85f934a539420a6cc5844d0c5bee1667889b8c59a0caeb10002c52"
+  version "1.6.4a,1.6.4"
+  sha256 "a452933f0862ecf7df29d3f5018ef0ac554de95eefd3c1114d7984a85c66b324"
 
-  url "https://downloads.sourceforge.net/chessx/chessx/#{version}/chessx-#{version}.dmg",
+  url "https://downloads.sourceforge.net/chessx/chessx/#{version.csv.second || version.csv.first}/chessx-#{version.csv.first}.dmg",
       verified: "downloads.sourceforge.net/chessx/"
   name "ChessX"
   desc "Chess database"
@@ -10,7 +10,13 @@ cask "chessx" do
 
   livecheck do
     url "https://sourceforge.net/projects/chessx/rss?path=/chessx"
-    regex(%r{url=.*?/chessx[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
+    regex(%r{url=.*?/v?(\d+(?:\.\d+)+)/chessx[._-]v?(\d+(?:\.\d+)+[a-z]?)\.dmg}i)
+    strategy :page_match do |page, regex|
+      match = page.match(regex)
+      next if match.blank?
+
+      (match[1] == match[2]) ? match[2] : "#{match[2]},#{match[1]}"
+    end
   end
 
   pkg "chessx-installer.mpkg"

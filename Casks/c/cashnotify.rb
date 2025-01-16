@@ -1,6 +1,6 @@
 cask "cashnotify" do
-  version "3.6.4"
-  sha256 "f195b73ad787a0afef91728b7d516f5a5c6a3c9d05c2b37642e407c2346d893d"
+  version "3.7.0"
+  sha256 "98977df0f1b9776b890285c353bebf1f03eed1cf3d15cb6d85412f5bee30db87"
 
   url "https://github.com/BaguetteEngineering/download.cashnotify.com/releases/download/v#{version}/CashNotify-#{version}.dmg",
       verified: "github.com/BaguetteEngineering/download.cashnotify.com/"
@@ -25,4 +25,8 @@ cask "cashnotify" do
     "~/Library/Preferences/com.baguetteengineering.cashnotify.plist",
     "~/Library/Saved Application State/com.baguetteengineering.cashnotify.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

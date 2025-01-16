@@ -1,6 +1,6 @@
 cask "balsamiq-wireframes" do
-  version "4.7.4"
-  sha256 "a8083599252b61bb857c7067af1f6957900984629b83301d7db94795fd6a9dee"
+  version "4.8.0"
+  sha256 "9963d1a7259a6cbf180af2792a2e336d09ebd64112f71cd5c83fbbc6121ce031"
 
   url "https://builds.balsamiq.com/bwd/Balsamiq%20Wireframes%20#{version}.dmg"
   name "Balsamiq Wireframes"
@@ -9,7 +9,14 @@ cask "balsamiq-wireframes" do
 
   livecheck do
     url "https://builds.balsamiq.com/bwd/mac.jsonp"
-    regex(/"version"\s*:\s*"(\d+(?:\.\d+)+)"/i)
+    regex(/callback\((.+)\)/i)
+    strategy :page_match do |page, regex|
+      match = page.match(regex)
+      next if match.blank?
+
+      json = Homebrew::Livecheck::Strategy::Json.parse_json(match[1])
+      json["version"]
+    end
   end
 
   depends_on macos: ">= :catalina"

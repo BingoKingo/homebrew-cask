@@ -1,6 +1,6 @@
 cask "berrycast" do
-  version "0.38.2"
-  sha256 "debaf6bb81665dd9d47bf09a5026df3a3b415fdee634cba919da500cc71bca80"
+  version "0.38.3"
+  sha256 "631e718985546b2f4afb2c5cb61c2b8b5d4e657cabb6b7ec3da35e3d767ea057"
 
   url "https://media.berrycast.app/desktop-installer/Berrycast-#{version}-latest.dmg",
       verified: "media.berrycast.app/"
@@ -11,6 +11,14 @@ cask "berrycast" do
   livecheck do
     url "https://media.berrycast.app/desktop-installer/v2/latest-mac.yml"
     regex(/Berrycast[._-]?v?(\d+(?:\.\d+)+)[._-]latest\.dmg/i)
+    strategy :electron_builder do |yaml, regex|
+      yaml["files"]&.map do |item|
+        match = item["url"]&.match(regex)
+        next if match.blank?
+
+        match[1]
+      end
+    end
   end
 
   depends_on macos: ">= :high_sierra"

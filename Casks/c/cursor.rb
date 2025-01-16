@@ -1,9 +1,9 @@
 cask "cursor" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.31.3,240402rq154jw46"
-  sha256 arm:   "0ad64d72a9e9c34b64ed96987f77f65890fd34da7083cf1f798d80c4b7f5188e",
-         intel: "c12337ab72ae22637af92f4c718c03df604c94012b430fdc4e9c79b3e8306593"
+  version "0.44.11,250103fqxdt5u9z"
+  sha256 arm:   "4f43cd1d10afcfca10ebdfd79b86b24888a33e22495677617cbe192d6e36e1fe",
+         intel: "910f3e5edf823d29981f7c468ce345c3ca174bfb2e4c7f8f404f5111183fdcd7"
 
   url "https://download.todesktop.com/230313mzl4w4u92/Cursor%20#{version.csv.first}%20-%20Build%20#{version.csv.second}-#{arch}-mac.zip",
       verified: "download.todesktop.com/230313mzl4w4u92/"
@@ -14,11 +14,13 @@ cask "cursor" do
   livecheck do
     url "https://download.todesktop.com/230313mzl4w4u92/latest-mac.yml"
     regex(/Build[ ._-]([^-]+)[._-]/i)
-    strategy :electron_builder do |item, regex|
-      build = item["files"].first["url"][regex, 1]
-      next if build.blank?
+    strategy :electron_builder do |yaml, regex|
+      yaml["files"]&.map do |item|
+        match = item["url"]&.match(regex)
+        next if match.blank?
 
-      "#{item["version"]},#{build}"
+        "#{yaml["version"]},#{match[1]}"
+      end
     end
   end
 
@@ -26,12 +28,20 @@ cask "cursor" do
   depends_on macos: ">= :catalina"
 
   app "Cursor.app"
+  binary "#{appdir}/Cursor.app/Contents/Resources/app/bin/code", target: "cursor"
 
   zap trash: [
-    "~/cursor-tutor",
+    "~/.cursor",
+    "~/.cursor-tutor",
+    "~/Library/Application Support/Caches/cursor-updater",
     "~/Library/Application Support/Cursor",
+    "~/Library/Caches/com.todesktop.*",
+    "~/Library/Caches/com.todesktop.*.ShipIt",
+    "~/Library/HTTPStorages/com.todesktop.*",
     "~/Library/Logs/Cursor",
-    "~/Library/Preferences/com.todesktop.*",
+    "~/Library/Preferences/ByHost/com.todesktop.*.ShipIt.*.plist",
+    "~/Library/Preferences/com.todesktop.*.plist",
+    "~/Library/Saved Application State/com.todesktop.*.savedState",
     "~/Library/Saved Application State/todesktop.com.ToDesktop-Installer.savedState",
   ]
 end

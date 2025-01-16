@@ -1,9 +1,9 @@
 cask "mongodb-compass" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.42.3"
-  sha256 arm:   "682ed4232c0fdc77f9226bdab701d52f201d6149a149c9b7bbce43d4a4187161",
-         intel: "3f7fecaad3df69429997219c5d24244a0eb0bbd4ef5e959a54405a53f67ac3d5"
+  version "1.45.1"
+  sha256 arm:   "6fe797572188f83918a4a2c630ce6bba9c082aa69550c1e0c3136d96f6657120",
+         intel: "c1c698000636cbadaa9695179294dc4838c4dc71f166a35d2e3b906636ec5036"
 
   url "https://downloads.mongodb.com/compass/mongodb-compass-#{version}-darwin-#{arch}.dmg"
   name "MongoDB Compass"
@@ -12,7 +12,15 @@ cask "mongodb-compass" do
 
   livecheck do
     url "https://info-mongodb-com.s3.amazonaws.com/com-download-center/compass.json"
-    regex(/"version"\s*:\s*"(\d+(?:\.\d+)+)\s*\(Stable/i)
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+    strategy :json do |json, regex|
+      json["versions"]&.map do |item|
+        match = item["_id"]&.match(regex)
+        next if match.blank?
+
+        match[1]
+      end
+    end
   end
 
   auto_updates true

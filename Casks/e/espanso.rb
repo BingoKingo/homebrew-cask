@@ -13,7 +13,7 @@ cask "espanso" do
 
   livecheck do
     url :url
-    regex(/^v?(\d+(?:\.\d+)+(?:-beta\.?\d*)?)$/i)
+    strategy :github_latest
   end
 
   app "Espanso.app"
@@ -28,8 +28,4 @@ cask "espanso" do
     "~/Library/Preferences/espanso.plist",
     "~/Library/Saved Application State/com.federicoterzi.espanso.savedState",
   ]
-
-  caveats do
-    unsigned_accessibility
-  end
 end

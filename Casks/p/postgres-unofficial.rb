@@ -1,6 +1,6 @@
 cask "postgres-unofficial" do
-  version "2.7.2,12-13-14-15-16"
-  sha256 "39c5dd38b8144bbc02bf4b879ea1e64f176e2e0853b1c1436f38a1dcd3241a90"
+  version "2.7.10,12-13-14-15-16-17"
+  sha256 "ee36b80859fb5d78f0a21a1f1eb05ebb3674f7c3c5e976214300efdba9648971"
 
   url "https://github.com/PostgresApp/PostgresApp/releases/download/v#{version.csv.first}/Postgres-#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "github.com/PostgresApp/PostgresApp/"
@@ -22,7 +22,7 @@ cask "postgres-unofficial" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :high_sierra"
 
   app "Postgres.app"
 

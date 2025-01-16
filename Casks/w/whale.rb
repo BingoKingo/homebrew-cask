@@ -4,7 +4,7 @@ cask "whale" do
 
   url "https://github.com/1000ch/whale/releases/download/v#{version}/Whale-#{version}.dmg"
   name "Whale"
-  desc "Unofficial Trello app :whale:"
+  desc "Unofficial Trello app"
   homepage "https://github.com/1000ch/whale"
 
   app "Whale.app"
@@ -17,4 +17,8 @@ cask "whale" do
     "~/Library/Preferences/net.1000ch.whale.plist",
     "~/Library/Saved Application State/net.1000ch.whale.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

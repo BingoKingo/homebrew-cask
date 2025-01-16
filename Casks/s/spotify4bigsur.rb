@@ -7,6 +7,13 @@ cask "spotify4bigsur" do
   desc "Implements a Widget for Spotify in the Notification Center"
   homepage "https://github.com/fabiusBile/Spotify4BigSur"
 
+  depends_on macos: ">= :big_sur"
+
   # Renamed for clarity: app name is inconsistent with its branding.
   app "SpotifyMain.app", target: "Spotify4BigSur.app"
+
+  zap trash: [
+    "~/Library/Application Scripts/backert.SpotifyMain.SpotifyWidget",
+    "~/Library/Containers/backert.SpotifyMain.SpotifyWidget",
+  ]
 end

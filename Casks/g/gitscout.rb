@@ -4,12 +4,10 @@ cask "gitscout" do
 
   url "https://gitscout.com/marshmallows"
   name "Gitscout"
+  desc "GitHub issues and notifications"
   homepage "https://gitscout.com/"
 
-  livecheck do
-    url :url
-    strategy :extract_plist
-  end
+  disable! date: "2024-07-12", because: :unmaintained
 
   app "Gitscout.app"
 
@@ -19,4 +17,8 @@ cask "gitscout" do
     "~/Library/Preferences/com.electron.gitscout.plist",
     "~/Library/Saved Application State/com.electron.gitscout.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

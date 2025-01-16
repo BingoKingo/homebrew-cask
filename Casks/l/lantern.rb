@@ -1,9 +1,9 @@
 cask "lantern" do
-  version "7.8.1"
+  version "7.9.5"
   sha256 :no_check
 
-  url "https://s3.amazonaws.com/lantern/lantern-installer.dmg",
-      verified: "s3.amazonaws.com/lantern/"
+  url "https://lantern.s3.amazonaws.com/lantern-installer.dmg",
+      verified: "lantern.s3.amazonaws.com/"
   name "Lantern"
   desc "Open Internet For All"
   homepage "https://lantern.io/"
@@ -29,4 +29,8 @@ cask "lantern" do
     "~/Library/Application Support/Lantern",
     "~/Library/Logs/Lantern",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

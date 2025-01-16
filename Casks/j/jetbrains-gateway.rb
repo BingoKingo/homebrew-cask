@@ -1,11 +1,11 @@
 cask "jetbrains-gateway" do
   arch arm: "-aarch64"
 
-  version "2023.3.4"
-  sha256 arm:   "2e769fd9c28b33d34845d1b92cb12a13578f2d4c2f255c88a42fcb79a7cf848f",
-         intel: "5cf8720e0259c2bfd2474a5fd1db329cb48c10a8823ba0c29b0f3bde3ddbdf8a"
+  version "2024.3.1.1,243.22562.252"
+  sha256 arm:   "f4ff084d4054f75d3b10110b2abaddecbac30204d80c39dcb7a5925f2278c41a",
+         intel: "f31962a284ec68e175d6f5678c0e4fe33c0948514f92673bb7989b38c3622951"
 
-  url "https://download.jetbrains.com/idea/gateway/JetBrainsGateway-#{version}#{arch}.dmg"
+  url "https://download.jetbrains.com/idea/gateway/JetBrainsGateway-#{version.csv.first}#{arch}.dmg"
   name "jetbrains-gateway"
   desc "Remote development gateway by Jetbrains"
   homepage "https://www.jetbrains.com/remote-development/gateway/"
@@ -13,7 +13,13 @@ cask "jetbrains-gateway" do
   livecheck do
     url "https://data.services.jetbrains.com/products/releases?code=GW&latest=true&type=release"
     strategy :json do |json|
-      json["GW"].map { |release| release["version"] }
+      json["GW"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
+      end
     end
   end
 
@@ -24,9 +30,9 @@ cask "jetbrains-gateway" do
   binary "#{appdir}/JetBrains Gateway.app/Contents/MacOS/gateway"
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/JetBrainsGateway2021.3",
-    "~/Library/Caches/JetBrains/JetBrainsGateway2021.3",
-    "~/Library/Logs/JetBrains/JetBrainsGateway2021.3",
+    "~/Library/Application Support/JetBrains/JetBrainsGateway#{version.major_minor}",
+    "~/Library/Caches/JetBrains/JetBrainsGateway#{version.major_minor}",
+    "~/Library/Logs/JetBrains/JetBrainsGateway#{version.major_minor}",
     "~/Library/Preferences/com.jetbrains.gateway.plist",
     "~/Library/Saved Application State/com.jetbrains.gateway.savedState",
   ]

@@ -1,5 +1,5 @@
 cask "cisdem-pdf-converter-ocr" do
-  version "8.3.0"
+  version "9.3.0"
   sha256 :no_check
 
   url "https://download.cisdem.com/cisdem-pdfconverterocr.dmg"
@@ -25,4 +25,8 @@ cask "cisdem-pdf-converter-ocr" do
     "~/Library/Preferences/com.cisdem.pdfconverterocr.plist",
     "~/Library/Saved Application State/com.cisdem.pdfconverterocr.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

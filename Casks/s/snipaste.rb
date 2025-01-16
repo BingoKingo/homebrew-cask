@@ -1,6 +1,6 @@
 cask "snipaste" do
-  version "2.8.6-Beta"
-  sha256 "b6f6a6020eff2328cedf9d748fbae667ad1b68a47ab435f64b5f4bb053e54999"
+  version "2.10.3"
+  sha256 "92587f79bfd82a0377f223da72711f3e3b185b9e41f0f33179f6ddcfba9feec2"
 
   url "https://bitbucket.org/liule/snipaste/downloads/Snipaste-#{version}.dmg",
       verified: "bitbucket.org/liule/snipaste/"
@@ -9,12 +9,13 @@ cask "snipaste" do
   homepage "https://www.snipaste.com/"
 
   livecheck do
-    url "https://dl.snipaste.com/mac-beta"
-    regex(/(\d+(?:\.\d+)+[._-]v?.*?)\.dmg/i)
+    url "https://dl.snipaste.com/mac"
+    regex(/Snipaste[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
     strategy :header_match
   end
 
   auto_updates true
+  depends_on macos: ">= :high_sierra"
 
   app "Snipaste.app"
 

@@ -7,7 +7,13 @@ cask "tip" do
   desc "Programmable tooltip that can be used with any app"
   homepage "https://github.com/tanin47/tip"
 
+  depends_on macos: ">= :mojave"
+
   app "Tip.app"
 
   zap trash: "~/Library/Application Scripts/tanin.tip"
+
+  caveats do
+    requires_rosetta
+  end
 end

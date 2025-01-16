@@ -53,9 +53,9 @@ cask "mysqlworkbench" do
     end
   end
   on_ventura :or_newer do
-    version "8.0.36"
-    sha256 arm:   "78131b39e482d314eb8bc3a8e0a17339584f905aeddabaa1d838c435dbfedc60",
-           intel: "1a4d23cdf073c37017ee8a80b083463595b84d031f9f2686d3b42652f51d72ef"
+    version "8.0.40"
+    sha256 arm:   "a3c9a90b242e6c9ab2d6d630bb8d6453c6e5a9358d5de5f0d80cfe42a2cb8830",
+           intel: "bf8d625ab2cc9b87fb9055ff39ed69fe60d154c36bd9dc74a481fc872f16a74e"
 
     url "https://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community-#{version}-macos-#{arch}.dmg"
 

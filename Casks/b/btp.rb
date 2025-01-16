@@ -1,13 +1,13 @@
 cask "btp" do
   arch arm: "arm64", intel: "amd64"
 
-  version "2.61.0"
-  sha256 arm:   "b776ea5136a6d7c431b1e060e655b869512248faad9ac6711e6767a588a64c5d",
-         intel: "82de75c8c2aa4ac4ac06781e3f47abf18f5a2a5195ed53a8bc29f658625234bc"
+  version "2.77.1"
+  sha256 arm:   "b67df627194d48269a55f0867275277c5a3e32ea668cdb791a5d57e519bbbc65",
+         intel: "91d80570bed19e7107410e127e2f721efa989d14a5c1c881333164bc7f6c93b4"
 
   url "https://tools.hana.ondemand.com/additional/btp-cli-darwin-#{arch}-#{version}.tar.gz",
       cookies: {
-        "eula_3_1_agreed" => "tools.hana.ondemand.com/developer-license-3_1.txt",
+        "eula_3_2_agreed" => "tools.hana.ondemand.com/developer-license-3_2.txt",
       }
   name "SAP Business Technology Platform Command Line Interface"
   desc "CLI for the SAP Business Technology Platform"
@@ -23,6 +23,6 @@ cask "btp" do
   # No zap stanza required
 
   caveats do
-    license "https://tools.hana.ondemand.com/developer-license-3_1.txt"
+    license "https://tools.hana.ondemand.com/developer-license-3_2.txt"
   end
 end

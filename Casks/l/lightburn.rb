@@ -1,12 +1,16 @@
 cask "lightburn" do
-  version "1.5.06"
-  sha256 "6e2f86fbdb6c42387e8623b846051b67e6122352575d38493a28c0b64f73e5eb"
+  version "1.7.04"
+  sha256 "bab52c80bb2be86aaf27eee85722d4e463f18f7d77a4dc54380e6b3ff590579f"
 
-  url "https://github.com/LightBurnSoftware/deployment/releases/download/#{version}/LightBurn.V#{version}.dmg",
-      verified: "github.com/LightBurnSoftware/deployment/"
+  url "https://release.lightburnsoftware.com/LightBurn/Release/LightBurn-v#{version}/LightBurn.V#{version}.dmg"
   name "LightBurn"
   desc "Layout, editing, and control software for laser cutters"
   homepage "https://lightburnsoftware.com/"
+
+  livecheck do
+    url "https://release.lightburnsoftware.com/LightBurn/Release/latest/"
+    regex(/href=.*?LightBurn[._-]V?(\d+(?:\.\d+)+)\.dmg/i)
+  end
 
   app "LightBurn.app"
 

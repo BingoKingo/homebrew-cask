@@ -1,6 +1,6 @@
 cask "pd-l2ork" do
-  version "2.19.3"
-  sha256 "c0ffc0cd92295376e880455d3e69d1c7382f03093de0602a201846608ac007d3"
+  version "2.20.0"
+  sha256 "bd4d01b5762123ba811fc7f4b51cfec6bb4ff11a7f140d1ee67c4891277f3843"
 
   url "https://github.com/agraef/purr-data/releases/download/#{version.csv.first}/purr-data-#{version.csv.first}-macos-x86_64.zip",
       verified: "github.com/agraef/purr-data/"
@@ -26,4 +26,8 @@ cask "pd-l2ork" do
     "~/Library/Logs/Purr-Data",
     "~/Library/Purr-Data",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

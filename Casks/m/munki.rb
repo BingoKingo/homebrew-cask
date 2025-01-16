@@ -1,6 +1,6 @@
 cask "munki" do
-  version "6.4.2.4634"
-  sha256 "ac6648dc479c8eaa82e6aa66be90d5847cadab74c7e0644c4371a839ee1a3c3f"
+  version "6.6.3.4704"
+  sha256 "10d248d6c2e1be321adb6ea522e1ea9c0ca883340598f410e8ef7c5122161393"
 
   url "https://github.com/munki/munki/releases/download/v#{version.major_minor_patch}/munkitools-#{version}.pkg",
       verified: "github.com/munki/munki/"
@@ -26,6 +26,7 @@ cask "munki" do
   uninstall launchctl: [
               "com.googlecode.munki.app_usage_monitor",
               "com.googlecode.munki.appusaged",
+              "com.googlecode.munki.authrestartd",
               "com.googlecode.munki.logouthelper",
               "com.googlecode.munki.ManagedSoftwareCenter",
               "com.googlecode.munki.managedsoftwareupdate-check",

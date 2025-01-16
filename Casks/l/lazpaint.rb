@@ -14,4 +14,16 @@ cask "lazpaint" do
   end
 
   app "LazPaint.app"
+
+  zap trash: [
+    "~/.config/lazpaint",
+    "~/.config/lazpaint.cfg",
+    "~/Library/Caches/com.company.lazpaint",
+    "~/Library/HTTPStorages/com.company.lazpaint",
+    "~/Library/Saved Application State/com.company.lazpaint.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

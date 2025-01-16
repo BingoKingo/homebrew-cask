@@ -1,9 +1,9 @@
 cask "webstorm" do
   arch arm: "-aarch64"
 
-  version "2023.3.6,233.15026.13"
-  sha256 arm:   "ea8262e07318b894f0019003b2df1038d647db0335904d8996827ddaf633c39a",
-         intel: "03220e45e5308664d2c413eb1b928daf6f5b3600305526d0dd230b084bdfbb9c"
+  version "2024.3.1.1,243.22562.222"
+  sha256 arm:   "afa44c3603ecdf093ab701b19e6bfc5379a45f27c0df54a507d48c20b7941bb8",
+         intel: "cff8b644670fc36aea9f37cd26dbfc1418177b835dd455beb99b8fa483d68063"
 
   url "https://download.jetbrains.com/webstorm/WebStorm-#{version.csv.first}#{arch}.dmg"
   name "WebStorm"
@@ -13,8 +13,12 @@ cask "webstorm" do
   livecheck do
     url "https://data.services.jetbrains.com/products/releases?code=WS&latest=true&type=release"
     strategy :json do |json|
-      json["WS"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+      json["WS"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
@@ -27,11 +31,13 @@ cask "webstorm" do
 
   zap trash: [
     "~/Library/Application Support/JetBrains/WebStorm#{version.major_minor}",
+    "~/Library/Caches/com.apple.nsurlsessiond/Downloads/com.jetbrains.WebStorm",
     "~/Library/Caches/JetBrains/WebStorm#{version.major_minor}",
     "~/Library/Logs/JetBrains/WebStorm#{version.major_minor}",
     "~/Library/Preferences/com.jetbrains.WebStorm.plist",
     "~/Library/Preferences/jetbrains.webstorm.*.plist",
     "~/Library/Preferences/WebStorm#{version.major_minor}",
+    "~/Library/Preferences/webstorm.plist",
     "~/Library/Saved Application State/com.jetbrains.WebStorm.savedState",
   ]
 end

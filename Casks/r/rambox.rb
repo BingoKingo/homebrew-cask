@@ -1,6 +1,6 @@
 cask "rambox" do
-  version "2.3.1"
-  sha256 "e7933baeee1632f0101686a6d2813b3b70cbd18f460e417089e7ed8b831605c9"
+  version "2.4.1"
+  sha256 "b54c7a650e94eb80961bf1b1f476a12e0519f037a3181f73a6a7c4227751ff90"
 
   url "https://github.com/ramboxapp/download/releases/download/v#{version}/Rambox-#{version}-mac.zip",
       verified: "github.com/ramboxapp/download/"
@@ -9,7 +9,7 @@ cask "rambox" do
   homepage "https://rambox.app/"
 
   auto_updates true
-  conflicts_with cask: "rambox-ce"
+  depends_on macos: ">= :catalina"
 
   app "Rambox.app"
 

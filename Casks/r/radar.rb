@@ -1,6 +1,6 @@
 cask "radar" do
-  version "2.6.5"
-  sha256 "228f8d3efa1020006079069d7bae4c606c6b1bd153d7aaa4dba917f2153c4051"
+  version "2.6.8"
+  sha256 "1fcfe61bed4ba34e506be94b2514e8e32414ddc8c75b1031d69da2a072044afd"
 
   url "https://getradar.co/download/v#{version}.dmg"
   name "Radar"
@@ -13,6 +13,7 @@ cask "radar" do
   end
 
   auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "Radar.app"
 

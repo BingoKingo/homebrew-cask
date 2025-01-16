@@ -8,4 +8,14 @@ cask "container-ps" do
   homepage "https://github.com/Toinane/container-ps"
 
   app "Container PS.app"
+
+  zap trash: [
+    "~/Library/Application Support/container-ps",
+    "~/Library/Preferences/com.electron.container-ps.plist",
+    "~/Library/Saved Application State/com.electron.container-ps.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

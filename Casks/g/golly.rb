@@ -1,6 +1,6 @@
 cask "golly" do
-  version "4.2"
-  sha256 "ef833166a90f8640f348eee6b614c08f93a5e48ee2070f4f556354f3f3013a7d"
+  version "4.3"
+  sha256 "9e188f474f6a01cf4c4ddff79d562c8a074ec436cf1cc39503d34a4bd53617c3"
 
   url "https://downloads.sourceforge.net/golly/golly/golly-#{version.major_minor}/golly-#{version}-mac.dmg",
       verified: "downloads.sourceforge.net/golly/"
@@ -10,4 +10,10 @@ cask "golly" do
 
   suite "golly-#{version}-mac"
   binary "#{appdir}/golly-#{version}-mac/bgolly"
+
+  zap trash: [
+    "~/Library/Application Support/Golly",
+    "~/Library/Preferences/net.sourceforge.golly.plist",
+    "~/Library/Saved Application State/net.sourceforge.golly.savedState",
+  ]
 end

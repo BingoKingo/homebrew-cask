@@ -1,8 +1,8 @@
 cask "elephas" do
-  version "9.07"
-  sha256 "fe49c39b9b2fe2d85fb1c1ede4c18579093f802852cf0f097cfe31fa11d9d55f"
+  version "10.12"
+  sha256 "4342d0e0d485cec3c80d9791ab88b9c71d87764ca5ad38646d7a95a760aaff86"
 
-  url "https://assets.elephas.app/Elephas_#{version.no_dots}.dmg"
+  url "https://assets.elephas.app/Elephas_#{version.dots_to_underscores}.dmg"
   name "Elephas"
   desc "Personal AI Writing Assistant"
   homepage "https://elephas.app/"
@@ -12,7 +12,7 @@ cask "elephas" do
     strategy :sparkle
   end
 
-  conflicts_with cask: "homebrew/cask-versions/elephas-beta"
+  conflicts_with cask: "elephas@beta"
   depends_on macos: ">= :monterey"
 
   app "Elephas.app"

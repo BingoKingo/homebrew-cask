@@ -1,9 +1,9 @@
 cask "phpstorm" do
   arch arm: "-aarch64"
 
-  version "2023.3.6,233.15026.12"
-  sha256 arm:   "892404f4e835b3248094ebf64a7de2c1311b3446e0334ddf90033dc0f226d54b",
-         intel: "1972219f45224fd3769fd78ba313ef6379c75d8b4980e049b438a2b2ebb5a977"
+  version "2024.3.1.1,243.22562.233"
+  sha256 arm:   "8d9a3251fea4611c8b90d010571965993836ff1738bc55c2c3692f37f6169eed",
+         intel: "30a6f0cffa15034578bd026a80d3faf4469c2123d319a805cc31bfc59f2097a8"
 
   url "https://download.jetbrains.com/webide/PhpStorm-#{version.csv.first}#{arch}.dmg"
   name "JetBrains PhpStorm"
@@ -13,8 +13,12 @@ cask "phpstorm" do
   livecheck do
     url "https://data.services.jetbrains.com/products/releases?code=PS&latest=true&type=release"
     strategy :json do |json|
-      json["PS"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+      json["PS"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
@@ -26,10 +30,11 @@ cask "phpstorm" do
   binary "#{appdir}/PhpStorm.app/Contents/MacOS/phpstorm"
 
   zap trash: [
-    "~/Library/Application Support/PhpStorm#{version.major_minor}",
-    "~/Library/Caches/PhpStorm#{version.major_minor}",
-    "~/Library/Logs/PhpStorm#{version.major_minor}",
-    "~/Library/Preferences/jetbrains.phpstorm.*.plist",
-    "~/Library/Preferences/PhpStorm#{version.major_minor}",
+    "~/Library/Application Support/JetBrains/consentOptions",
+    "~/Library/Application Support/JetBrains/PhpStorm#{version.major_minor}",
+    "~/Library/Caches/JetBrains/PhpStorm#{version.major_minor}",
+    "~/Library/Logs/JetBrains/PhpStorm#{version.major_minor}",
+    "~/Library/Preferences/com.jetbrains.PhpStorm.plist",
+    "~/Library/Preferences/jetbrains.jetprofile.asset.plist",
   ]
 end

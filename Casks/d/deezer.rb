@@ -1,6 +1,6 @@
 cask "deezer" do
-  version "6.0.90"
-  sha256 "50af2868c3c542ffbdb7cdacdc9c640a9cf2c866dcdd7ea116ab01c15d155dcd"
+  version "6.0.290"
+  sha256 "cc17f414a2be3933551baa1974d03874a6edc2885e582e7a21d1e8d5eb69dfe1"
 
   url "https://www.deezer.com/desktop/download/artifact/darwin/x64/#{version}"
   name "Deezer"
@@ -27,4 +27,8 @@ cask "deezer" do
     "~/Library/Preferences/com.deezer.deezer-desktop.plist",
     "~/Library/Saved Application State/com.deezer.deezer-desktop.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end
