@@ -1,5 +1,5 @@
 cask "clickcharts" do
-  version "9.15"
+  version "9.50"
   sha256 :no_check
 
   url "https://www.nchsoftware.com/chart/clickchartspmaci.zip",
@@ -9,8 +9,8 @@ cask "clickcharts" do
   homepage "https://www.nchsoftware.com/"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://www.nchsoftware.com/chart/versions.html"
+    regex(/Version\s+v?(\d+(?:\.\d+)+)[^>]*>\s*macOS/im)
   end
 
   app "ClickCharts.app"
@@ -22,4 +22,8 @@ cask "clickcharts" do
     "~/Library/LaunchAgents/com.nchsoftware.clickcharts.schedule.LikeSurvey.plist",
     "~/Library/Preferences/ByHost/com.nchsoftware.clickcharts.*.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

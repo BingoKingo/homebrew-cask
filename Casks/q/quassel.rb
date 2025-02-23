@@ -13,5 +13,18 @@ cask "quassel" do
     strategy :github_latest
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "Quassel.app"
+
+  zap trash: [
+    "~/Library/Application Support/Quassel",
+    "~/Library/Preferences/org.quassel-irc.quasselclient.plist",
+    "~/Library/Preferences/org.quassel-irc.quasselcore.plist",
+    "~/Library/Saved Application State/org.quassel-irc.client.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -1,5 +1,5 @@
 cask "network-radar" do
-  version "3.0.4"
+  version "3.1"
   sha256 :no_check
 
   url "https://witt-software.com/downloads/networkradar/Network%20Radar.dmg"
@@ -13,7 +13,7 @@ cask "network-radar" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :monterey"
 
   app "Network Radar.app"
 

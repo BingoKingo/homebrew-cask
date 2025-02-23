@@ -1,6 +1,6 @@
 cask "steinberg-activation-manager" do
-  version "1.4.41.1101-4b04137f-4461-310c-b5b6-766e5e3533b6"
-  sha256 "5d125de7098e7c6b42ce0015877d58716688f3de06bd4faf6e6faf456479e87f"
+  version "1.6.0.1253-4d07e086-79f2-3f4f-89d2-ba32bce1477f"
+  sha256 "728436d10f6bd4db09a9b42cecc0cde60a401ebe2963e20c41f69bc23b5397cb"
 
   url "https://download.steinberg.net/static_content/runtime-components/steinberg-activation-manager/#{version}/Steinberg_Activation_Manager_Installer_mac.dmg"
   name "Steinberg Activation Manager"

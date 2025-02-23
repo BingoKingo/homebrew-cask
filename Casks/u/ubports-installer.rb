@@ -14,6 +14,8 @@ cask "ubports-installer" do
     strategy :github_latest
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "ubports-installer.app"
 
   zap trash: [
@@ -21,4 +23,8 @@ cask "ubports-installer" do
     "~/Library/Preferences/com.ubports.installer.plist",
     "~/Library/Saved Application State/com.ubports.installer.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

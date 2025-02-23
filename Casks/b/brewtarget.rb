@@ -1,13 +1,19 @@
 cask "brewtarget" do
-  version "3.0.11"
-  sha256 "d8d7ae1583810bc05b8f9cb43c0d6c73e366a1467f9c6a1e9b206c864b12d36a"
+  version "4.0.17"
+  sha256 "2d7dcc5ec784289d7e46c44e49d0df51fabad0d21a9c1cd6b327cb7697a3fb0c"
 
-  url "https://github.com/Brewtarget/brewtarget/releases/download/v#{version}/brewtarget_#{version}.dmg"
+  url "https://github.com/Brewtarget/brewtarget/releases/download/v#{version}/brewtarget_#{version}_MacOS.dmg",
+      verified: "github.com/Brewtarget/brewtarget/"
   name "brewtarget"
   desc "Beer recipe creation tool"
-  homepage "https://github.com/Brewtarget/brewtarget/"
+  homepage "https://www.brewtarget.beer/"
 
-  app "brewtarget_#{version}.app"
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
+  app "brewtarget_#{version}_MacOS.app"
 
   zap trash: [
     "~/Library/Preferences/brewtarget",

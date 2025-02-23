@@ -1,11 +1,11 @@
 cask "pd" do
-  version "0.54-1"
-  sha256 "61252a8f1442c1285e9b2a4d98bbc11e908df97604baad1094b10f9a5fe50563"
+  version "0.55-2"
+  sha256 "7656edc222cdfabff2354d427f89e9e60ab1367a28785a21a411718fd2be1e6b"
 
-  url "http://msp.ucsd.edu/Software/pd-#{version}.macos.zip"
+  url "https://msp.ucsd.edu/Software/pd-#{version}.macos.zip"
   name "Pd"
   desc "Visual programming language for multimedia"
-  homepage "http://msp.ucsd.edu/software.html"
+  homepage "https://msp.ucsd.edu/software.html"
 
   livecheck do
     url :homepage

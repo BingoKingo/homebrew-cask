@@ -1,6 +1,6 @@
 cask "mweb-pro" do
-  version "4.5.8"
-  sha256 "9cc618b8ee8d4d2dfad41ae8d41f8a2e8f7a2de19a2d05aa61b3db888ce2b826"
+  version "4.6.8"
+  sha256 "50452c74f18fc01b382054530d6933f5df68c5117db60cee604ff581a0142c85"
 
   url "https://cdn.mwebapp.cn/MWebPro#{version.no_dots}.dmg",
       verified: "cdn.mwebapp.cn/"
@@ -9,8 +9,10 @@ cask "mweb-pro" do
   homepage "https://www.mweb.im/"
 
   livecheck do
-    url "https://www.mweb.im/update_v4.json"
-    regex(/"version":"(\d+(?:\.\d+)+)"/i)
+    url "https://www.mweb.im/update_v#{version.major}.json"
+    strategy :json do |json|
+      json["version"]
+    end
   end
 
   depends_on macos: ">= :high_sierra"
@@ -18,11 +20,11 @@ cask "mweb-pro" do
   app "MWeb Pro.app"
 
   zap trash: [
-    "~/Library/Application Scripts/com.coderforart.MWeb3",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.coderforart.mweb3.sfl*",
+    "~/Library/Application Scripts/com.coderforart.MWeb*",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.coderforart.mweb*.sfl*",
     "~/Library/Application Support/MWeb",
-    "~/Library/Containers/com.coderforart.MWeb3",
-    "~/Library/Cookies/com.coderforart.MWeb3.binarycookies",
-    "~/Library/Preferences/com.coderforart.MWeb3.plist",
+    "~/Library/Containers/com.coderforart.MWeb*",
+    "~/Library/Cookies/com.coderforart.MWeb*.binarycookies",
+    "~/Library/Preferences/com.coderforart.MWeb*.plist",
   ]
 end

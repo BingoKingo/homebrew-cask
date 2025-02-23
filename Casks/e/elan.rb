@@ -1,19 +1,23 @@
 cask "elan" do
-  version "6.7"
-  sha256 "2cc2042c1a3aeca577984c1ae2b542af92ff5a8b36bc0b2ae448e57f563a019c"
+  arch arm: "_M1"
 
-  url "https://www.mpi.nl/tools/elan/ELAN_#{version.dots_to_hyphens}_mac.zip"
+  version "6.9"
+  sha256 arm:   "3fb29d26db2627d4a326570603f785f472dcd7f9b810203e68b7dbf3d17e38f7",
+         intel: "26d60d433f802927494e7fbd78a16dc0a7b8302577c5965ff59beae25f0953d2"
+
+  url "https://www.mpi.nl/tools/elan/ELAN_#{version.dots_to_hyphens}#{arch}_mac.zip"
   name "ELAN"
   desc "Annotation tool for audio and video recordings"
   homepage "https://archive.mpi.nl/tla/elan"
 
   livecheck do
     url "https://archive.mpi.nl/tla/elan/download"
-    strategy :page_match do |page|
-      v = page[/href=.*?ELAN[._-]v?(\d+(?:-\d+)+)[._-]mac\.zip/i, 1]
-      next if v.blank?
+    regex(/href=.*?ELAN[._-]v?(\d+(?:-\d+)+)#{arch}[._-]mac\.zip/i)
+    strategy :page_match do |page, regex|
+      match = page.match(regex)
+      next if match.blank?
 
-      v.tr("-", ".")
+      match[1].tr("-", ".")
     end
   end
 

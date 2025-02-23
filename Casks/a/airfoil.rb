@@ -1,19 +1,34 @@
 cask "airfoil" do
-  version "5.11.8"
   sha256 :no_check
 
-  url "https://rogueamoeba.com/airfoil/mac/download/Airfoil.zip"
+  on_ventura :or_older do
+    version "5.11.8"
+
+    url "https://cdn.rogueamoeba.com/airfoil/mac/download/Airfoil-ACE.zip"
+
+    depends_on macos: ">= :big_sur"
+  end
+  on_sonoma :or_newer do
+    version "5.12.4"
+
+    url "https://cdn.rogueamoeba.com/airfoil/mac/download/Airfoil.zip"
+
+    depends_on macos: ">= :sonoma"
+
+    # NOTE: See https://www.rogueamoeba.com/support/knowledgebase/?showCategory=Airfoil+for+Mac
+    caveats "Airfoil #{version} requires macOS 14.4 or higher."
+  end
+
   name "Airfoil"
   desc "Sends audio from computer to outputs"
   homepage "https://rogueamoeba.com/airfoil/mac/"
 
   livecheck do
-    url "https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&system=1231&bundleid=com.rogueamoeba.airfoil&platform=osx&version=#{version.no_dots}8000"
+    url "https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&system=#{MacOS.full_version.to_s.delete(".")}&bundleid=com.rogueamoeba.airfoil&platform=osx&version=#{version.no_dots}8000"
     strategy :sparkle
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
 
   app "Airfoil/Airfoil Satellite.app"
   app "Airfoil/Airfoil.app"

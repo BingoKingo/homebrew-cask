@@ -1,6 +1,6 @@
 cask "ubiquiti-unifi-controller" do
-  version "8.1.113"
-  sha256 "236e2e89fc8744df7f79698fe05489dd73d06b6a4e70f3c0b611a3e88bec867c"
+  version "9.0.114"
+  sha256 "541cb18e993e961330a793aff5b9590af4b16fe513a49e6acf03a3ee4a7c5da6"
 
   url "https://dl.ubnt.com/unifi/#{version}/UniFi-Network-Server.dmg",
       verified: "dl.ubnt.com/"
@@ -10,7 +10,12 @@ cask "ubiquiti-unifi-controller" do
 
   livecheck do
     url "https://fw-update.ubnt.com/api/firmware-latest?filter=eq~~product~~unifi-controller&filter=eq~~channel~~release&filter=eq~~platform~~macos"
-    regex(/"version"\s*:\s*"v?(\d+(?:\.\d+)+)/i)
+    regex(/^\D*?(\d+(?:\.\d+)+)/i)
+    strategy :json do |json, regex|
+      json.dig("_embedded", "firmware")&.filter_map do |item|
+        item["version"]&.[](regex, 1)
+      end
+    end
   end
 
   app "UniFi.app"
@@ -24,6 +29,7 @@ cask "ubiquiti-unifi-controller" do
   ]
 
   caveats do
+    requires_rosetta
     license "https://www.ui.com/eula/"
   end
 end

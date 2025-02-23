@@ -1,6 +1,6 @@
 cask "topaz-gigapixel-ai" do
-  version "7.0.5"
-  sha256 "924c51cf950a8b49aef40b34795e32030da7d5e530f51c754537f8e74753e816"
+  version "8.2.1"
+  sha256 "e0f7c504a100582772fed66bb3c35815fa4e574fc2ddd0863ccba174e7644489"
 
   url "https://downloads.topazlabs.com/deploy/TopazGigapixelAI/#{version}/TopazGigapixelAI-#{version}.pkg"
   name "Topaz Gigapixel AI"
@@ -11,6 +11,8 @@ cask "topaz-gigapixel-ai" do
     url "https://topazlabs.com/d/gigapixel/latest/mac/full"
     strategy :header_match
   end
+
+  auto_updates true
 
   pkg "TopazGigapixelAI-#{version}.pkg"
 

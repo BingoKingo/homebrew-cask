@@ -7,10 +7,11 @@ cask "sequential" do
   desc "Displays folders and archives of images and PDF files"
   homepage "http://sequentialx.com/"
 
-  livecheck do
-    url "http://sequentialx.com/sequential.xml"
-    strategy :sparkle
-  end
+  deprecate! date: "2024-10-11", because: :unmaintained
 
   app "Sequential.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -7,5 +7,11 @@ cask "messenger-native" do
   desc "Facebook's Messenger Native"
   homepage "https://github.com/gastonmorixe/MessengerNative"
 
+  deprecate! date: "2024-10-14", because: :unmaintained
+
   app "osx64/Messenger Native.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

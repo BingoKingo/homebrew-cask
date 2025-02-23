@@ -1,17 +1,18 @@
 cask "telegram" do
-  version "10.10.2,261795"
-  sha256 "feb88e48d1533b9830727e327b0e6faa46b8a6f8beb74bce27166c52c2cbcfe1"
+  version "11.7,270736"
+  sha256 "2f32651a6fc7eab0fa642451bf7f7bd5cd00075e96ad7e1b6207d5f4df73299c"
 
   url "https://osx.telegram.org/updates/Telegram-#{version.csv.first}.#{version.csv.second}.app.zip"
   name "Telegram for macOS"
   desc "Messaging app with a focus on speed and security"
   homepage "https://macos.telegram.org/"
 
+  # The sparkle feed uses incorrect pubDate values, so it's necessary to
+  # work with all of the items in the feed (not just the newest one).
   livecheck do
     url "https://osx.telegram.org/updates/versions.xml"
-    strategy :page_match do |page|
-      page.scan(/Telegram[._-](\d+(?:\.\d+)+)\.(\d{6})\.app\.zip/)
-          .map { |matches| "#{matches[0]},#{matches[1]}" }
+    strategy :sparkle do |items|
+      items.map(&:nice_version)
     end
   end
 

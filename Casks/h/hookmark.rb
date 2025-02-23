@@ -1,19 +1,23 @@
 cask "hookmark" do
-  version "6.0.1,2023.10"
-  sha256 "02a961aec10781723592f093dd24b10b95cc77882babeadff1cbb8b693c17126"
+  version "6.7"
+  sha256 "dddc46b26d35cc473613dd14bce697ad32cb9014216784e57f72066c934b60ab"
 
-  url "https://hookproductivity.com/wp-content/uploads/#{version.csv.second.major}/#{version.csv.second.minor}/Hookmark-app-#{version.csv.first}.dmg_.zip",
+  url "https://hookproductivity.com/downloads/Hookmark-app-#{version}.dmg",
       user_agent: :fake
   name "Hook"
   desc "Link and retrieve key information"
   homepage "https://hookproductivity.com/"
 
   livecheck do
-    skip "No reliable way to get version info"
+    url "https://hookproductivity.com/download"
+    regex(%r{href=.*?/Hookmark[._-]app[._-]\v?(\d+(?:\.\d+)+)\.dmg}i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map { |match| match[0] }
+    end
   end
 
   auto_updates true
-  depends_on macos: ">= :el_capitan"
+  depends_on macos: ">= :high_sierra"
 
   app "Hookmark.app"
 

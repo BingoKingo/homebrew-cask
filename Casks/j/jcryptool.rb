@@ -1,6 +1,6 @@
 cask "jcryptool" do
   version "1.0.9"
-  sha256 "73d0fc9fd7c26cb795400335d57e83bbc7bab6161c0c134df36e95aca3b31d3e"
+  sha256 "58ba00b265e0180eb3e68f82a8978603fe1112af88ff747959e35bd11b9d79ee"
 
   url "https://github.com/jcryptool/core/releases/download/#{version}/JCrypTool-#{version}-macOS-64bit.tar.gz",
       verified: "github.com/jcryptool/core/"
@@ -15,7 +15,15 @@ cask "jcryptool" do
 
   app "JCrypTool.app"
 
+  zap trash: [
+    "~/Library/Application Support/JCrypTool",
+    "~/Library/Caches/org.jcryptool.JCrypTool",
+    "~/Library/Preferences/org.jcryptool.JCrypTool.plist",
+    "~/Library/Saved Application State/org.jcryptool.JCrypTool.savedState",
+  ]
+
   caveats do
     depends_on_java "11"
+    requires_rosetta
   end
 end

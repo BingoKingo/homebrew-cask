@@ -1,5 +1,5 @@
 cask "meld-studio" do
-  version "0.5.1.1"
+  version "0.8.3.1"
   sha256 :no_check
 
   url "https://packages.streamwithmeld.com/MeldStudioInstaller.dmg",
@@ -14,7 +14,7 @@ cask "meld-studio" do
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  depends_on macos: ">= :monterey"
 
   app "Meld Studio.app"
 

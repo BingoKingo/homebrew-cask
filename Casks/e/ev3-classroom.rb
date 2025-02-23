@@ -1,7 +1,7 @@
 cask "ev3-classroom" do
   # NOTE: "3" is not a version number, but an intrinsic part of the product name
-  version "1.50"
-  sha256 "bc946ab51a3eec7ed82478ad18acb41726bcd08d01007b3ce004528f1eaa8f0a"
+  version "1.5.0.1"
+  sha256 "2cc1ed0ec0164c5b0a806ec7ad2193251a415352b318ad66a922af10b8d88f82"
 
   url "https://education.lego.com/_/downloads/EV3_#{version}_Global.dmg"
   name "EV3 Classroom"
@@ -10,10 +10,14 @@ cask "ev3-classroom" do
 
   livecheck do
     url "https://education.lego.com/page-data/en-us/downloads/mindstorms-ev3/software/page-data.json"
-    regex(/EV3[._-]v?(\d+(?:\.\d+)+)_Global\.dmg/i)
+    regex(/EV3[._-]v?(\d+(?:\.\d+)+)[._-]Global\.dmg/i)
   end
 
   depends_on macos: ">= :mojave"
 
-  app "EV3 Classroom.app"
+  app "EV3Classroom.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

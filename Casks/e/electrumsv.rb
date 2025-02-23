@@ -2,8 +2,8 @@ cask "electrumsv" do
   version "1.3.16"
   sha256 "d1910e583813bfc8cbe5d815d0df1059a1d144df6d96fc6bc6c0ae3dccc4bc7e"
 
-  url "https://s3.us-east-2.amazonaws.com/electrumsv-downloads/releases/#{version}/ElectrumSV-#{version}.dmg",
-      verified: "s3.us-east-2.amazonaws.com/electrumsv-downloads/"
+  url "https://electrumsv-downloads.s3.amazonaws.com/releases/#{version}/ElectrumSV-#{version}.dmg",
+      verified: "electrumsv-downloads.s3.amazonaws.com/"
   name "ElectrumSV"
   desc "Desktop wallet for Bitcoin SV"
   homepage "https://electrumsv.io/"
@@ -14,4 +14,13 @@ cask "electrumsv" do
   end
 
   app "ElectrumSV.app"
+
+  zap trash: [
+    "~/Library/Preferences/io.electrumsv.ElectrumSV.plist",
+    "~/Library/Saved Application State/io.electrumsv.ElectrumSV.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

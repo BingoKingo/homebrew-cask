@@ -1,6 +1,6 @@
 cask "macwhisper" do
-  version "7.11,770"
-  sha256 "e852176619060e7f558f9b7eb0611d1bfc16b19bd04e3f2ccd43678bf389373a"
+  version "11.8,1180"
+  sha256 "3727d6057352a6ba6be7433da1ce5893a5d1ff9fb7a1e2e23fdb7bb1440ee8ad"
 
   url "https://stickytimers.app/macwhisper/MacWhisper-#{version.csv.second}.zip",
       verified: "stickytimers.app/macwhisper/"
@@ -13,12 +13,12 @@ cask "macwhisper" do
   livecheck do
     url "https://macwhisper-site.vercel.app/appcast.xml"
     strategy :sparkle do |items|
-      items.map { |item| "#{item.short_version},#{item.version}" }
+      items.map(&:nice_version)
     end
   end
 
   auto_updates true
-  depends_on macos: ">= :ventura"
+  depends_on macos: ">= :sonoma"
 
   app "MacWhisper.app"
 
@@ -30,6 +30,7 @@ cask "macwhisper" do
     "~/Library/HTTPStorages/com.goodsnooze.MacWhisper",
     "~/Library/HTTPStorages/com.goodsnooze.MacWhisper.binarycookies",
     "~/Library/Preferences/com.goodsnooze.MacWhisper.plist",
+    "~/Library/Saved Application State/com.goodsnooze.MacWhisper.savedState",
     "~/Library/WebKit/com.goodsnooze.MacWhisper",
   ]
 end

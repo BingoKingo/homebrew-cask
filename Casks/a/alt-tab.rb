@@ -1,6 +1,6 @@
 cask "alt-tab" do
-  version "6.68.0"
-  sha256 "3630eae54abbef5c511de4e2a6ac13ae5cfdbc1092b27577e00d38f36b5c66e1"
+  version "7.21.1"
+  sha256 "a453f642f1dc2681817d30c8ffcb984acf24dbc04d83042a8d702fba169451c4"
 
   url "https://github.com/lwouis/alt-tab-macos/releases/download/v#{version}/AltTab-#{version}.zip",
       verified: "github.com/lwouis/alt-tab-macos/"
@@ -9,8 +9,8 @@ cask "alt-tab" do
   homepage "https://alt-tab-macos.netlify.app/"
 
   livecheck do
-    url :url
-    strategy :github_latest
+    url "https://raw.githubusercontent.com/lwouis/alt-tab-macos/master/appcast.xml"
+    strategy :sparkle
   end
 
   auto_updates true

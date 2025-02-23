@@ -1,6 +1,6 @@
 cask "marathon" do
-  version "20240119"
-  sha256 "d65681dd9066e7b7759b0190b143a9c97c91b9f0951595da1b9489b74a01eb67"
+  version "20240822"
+  sha256 "245455ee76e44a5b08bd1bfffd309ef912b165c190d47badb747e53ffb23a1b8"
 
   url "https://github.com/Aleph-One-Marathon/alephone/releases/download/release-#{version}/Marathon-#{version}-Mac.dmg",
       verified: "github.com/Aleph-One-Marathon/alephone/"

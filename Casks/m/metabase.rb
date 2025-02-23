@@ -8,10 +8,11 @@ cask "metabase" do
   desc "Business intelligence and analytics"
   homepage "https://www.metabase.com/"
 
-  livecheck do
-    url "https://s3.amazonaws.com/downloads.metabase.com/appcast.xml"
-    strategy :sparkle
-  end
+  deprecate! date: "2024-10-15", because: :discontinued
 
   app "Metabase.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

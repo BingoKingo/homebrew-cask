@@ -1,11 +1,11 @@
 cask "grandtotal" do
-  version "8.2.4.13"
-  sha256 "0482d7b514f0f225f08d28ccf821f43ea7d11856937a79f80806d6fa035105c0"
+  version "9.0.4.13"
+  sha256 "bf95826b3ab70d90c6ec095851bc6d63251f370ca1dea89dd54c85757ea0322b"
 
   url "https://www.mediaatelier.com/GrandTotal#{version.major}/GrandTotal_#{version}.dmg"
   name "GrandTotal"
   desc "Create invoices and estimates"
-  homepage "https://www.mediaatelier.com/GrandTotal#{version.major}/"
+  homepage "https://www.mediaatelier.com/GrandTotal/"
 
   livecheck do
     url "https://www.mediaatelier.com/GrandTotal#{version.major}/feed.php"
@@ -16,15 +16,15 @@ cask "grandtotal" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :mojave"
 
   app "GrandTotal.app"
 
   zap trash: [
-    "~/Library/Application Support/com.mediaatelier.GrandTotal3",
-    "~/Library/Caches/com.mediaatelier.GrandTotal3",
-    "~/Library/HTTPStorages/com.mediaatelier.GrandTotal3",
-    "~/Library/Preferences/com.mediaatelier.GrandTotal3.plist",
-    "~/Library/Saved Application State/com.mediaatelier.GrandTotal3.savedState",
+    "~/Library/Application Support/com.mediaatelier.GrandTotal*",
+    "~/Library/Caches/com.mediaatelier.GrandTotal*",
+    "~/Library/HTTPStorages/com.mediaatelier.GrandTotal*",
+    "~/Library/Preferences/com.mediaatelier.GrandTotal*.plist",
+    "~/Library/Saved Application State/com.mediaatelier.GrandTotal*.savedState",
   ]
 end

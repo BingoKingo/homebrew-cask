@@ -1,27 +1,21 @@
 cask "scilab" do
   arch arm: "arm64", intel: "x86_64"
 
-  on_arm do
-    version "2024.0.0"
-    sha256 "66c760501aabf592f2cbf03156767c5faa4ab085d2bc391410d8a99c0d67cfa5"
-  end
-  on_intel do
-    version "2024.0.0"
-    sha256 "3077f06d0f8b0a2d49ae0880ad12f50da2c12e6c5f4430b33af1b09288f714bc"
-  end
+  version "2025.0.0"
+  sha256 arm:   "8501444f342282eaa254a06e22b71eeb6798109d3ae81d651cdd087a335468f4",
+         intel: "d02ae625f8d3b7b1a4a3a7ad0671fd6142edab0c01ee90d81c3c04fda92e5ae0"
 
-  url "https://www.utc.fr/~mottelet/scilab/download/#{version}/scilab-#{version}-#{arch}.dmg",
-      verified: "utc.fr/~mottelet/scilab/"
+  url "https://www.scilab.org/download/#{version}/scilab-#{version}-#{arch}.dmg"
   name "Scilab"
   desc "Software for numerical computation"
   homepage "https://www.scilab.org/"
 
   livecheck do
-    url "https://www.utc.fr/~mottelet/scilab_for_macOS.html"
-    regex(/href=.*?scilab[._-]v?(\d+(?:\.\d+)+)[._-]#{arch}\.dmg/i)
+    url "https://www.scilab.org/download/latest/"
+    regex(/scilab[._-]v?(\d+(?:\.\d+)+)/i)
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :mojave"
 
   app "scilab-#{version}.app"
   binary "#{appdir}/scilab-#{version}.app/Contents/bin/scilab"

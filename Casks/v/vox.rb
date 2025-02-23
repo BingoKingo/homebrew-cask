@@ -1,5 +1,5 @@
 cask "vox" do
-  version "3.6"
+  version "3.7"
   sha256 :no_check
 
   url "https://vox.rocks/app-download?app=vox"
@@ -13,6 +13,7 @@ cask "vox" do
   end
 
   auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "VOX.app"
 

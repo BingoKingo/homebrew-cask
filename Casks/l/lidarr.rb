@@ -1,8 +1,11 @@
 cask "lidarr" do
-  version "2.1.7.4030"
-  sha256 "5151b61125d0ab1a01d66c1572fab34e8f3623b3099163f0d4cdc8e0c9897246"
+  arch arm: "arm64", intel: "x64"
 
-  url "https://github.com/lidarr/Lidarr/releases/download/v#{version}/Lidarr.master.#{version}.osx-app-core-x64.zip",
+  version "2.9.6.4552"
+  sha256 arm:   "1df5907b8d7c9b3876f3800a53608f02d2fb4dc146b4460fa09a2acb99d8cd8e",
+         intel: "775f3b658653b25a0b7d87fb559753925f4cc7dbcb470ab6e65f42f2415da688"
+
+  url "https://github.com/lidarr/Lidarr/releases/download/v#{version}/Lidarr.master.#{version}.osx-app-core-#{arch}.zip",
       verified: "github.com/lidarr/Lidarr/"
   name "Lidarr"
   desc "Looks and smells like Sonarr but made for music"

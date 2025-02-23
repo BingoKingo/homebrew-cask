@@ -1,12 +1,11 @@
 cask "vimr" do
-  version "0.46.1,20240114.181346"
-  sha256 "33aabbe736045f9901e89cef3fde7d8a758f39efca039ba7873c7961b79ee53a"
+  version "0.51.1,20250215.143933"
+  sha256 "5fd9bc76f384e42fc5681ce96626f82f23a2cfe3a3ca07f611153947d546361e"
 
-  url "https://github.com/qvacua/vimr/releases/download/v#{version.csv.first}-#{version.csv.second}/VimR-v#{version.csv.first}.tar.bz2",
-      verified: "github.com/qvacua/vimr/"
+  url "https://github.com/qvacua/vimr/releases/download/v#{version.csv.first}-#{version.csv.second}/VimR-v#{version.csv.first}.tar.bz2"
   name "VimR"
   desc "GUI for the Neovim text editor"
-  homepage "http://vimr.org/"
+  homepage "https://github.com/qvacua/vimr"
 
   livecheck do
     url :url

@@ -1,6 +1,6 @@
 cask "taskpaper" do
-  version "3.9.1"
-  sha256 "879b791b0e62d5d29bb03b27ac19d8a6a279dbab9a5a154ebc0763bd69e0d89a"
+  version "3.9.3"
+  sha256 "db1762263b3cc79555c630a3a09909ad6b488964e55c3525e7a44ddb7b1cc449"
 
   url "https://www.taskpaper.com/assets/app/TaskPaper-#{version}.dmg"
   name "TaskPaper"
@@ -13,6 +13,7 @@ cask "taskpaper" do
   end
 
   auto_updates true
+  depends_on macos: ">= :mojave"
 
   app "TaskPaper.app"
 

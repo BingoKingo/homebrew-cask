@@ -7,10 +7,11 @@ cask "texts" do
   desc "Word processor that uses plain text Markdown"
   homepage "http://www.texts.io/"
 
-  livecheck do
-    url "http://www.texts.io/download/"
-    regex(%r{href=.*?/Texts-(\d+(?:\.\d+)*)\.dmg}i)
-  end
+  deprecate! date: "2024-11-01", because: :unmaintained
 
   app "Texts.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -1,8 +1,8 @@
 cask "dbngin" do
-  version "7.0,70"
-  sha256 "7c0b16912eea1fc229bd2088dabf2d568e62aa1aafef77f534af9797aac68411"
+  version "7.4,74"
+  sha256 "11a18f6a713f2329835fa36b3a030670ce9e05b7e93e09c82088074ce8bbb19b"
 
-  url "https://download.dbngin.com/#{version.csv.second}/DBngin.dmg"
+  url "https://files.dbngin.com/macos/#{version.csv.second}/DBngin.dmg"
   name "DBngin"
   desc "Database version management tool"
   homepage "https://dbngin.com/"

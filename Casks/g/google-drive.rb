@@ -1,5 +1,5 @@
 cask "google-drive" do
-  version "89.0.2"
+  version "104.0.4"
   sha256 :no_check
 
   # "5-percent" is included in the url to ensure that `brew upgrade` does not update to an older version as the
@@ -11,7 +11,9 @@ cask "google-drive" do
 
   livecheck do
     url :url
-    strategy :extract_plist
+    strategy :extract_plist do |item|
+      item["com.google.drivefs"]&.version
+    end
   end
 
   auto_updates true
@@ -21,10 +23,11 @@ cask "google-drive" do
 
   # Some launchctl and pkgutil items are shared with other Google apps, they should only be removed in the zap stanza
   # See: https://github.com/Homebrew/homebrew-cask/pull/92704#issuecomment-727163169
-  # launchctl: com.google.keystone.daemon, com.google.keystone.system.agent, com.google.keystone.system.xpcservice
+  # launchctl: com.google.GoogleUpdater.wake.system, com.google.keystone.daemon,
+  #            com.google.keystone.system.agent, com.google.keystone.system.xpcservice
+
   # pkgutil: com.google.pkg.Keystone
-  uninstall launchctl:  "com.google.GoogleUpdater.wake.system",
-            quit:       [
+  uninstall quit:       [
               "com.google.drivefs",
               "com.google.drivefs.finderhelper.findersync",
             ],
@@ -38,6 +41,7 @@ cask "google-drive" do
             ]
 
   zap launchctl: [
+        "com.google.GoogleUpdater.wake.system",
         "com.google.keystone.agent",
         "com.google.keystone.daemon",
         "com.google.keystone.system.agent",

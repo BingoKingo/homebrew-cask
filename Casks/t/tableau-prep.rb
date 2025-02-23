@@ -1,18 +1,19 @@
 cask "tableau-prep" do
-  version "2024.1.1"
-  sha256 "1e6469dee815c69bc8fd8ce02feb89029ba6f0c3b1f988346447abc2f11cc2b6"
+  arch arm: "-arm64"
 
-  url "https://downloads.tableau.com/esdalt/tableau_prep/#{version}/TableauPrep-#{version.dots_to_hyphens}.dmg"
+  version "2024.3.3"
+  sha256 arm:   "fd91fdb46512d31f3a19870afd79661fd9590dfd79da948712f488fcf31d0d12",
+         intel: "18bdaf5cae55c785586ac26428ad4395d9d9f70875dfaa9d15e53f690a64abe9"
+
+  url "https://downloads.tableau.com/esdalt/tableau_prep/#{version}/TableauPrep-#{version.dots_to_hyphens}#{arch}.dmg",
+      user_agent: "curl/8.7.1"
   name "Tableau Prep"
   name "Tableau Prep Builder"
   desc "Combine, shape, and clean your data for analysis"
-  homepage "https://www.tableau.com/support/releases/prep"
+  homepage "https://www.tableau.com/products/prep"
 
   livecheck do
-    url "https://www.tableau.com/downloads/prep/mac"
-    strategy :header_match do |headers|
-      headers["location"][/TableauPrep[._-]v?(\d+(?:-\d+)+)\.dmg/i, 1].tr("-", ".")
-    end
+    cask "tableau"
   end
 
   depends_on macos: ">= :el_capitan"

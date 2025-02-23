@@ -1,5 +1,5 @@
 cask "mmhmm" do
-  version "1.2.1"
+  version "3.5.1"
   sha256 :no_check
 
   url "https://updates.mmhmm.app/mac/hybrid/beta/mmhmm.pkg"
@@ -13,7 +13,7 @@ cask "mmhmm" do
   end
 
   auto_updates true
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :ventura"
 
   pkg "mmhmm.pkg"
 

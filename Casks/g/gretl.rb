@@ -1,9 +1,9 @@
 cask "gretl" do
   arch arm: "arm64", intel: "intel"
 
-  version "2023c"
-  sha256 arm:   "6e5f499a21cb2d1dfc356c165b95a92b87f55f7d9a43c50a848896fc8ecd661c",
-         intel: "ef4fefa3459bf6c02830c3f76a730acfc665c4f9ba7ce1190e34321ade922598"
+  version "2024d"
+  sha256 arm:   "17c1a0b204559ac73ace57bdbe5cc6653f2c6f6542a5476cd50f2ba151b23e83",
+         intel: "622eb257e221e269265885dc259be23b6f787f12480bd81eb3565d7025969860"
 
   url "https://downloads.sourceforge.net/gretl/gretl-#{version}-macos-#{arch}.pkg"
   name "gretl"
@@ -11,9 +11,8 @@ cask "gretl" do
   homepage "https://gretl.sourceforge.net/"
 
   livecheck do
-    url "https://gretl.sourceforge.net/osx.html"
-    regex(/gretl[._-]v?(\d+\w)[._-]macos[._-]#{arch}\.pkg/i)
-    strategy :page_match
+    url "https://sourceforge.net/projects/gretl/rss?path=/gretl"
+    regex(%r{url=.*?/gretl[._-]v?(\d+(?:\.\d+)*[a-z]?)[._-]macos[._-]#{arch}\.pkg}i)
   end
 
   pkg "gretl-#{version}-macos-#{arch}.pkg"

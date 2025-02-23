@@ -1,6 +1,6 @@
 cask "lazarus" do
-  version "3.2"
-  sha256 "c84a2ee58d791613a03cb3de119fb92c2dd14a2686b44cf342580376b950a5b1"
+  version "3.6"
+  sha256 "c32f1fcfb16a969153d660a92e2200f32f5e40ec65d42bbd6af829cd9fe74afb"
 
   url "https://downloads.sourceforge.net/lazarus/Lazarus%20macOS%20x86-64/Lazarus%20#{version}/Lazarus-#{version}-macosx-x86_64.pkg",
       verified: "sourceforge.net/lazarus/"
@@ -8,10 +8,7 @@ cask "lazarus" do
   desc "IDE for rapid application development"
   homepage "https://www.lazarus-ide.org/"
 
-  livecheck do
-    url :homepage
-    regex(%r{href=.*?macOS%20x86-64/Lazarus%20v?(\d+(?:\.\d+)+)/}i)
-  end
+  deprecate! date: "2025-01-26", because: :no_longer_meets_criteria
 
   depends_on cask: "fpc-laz"
   depends_on cask: "fpc-src-laz"
@@ -25,4 +22,8 @@ cask "lazarus" do
             delete:  "/Applications/Lazarus.app"
 
   zap trash: "~/.lazarus"
+
+  caveats do
+    requires_rosetta
+  end
 end

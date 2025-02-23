@@ -1,9 +1,9 @@
 cask "finch" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "1.1.3"
-  sha256 arm:   "5b338ec9482e6bacce44b64c332fbf031469cf4571336dbb47303ab13637cb18",
-         intel: "08f4bd7dab9396e2b75bcd93f0e5a4fca8f43790e19f697466e678877ec1748e"
+  version "1.7.0"
+  sha256 arm:   "f0d2fe5679f62013ba03cff834352ba5c29c12ad1238204df04f3026dea03ec2",
+         intel: "81dc0bf849bc8b188f1724a3efd0e57b2d741a19982ed6424b597d1da7898e25"
 
   url "https://github.com/runfinch/finch/releases/download/v#{version}/Finch-v#{version}-#{arch}.pkg"
   name "Finch"

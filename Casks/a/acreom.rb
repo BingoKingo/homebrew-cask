@@ -1,15 +1,20 @@
 cask "acreom" do
   arch arm: "-arm64"
 
-  version "1.17.1"
-  sha256 arm:   "d04dd30a3eaf1e5b69fa0dde36f7b37d650d882b76479fc95caeed7584445069",
-         intel: "a62d7b93055da8af7a1c95c4987842bd1fc0feb9e2dae23b81cc8975bc95c3e3"
+  version "1.20.4"
+  sha256 arm:   "91b673c58c1c531f3dd7c16d7a2c2f4a4bc7e5cde04e04fa54f54e50214e1233",
+         intel: "b6236f94fad998b9fba7ac476967b8d29fd038fc44fb293e16b250cfc946c3e3"
 
-  url "https://github.com/Acreom/releases/releases/download/v#{version}/acreom-#{version}#{arch}.dmg",
-      verified: "github.com/Acreom/releases/"
+  url "https://github.com/Acreom/app/releases/download/v#{version}/acreom-#{version}#{arch}.dmg",
+      verified: "github.com/Acreom/app/"
   name "acreom"
   desc "Personal knowledge base for developers"
   homepage "https://acreom.com/"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
   depends_on macos: ">= :high_sierra"
 

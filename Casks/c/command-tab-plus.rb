@@ -1,5 +1,5 @@
 cask "command-tab-plus" do
-  version "2.6"
+  version "2.7.6"
   sha256 :no_check
 
   url "https://macplus-software.com/downloads/Command-Tab%20Plus%20#{version.major}.zip",
@@ -13,7 +13,7 @@ cask "command-tab-plus" do
     strategy :sparkle, &:short_version
   end
 
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :high_sierra"
 
   app "Command-Tab Plus #{version.major}.app"
 

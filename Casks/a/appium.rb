@@ -8,7 +8,7 @@ cask "appium" do
   desc "Graphical frontend to Appium automation server"
   homepage "https://appium.io/"
 
-  deprecate! date: "2023-12-17", because: :discontinued
+  disable! date: "2024-12-16", because: :discontinued
 
   app "Appium Server GUI.app"
 
@@ -18,4 +18,8 @@ cask "appium" do
     "~/Library/Preferences/io.appium.desktop.plist",
     "~/Library/Saved Application State/io.appium.desktop.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

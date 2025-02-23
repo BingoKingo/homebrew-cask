@@ -1,20 +1,21 @@
 cask "izotope-product-portal" do
-  version "1.4.8"
-  sha256 "5f4ea1f17723630b3512598da86086a661a05880cdd9a33aad1b0f2aafc402ff"
+  version "1.4.9"
+  sha256 "02bc15c92e8e2bba14a9ec1a0687d69fc3a36f0a5f98057cc785ed40e09a6840"
 
-  url "https://s3.amazonaws.com/izotopedownloads/product_download/iZotope_Product_Portal_v#{version.dots_to_underscores}.dmg",
-      verified: "s3.amazonaws.com/izotopedownloads/"
+  url "https://izotopedownloads.s3.amazonaws.com/product_download/iZotope_Product_Portal_v#{version.dots_to_underscores}.dmg",
+      verified: "izotopedownloads.s3.amazonaws.com/"
   name "Izotope product portal"
   desc "Professional audio software for audio recording, mixing, broadcast and others"
   homepage "https://www.izotope.com/en/products/downloads.html"
 
   livecheck do
     url "https://www.izotope.com/in-app/pp/download/mac"
-    strategy :header_match do |headers|
-      match = headers["location"][/iZotope[._-]Product[._-]Portal[._-]v?(\d+(?:[._-]\d+)+\w?)\.dmg/i, 1]
+    regex(/iZotope[._-]Product[._-]Portal[._-]v?(\d+(?:[._-]\d+)+\w?)\.dmg/i)
+    strategy :header_match do |headers, regex|
+      match = headers["location"]&.match(regex)
       next if match.blank?
 
-      match.tr("_", ".")
+      match[1].tr("_", ".")
     end
   end
 

@@ -19,7 +19,7 @@ cask "openemu" do
   homepage "https://openemu.org/"
 
   auto_updates true
-  conflicts_with cask: "openemu-experimental"
+  conflicts_with cask: "openemu@experimental"
 
   app "OpenEmu.app"
 
@@ -59,4 +59,8 @@ cask "openemu" do
     "~/Library/Preferences/org.openemu.VisualBoyAdvance.plist",
     "~/Library/Saved Application State/org.openemu.OpenEmu.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

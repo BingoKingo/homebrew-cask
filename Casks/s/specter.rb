@@ -1,6 +1,6 @@
 cask "specter" do
-  version "2.0.2"
-  sha256 "20bfd7c4daea70499ab3e04831fb006867cb21c7299aad282ca566b35cd4e7fd"
+  version "2.0.5"
+  sha256 "2419d08e0cc32c6c1e8d7f09af90e4e867d786bc51ee238f62ff741785caccc3"
 
   url "https://github.com/cryptoadvance/specter-desktop/releases/download/v#{version}/Specter-v#{version}.dmg",
       verified: "github.com/cryptoadvance/specter-desktop/"
@@ -8,10 +8,12 @@ cask "specter" do
   desc "Desktop GUI for Bitcoin Core optimised to work with hardware wallets"
   homepage "https://specter.solutions/"
 
+  # Upstream doesn't reliably mark unstable versions as pre-release on GitHub.
+  # We check the upstream download page, which links to the latest stable files
+  # on GitHub.
   livecheck do
-    url "https://github.com/cryptoadvance/specter-desktop/releases/"
-    regex(%r{v?(\d+(?:\.\d+)+)/Specter.*?\.dmg}i)
-    strategy :page_match
+    url "https://specter.solutions/downloads/"
+    regex(/href=.*?Specter[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
 
   depends_on macos: ">= :catalina"

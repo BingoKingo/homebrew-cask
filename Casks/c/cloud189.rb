@@ -9,8 +9,14 @@ cask "cloud189" do
   homepage "https://cloud.189.cn/web/static/download-client/index.html"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://cloud.189.cn/api/portal/listClients.action"
+    strategy :json do |json|
+      json["clientList"]&.map do |item|
+        next if item["clientType"] != "TELEMAC"
+
+        item["clientVersion"]
+      end
+    end
   end
 
   app "天翼云盘.app"
@@ -21,4 +27,8 @@ cask "cloud189" do
     "~/Library/Application Support/com.21cn.cloud-dist",
     "~/Library/Preferences/21cn.cloud.dist.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

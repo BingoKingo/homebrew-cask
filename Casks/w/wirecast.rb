@@ -1,6 +1,6 @@
 cask "wirecast" do
-  version "16.2"
-  sha256 "a289d7c1f2fba6cfdd606128ad06ab0604047d3d273d8be4a506434879d260e9"
+  version "16.4.0"
+  sha256 "07e530771d2476f21d8f27560ad48dcf1d7c8249f3d363ad2d3662ec947dcfc9"
 
   url "https://www.telestream.net/download-files/wirecast/#{version.major_minor.dots_to_hyphens}/Wirecast-#{version}.dmg"
   name "Wirecast"
@@ -12,7 +12,7 @@ cask "wirecast" do
     regex(/href=.*Wirecast[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
 
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :monterey"
 
   app "Wirecast.app"
 

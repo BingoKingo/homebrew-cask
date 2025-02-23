@@ -1,15 +1,15 @@
 cask "qgroundcontrol" do
-  version "4.3.0"
-  sha256 :no_check
+  version "4.4.3"
+  sha256 "d27055eeab18a8cc8becd6898e2944a77b63fe8e32d75ddf0f682d790465ef9d"
 
-  url "https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl.dmg",
-      verified: "d176tv9ibo4jno.cloudfront.net/latest/"
+  url "https://github.com/mavlink/qgroundcontrol/releases/download/v#{version}/QGroundControl.dmg",
+      verified: "github.com/mavlink/qgroundcontrol/"
   name "QGroundControl"
   desc "Ground control station for drones"
-  homepage "http://qgroundcontrol.com/"
+  homepage "https://qgroundcontrol.com/"
 
   livecheck do
-    url "https://github.com/mavlink/qgroundcontrol/releases/"
+    url :url
     strategy :github_latest
   end
 
@@ -20,4 +20,8 @@ cask "qgroundcontrol" do
     "~/Library/Caches/QGroundControl.org",
     "~/Library/Saved Application State/org.qgroundcontrol.QGroundControl.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

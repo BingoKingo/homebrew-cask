@@ -1,8 +1,8 @@
 cask "blackhole-2ch" do
-  version "0.5.0"
-  sha256 "f042f31193a66d82e5a39afc429e3c1b8f1683f5996e7d8f9af5b6bb4603bfe6"
+  version "0.6.1"
+  sha256 "c829afa041a9f6e1b369c01953c8f079740dd1f02421109855829edc0d3c1988"
 
-  url "https://existential.audio/downloads/BlackHole2ch.v#{version}.pkg"
+  url "https://existential.audio/downloads/BlackHole2ch-#{version}.pkg"
   name "BlackHole 2ch"
   desc "Virtual Audio Driver"
   homepage "https://existential.audio/blackhole/"
@@ -14,17 +14,14 @@ cask "blackhole-2ch" do
     strategy :github_latest
   end
 
-  pkg "BlackHole2ch.v#{version}.pkg"
-
-  uninstall_postflight do
-    system_command "/usr/bin/killall",
-                   args:         ["coreaudiod"],
-                   sudo:         true,
-                   must_succeed: true
-  end
+  pkg "BlackHole2ch-#{version}.pkg"
 
   uninstall quit:    "com.apple.audio.AudioMIDISetup",
             pkgutil: "audio.existential.BlackHole2ch"
 
   # No zap stanza required
+
+  caveats do
+    reboot
+  end
 end

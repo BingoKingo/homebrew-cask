@@ -8,11 +8,20 @@ cask "qtspim" do
   homepage "https://spimsimulator.sourceforge.net/"
 
   livecheck do
-    url "https://sourceforge.net/projects/spimsimulator/files/"
-    regex(/QtSpim[._-]v?(\d+\.\d+\.\d+)[._-]mac\.(?:mpkg|pkg)(?:\.zip)?/i)
+    url :url
+    regex(%r{url=.*?/QtSpim[._-]v?(\d+(?:\.\d+)+)[._-]mac\.(?:m?pkg(?:\.zip)?|dmg)}i)
   end
 
   pkg "QtSpim.mpkg/Contents/Packages/QtSpim.pkg"
 
   uninstall pkgutil: "org.larusstone.pkg.QtSpim"
+
+  zap trash: [
+    "~/Library/Preferences/org.larus.qtspim.plist",
+    "~/Library/Saved Application State/org.larus.qtspim.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

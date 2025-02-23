@@ -1,8 +1,10 @@
 cask "viber" do
-  version "22.4.0,2243"
+  arch arm: "_arm"
+
+  version "24.7.0,2470"
   sha256 :no_check
 
-  url "https://download.viber.com/desktop/mac/Viber.dmg"
+  url "https://download.viber.com/desktop/mac#{arch}/Viber.dmg"
   name "Viber"
   desc "Calling and messaging application focusing on security"
   homepage "https://www.viber.com/"
@@ -13,7 +15,7 @@ cask "viber" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :big_sur"
 
   app "Viber.app"
 

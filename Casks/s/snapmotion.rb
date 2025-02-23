@@ -1,6 +1,6 @@
 cask "snapmotion" do
-  version "5.2.1"
-  sha256 "e9022ba10d4d4de19eabfb328dcab9b65f52d7a51fc3e2db8f8598a2ef8fc734"
+  version "5.2.5"
+  sha256 "e311b9fc66c83be06b5b300641b7126a7450bf6e747f8d7428e48861a6060912"
 
   url "https://neededapps.com/appcasts/snapmotion/versions/#{version}"
   name "SnapMotion"
@@ -12,6 +12,7 @@ cask "snapmotion" do
     strategy :sparkle, &:short_version
   end
 
+  auto_updates true
   depends_on macos: ">= :big_sur"
 
   app "SnapMotion.app"

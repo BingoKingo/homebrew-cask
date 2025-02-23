@@ -1,6 +1,6 @@
 cask "zesarux" do
-  version "X"
-  sha256 "b1a4c58fd21b926bd7edb1232596ceeff91c774454e1207d9a0f7ce1e56ef558"
+  version "12.0"
+  sha256 "1abbb5e53f8557d07d1cc94b904eb07dcb79e064b7dff5c2253569f7c2f4a80c"
 
   url "https://github.com/chernandezba/zesarux/releases/download/ZEsarUX-#{version}/ZEsarUX_macos-#{version}.dmg"
   name "ZEsarUX"
@@ -19,4 +19,8 @@ cask "zesarux" do
     "~/.zesaruxrc",
     "~/Library/Saved Application State/com.cesarhernandez.zesarux.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

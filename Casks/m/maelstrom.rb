@@ -7,10 +7,11 @@ cask "maelstrom" do
   desc "Multidirectional shooter game"
   homepage "https://www.libsdl.org/projects/Maelstrom/index.html"
 
-  livecheck do
-    url "https://www.libsdl.org/projects/Maelstrom/binary.html"
-    regex(%r{href=.*?/Maelstrom-(\d+(?:\.\d+)*)-MacOSX\.dmg}i)
-  end
+  deprecate! date: "2024-11-16", because: :unmaintained
 
   app "Maelstrom.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

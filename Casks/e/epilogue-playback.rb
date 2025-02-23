@@ -1,6 +1,6 @@
 cask "epilogue-playback" do
-  version "1.2.0"
-  sha256 "a6be692c75010f410dbc4d7d23023531cdf916474c19ff93c3f6cf434803ab48"
+  version "1.5.1"
+  sha256 "5a2ae23d8fd6ab0506c637acd3f6ec821fe87af40aa0c832a8348e6814b18d45"
 
   url "https://epilogue.nyc3.digitaloceanspaces.com/releases/software/Playback/version/#{version}/release/mac/Playback.dmg",
       verified: "epilogue.nyc3.digitaloceanspaces.com/releases/software/Playback/version/"
@@ -9,11 +9,8 @@ cask "epilogue-playback" do
   homepage "https://www.epilogue.co/"
 
   livecheck do
-    url "https://www.epilogue.co/v2/api/update"
-    strategy :json do |json|
-      v = json["operator-app"]["osx"]["version"]
-      "#{v["major"]}.#{v["minor"]}.#{v["patch"]}"
-    end
+    url "https://www.epilogue.co/downloads"
+    regex(%r{href=.*?/v?(\d+(?:\.\d+)+)/release/mac}i)
   end
 
   depends_on macos: ">= :big_sur"

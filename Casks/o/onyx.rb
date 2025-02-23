@@ -37,14 +37,19 @@ cask "onyx" do
     url "https://www.titanium-software.fr/download/12/OnyX.dmg"
   end
   on_ventura do
-    version "4.4.6"
+    version "4.4.7"
 
     url "https://www.titanium-software.fr/download/13/OnyX.dmg"
   end
-  on_sonoma :or_newer do
-    version "4.5.6"
+  on_sonoma do
+    version "4.6.2"
 
     url "https://www.titanium-software.fr/download/14/OnyX.dmg"
+  end
+  on_sequoia do
+    version "4.7.4"
+
+    url "https://www.titanium-software.fr/download/15/OnyX.dmg"
   end
 
   name "OnyX"
@@ -52,8 +57,13 @@ cask "onyx" do
   homepage "https://www.titanium-software.fr/en/onyx.html"
 
   livecheck do
-    url :homepage
-    regex(/>\s*OnyX\s+v?(\d+(?:\.\d+)+)\s+for\s+[\w\s.-]*\s+#{MacOS.version}\s*</i)
+    url "https://www.titanium-software.fr/download/#{MacOS.version}/OnyX.plist"
+    strategy :xml do |xml|
+      version = xml.elements["//key[text()='Version']"]&.next_element&.text
+      next if version.blank?
+
+      version.strip
+    end
   end
 
   depends_on macos: [
@@ -66,6 +76,7 @@ cask "onyx" do
     :monterey,
     :ventura,
     :sonoma,
+    :sequoia,
   ]
 
   app "OnyX.app"
@@ -74,6 +85,7 @@ cask "onyx" do
     "~/Library/Caches/com.apple.helpd/SDMHelpData/Other/English/HelpSDMIndexFile/com.titanium.OnyX.help*",
     "~/Library/Logs/OnyX.log",
     "~/Library/Preferences/com.titanium.OnyX.plist",
+    "~/Library/Preferences/com.titanium.OnyX.update.plist",
     "~/Library/Preferences/OnyX.plist",
     "~/Library/Saved Application State/com.titanium.OnyX.savedState",
   ]

@@ -7,14 +7,15 @@ cask "tyke" do
   desc "Scratch paper that lives on your menu bar"
   homepage "https://tyke.app/"
 
-  livecheck do
-    url :url
-    strategy :extract_plist
-  end
+  deprecate! date: "2024-10-27", because: :unmaintained
 
   app "tyke.app"
 
   uninstall quit: "org.torrez.tyke"
 
   zap trash: "~/Library/Preferences/org.torrez.tyke.plist"
+
+  caveats do
+    requires_rosetta
+  end
 end

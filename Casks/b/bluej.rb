@@ -1,22 +1,18 @@
 cask "bluej" do
-  version "5.3.0"
-  sha256 "6e511c13ec50a2e37c03521f28c1310d70424dbbff6f635d1ece2ac16c92dc9a"
+  arch arm: "aarch64", intel: "x64"
 
-  url "https://www.bluej.org/download/files/BlueJ-mac-#{version.no_dots}.dmg"
+  version "5.4.1"
+  sha256 arm:   "6f872911314bae55dd0a1a9251b4adcd4b45a1b98db80e820dca7f086823048c",
+         intel: "3de98acc9862578e9ad892237ef42714546ec661b29f8a6dc8a5b25ed01163d6"
+
+  url "https://www.bluej.org/download/files/BlueJ-mac-#{arch}-#{version.no_dots}.dmg"
   name "BlueJ"
   desc "Java Development Environment designed for beginners"
   homepage "https://www.bluej.org/"
 
   livecheck do
-    url "https://www.bluej.org"
-    regex(%r{href=.*?/BlueJ-mac-(\d+)(\d+)(\d+)(a)?\.dmg}i)
-    strategy :page_match do |page|
-      match = page.match(regex)
-      next if match.blank?
-
-      "#{match[1]}.#{match[2]}.#{match[3]}" unless match[4]
-      "#{match[1]}.#{match[2]}.#{match[3]}#{match[4]}"
-    end
+    url :homepage
+    regex(/Version\s*v?(\d+(?:\.\d+)+)/i)
   end
 
   depends_on macos: ">= :sierra"

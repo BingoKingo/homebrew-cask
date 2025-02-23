@@ -8,4 +8,10 @@ cask "qmoji" do
   homepage "https://github.com/jaredly/qmoji"
 
   app "qmoji.app"
+
+  zap trash: "~/Library/Preferences/com.jaredforsyth.qmoji.json"
+
+  caveats do
+    requires_rosetta
+  end
 end

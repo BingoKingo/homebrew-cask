@@ -1,5 +1,5 @@
 cask "browserstacklocal" do
-  version "3.6.2"
+  version "3.6.4"
   sha256 :no_check
 
   url "https://www.browserstack.com/local-testing/downloads/native-app/BrowserStackLocal.tar.gz"
@@ -20,4 +20,8 @@ cask "browserstacklocal" do
     "~/.bstack",
     "~/Library/Caches/com.browserstack.Local",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

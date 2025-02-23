@@ -1,23 +1,32 @@
 cask "readmoreading" do
-  version "0.13.68"
-  sha256 "ae78a47c6760e53f37b99a54b81356e86d595aa0717c030212c19f1dafc2042b"
+  arch arm: "arm64", intel: "x64"
 
-  url "https://cdn.readmoo.com/download/apps/desktop/osx64/el/Readmoo_Desktop-#{version}.dmg"
+  version "1.1.43"
+  sha256 arm:   "98b95624bf18a2a4a068a5bb63181941a41e87369e653de692bf1bbde12bd644",
+         intel: "23622589827b7463f06287a9d5a19d5df7fae36af4d218e783eff7f072219feb"
+
+  url "https://github.com/eCrowdMedia/remake/releases/download/v#{version}/Readmoo.-#{version}-#{arch}.dmg",
+      verified: "github.com/eCrowdMedia/remake/"
   name "Readmo Reading"
   desc "Traditional Chinese eBook service"
   homepage "https://readmoo.com/"
 
   livecheck do
-    url "https://readmoo.com/download/osx"
-    strategy :header_match
+    url :url
+    strategy :github_latest
   end
+
+  depends_on macos: ">= :catalina"
 
   app "Readmoo看書.app"
 
   zap trash: [
     "~/Library/Application Support/Readmoo看書",
+    "~/Library/Caches/com.electron.readmoo",
+    "~/Library/Caches/com.electron.readmoo.ShipIt",
+    "~/Library/HTTPStorages/com.electron.readmoo",
     "~/Library/Logs/Readmoo看書",
-    "~/Library/Preferences/com.readmoo.electron.plist",
-    "~/Library/Saved Application State/com.readmoo.electron.savedState",
+    "~/Library/Preferences/com.electron.readmoo.plist",
+    "~/Library/Saved Application State/com.electron.readmoo.savedState",
   ]
 end

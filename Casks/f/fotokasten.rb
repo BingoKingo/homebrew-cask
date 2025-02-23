@@ -1,6 +1,6 @@
 cask "fotokasten" do
-  version "4.13.0,230824.1252"
-  sha256 "ba49a1cd489c136a84bdeaee808b367e4f52dc9dd26393fc7ca7c9ebf6b817d1"
+  version "4.33.3,250210.1048"
+  sha256 "bb6908fbdd44fbf14728ce028efceb91ff7db162d9b2930a0c6932f7af199158"
 
   url "https://downloads.poi.de/fotokasten/pgx-mac/de_DE/fotokasten_22153088_de_DE_#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "downloads.poi.de/fotokasten/"
@@ -13,6 +13,8 @@ cask "fotokasten" do
     strategy :sparkle
   end
 
+  depends_on macos: ">= :mojave"
+
   app "Fotokasten.app"
 
   zap trash: [
@@ -22,4 +24,8 @@ cask "fotokasten" do
     "~/Library/Preferences/de.designer.fotokasten.osx.plist",
     "~/Library/WebKit/de.designer.fotokasten.osx",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

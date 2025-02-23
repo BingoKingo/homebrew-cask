@@ -1,6 +1,6 @@
 cask "fightcade" do
-  version "2.1.38"
-  sha256 "30b0e8ef341dfb1ae935fa29e42bf7e54e4e9478440cda0e0430c8d0c38498ce"
+  version "2.1.45"
+  sha256 "926e18895d19ea74c47facbdd1463987700590e73839f5385f8c03dd68066046"
 
   url "https://web.fightcade.com/download/Fightcade-osx-v#{version}.tar.gz"
   name "Fightcade"
@@ -10,7 +10,7 @@ cask "fightcade" do
   livecheck do
     url "https://web.fightcade.com/download/update.json"
     strategy :json do |json|
-      json["mac"]["version"]
+      json.dig("mac", "version")
     end
   end
 
@@ -23,4 +23,8 @@ cask "fightcade" do
     "~/Library/Preferences/com.fightcade*.plist",
     "~/Library/Saved Application State/com.fightcade*.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

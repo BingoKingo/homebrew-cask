@@ -1,22 +1,22 @@
 cask "capacities" do
   arch arm: "-arm64"
 
-  version "1.35.1"
-  sha256 arm:   "b3ef5478b0ac5668f1734ded9aee8ba7321ebeb5e12a257988ecb03836dd9c89",
-         intel: "fd3e1da2da07c9484cf6a50920804e06b6a48762a090563c52523b8905c5c6fe"
+  version "1.45.11"
+  sha256 arm:   "df9c508030240423d73aca3a1dd65a4d6fca7a05ae7b0ede7f5f2902389bba5f",
+         intel: "0c59c267f5cd8032d29247347ebea8a00981eda0e763ae720ace63707ccbbe7b"
 
-  url "https://capacities-frontend-app.s3.eu-central-1.amazonaws.com/Capacities-#{version}#{arch}.dmg",
-      verified: "capacities-frontend-app.s3.eu-central-1.amazonaws.com/"
+  url "https://capacities-frontend-app.s3.amazonaws.com/Capacities-#{version}#{arch}.dmg",
+      verified: "capacities-frontend-app.s3.amazonaws.com/"
   name "Capacities"
   desc "App to write and organise your ideas"
   homepage "https://capacities.io/"
 
   livecheck do
-    url "https://capacities-frontend-app.s3.eu-central-1.amazonaws.com/latest-mac.yml"
+    url "https://capacities-frontend-app.s3.amazonaws.com/latest-mac.yml"
     strategy :electron_builder
   end
 
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Capacities.app"
 

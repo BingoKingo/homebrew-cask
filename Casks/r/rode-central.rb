@@ -1,5 +1,5 @@
 cask "rode-central" do
-  version "2.0.43"
+  version "2.0.65"
   sha256 :no_check
 
   url "https://update.rode.com/central/RODE_Central_MACOS.zip"
@@ -10,7 +10,7 @@ cask "rode-central" do
   livecheck do
     url "https://update.rode.com/rode-devices-manifest.json"
     strategy :json do |json|
-      json["rode-central-manifest"]["macos"]["main-version"]["update-version"]
+      json.dig("rode-central-manifest", "macos", "main-version", "update-version")
     end
   end
 

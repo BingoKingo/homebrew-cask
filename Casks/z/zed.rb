@@ -1,9 +1,9 @@
 cask "zed" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "0.129.1"
-  sha256 arm:   "f154bfe5fd29fe6193cfe53bd044f3889ad6c5b423ed4314dea2648e310a430e",
-         intel: "264138a58a90f3a8327239fd991d99724ad67a18c243830c9d39eb0b6dd13ac1"
+  version "0.174.6"
+  sha256 arm:   "8f0f6acf8882226294c0f227ec10843f13771d10b340fd06d76f498d2edb8887",
+         intel: "18a5cc185aaf6539cd2dfe59ed4d742203541f3f2c8111703e3f2f05c653efe2"
 
   url "https://zed.dev/api/releases/stable/#{version}/Zed-#{arch}.dmg"
   name "Zed"
@@ -11,8 +11,10 @@ cask "zed" do
   homepage "https://zed.dev/"
 
   livecheck do
-    url "https://zed.dev/releases/stable"
-    regex(%r{href=.*?/stable/(\d+(?:\.\d+)+)/Zed.dmg}i)
+    url "https://zed.dev/api/releases/latest?asset=Zed.dmg&stable=1&os=macos&arch=#{arch}"
+    strategy :json do |json|
+      json["version"]
+    end
   end
 
   auto_updates true
@@ -26,6 +28,7 @@ cask "zed" do
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/dev.zed.zed.sfl*",
     "~/Library/Application Support/Zed",
     "~/Library/Caches/dev.zed.Zed",
+    "~/Library/Caches/Zed",
     "~/Library/HTTPStorages/dev.zed.Zed",
     "~/Library/Logs/Zed",
     "~/Library/Preferences/dev.zed.Zed.plist",

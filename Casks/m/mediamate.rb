@@ -1,6 +1,6 @@
 cask "mediamate" do
-  version "3.2.0,265"
-  sha256 "247c3b21d842d8ee6e8919ae86847bf43806e98ffb5112c84c8a98c9752c5208"
+  version "3.6.2,288"
+  sha256 "c58597c215523bd3598f97342c397d917caff78f0bebb866fb3198c0a0e4f2f7"
 
   url "https://github.com/Wouter01/MediaMate-Releases/releases/download/v#{version.csv.first}_#{version.csv.second}/MediaMate_v#{version.csv.first}-#{version.csv.second}.zip",
       verified: "github.com/Wouter01/MediaMate-Releases/"
@@ -14,7 +14,7 @@ cask "mediamate" do
   end
 
   auto_updates true
-  depends_on macos: ">= :monterey"
+  depends_on macos: ">= :ventura"
 
   app "MediaMate.app"
 

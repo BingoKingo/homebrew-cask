@@ -9,4 +9,15 @@ cask "pliim" do
   homepage "https://zehfernandes.github.io/pliim/"
 
   app "Pliim.app"
+
+  zap trash: [
+    "~/Library/Application Support/Pliim",
+    "~/Library/Logs/Pliim",
+    "~/Library/Preferences/com.electron.pliim.plist",
+    "~/Library/Saved Application State/com.electron.pliim.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

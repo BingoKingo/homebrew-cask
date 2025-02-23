@@ -6,7 +6,7 @@ cask "happymac" do
       verified: "chrislaffra.com/"
   name "HappyMac"
   desc "Watches, suspends and resumes background processes that slow down your system"
-  homepage "https://www.happymac.app/"
+  homepage "https://github.com/laffra/happymac"
 
   livecheck do
     url :url
@@ -18,4 +18,8 @@ cask "happymac" do
   app "happymac.app"
 
   zap trash: "~/HappyMacApp"
+
+  caveats do
+    requires_rosetta
+  end
 end

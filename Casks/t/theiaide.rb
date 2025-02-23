@@ -1,6 +1,6 @@
 cask "theiaide" do
-  version "1.47.100"
-  sha256 "1cdb13d7206b8f3c03c180e601c0e9c1c9b7e5365d6ba7b3a15016804cc84315"
+  version "1.58.300"
+  sha256 "05fa8c2289cfedf543676964f91296b46da30bf14248fb66edf61bbd019d4d90"
 
   url "https://download.eclipse.org/theia/ide/#{version}/macos/TheiaIDE.dmg",
       verified: "download.eclipse.org/theia/ide/"
@@ -26,4 +26,8 @@ cask "theiaide" do
     "~/Library/Preferences/eclipse.theia.plist",
     "~/Library/Saved Application State/eclipse.theia.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

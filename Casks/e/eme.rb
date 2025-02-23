@@ -7,7 +7,13 @@ cask "eme" do
   desc "Markdown editor"
   homepage "https://github.com/egoist/eme"
 
+  deprecate! date: "2024-10-14", because: :unmaintained
+
   auto_updates true
 
   app "EME.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -16,8 +16,8 @@ cask "geekbench" do
     sha256 "04b06cb642e51230a3dfd07ce2d3a4ea696cb349583737622749174dc8747313"
   end
   on_big_sur :or_newer do
-    version "6.2.1"
-    sha256 "9e34468b0d1e0709ef8d32db517d5c3cd8bbeba5ae77d032e13e63f90a4539a8"
+    version "6.4.0"
+    sha256 "ae4b18846fb01845c3e6882bd2df2f2591350785f4ecf068368e967cdab99292"
   end
 
   url "https://cdn.geekbench.com/Geekbench-#{version}-Mac.zip"
@@ -36,6 +36,7 @@ cask "geekbench" do
 
   zap trash: [
     "~/Library/Caches/com.primatelabs.Geekbench#{version.major}",
+    "~/Library/HTTPStorages/com.primatelabs.Geekbench#{version.major}",
     "~/Library/Preferences/com.primatelabs.Geekbench#{version.major}.plist",
     "~/Library/Saved Application State/com.primeatelabs.Geekbench#{version.major}.savedState",
   ]

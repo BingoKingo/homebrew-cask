@@ -8,8 +8,8 @@ cask "stats" do
     end
   end
   on_catalina :or_newer do
-    version "2.10.6"
-    sha256 "e458f110167e1db896551ffc0c17d53de580091c2bc3e29c9f58e577f091f829"
+    version "2.11.32"
+    sha256 "dce6d70f80e224695986bf88b6806c17a717baf79ca327ca5031d7b409411a4b"
   end
 
   url "https://github.com/exelban/stats/releases/download/v#{version}/Stats.dmg"
@@ -27,9 +27,12 @@ cask "stats" do
   zap delete: "/Library/LaunchDaemons/eu.exelban.Stats.SMC.Helper.plist",
       trash:  [
         "~/Library/Application Scripts/eu.exelban.Stats.LaunchAtLogin",
+        "~/Library/Application Scripts/eu.exelban.Stats.Widgets",
         "~/Library/Caches/eu.exelban.Stats",
         "~/Library/Containers/eu.exelban.Stats.LaunchAtLogin",
+        "~/Library/Containers/eu.exelban.Stats.Widgets",
         "~/Library/Cookies/eu.exelban.Stats.binarycookies",
+        "~/Library/Group Containers/eu.exelban.Stats.widgets",
         "~/Library/HTTPStorages/eu.exelban.Stats",
         "~/Library/Preferences/eu.exelban.Stats.plist",
       ]

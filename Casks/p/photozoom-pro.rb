@@ -1,5 +1,5 @@
 cask "photozoom-pro" do
-  version "8.2.0"
+  version "9.0.2"
   sha256 :no_check # required as upstream package is updated in-place
 
   url "https://www.benvista.com/photozoompro#{version.major}/download/mac",
@@ -10,10 +10,16 @@ cask "photozoom-pro" do
 
   livecheck do
     url "https://www.benvista.com/downloads"
-    regex(%r{PhotoZoom.+Version\s(\d+(?:\.\d+)+).+</td>}i)
+    regex(/PhotoZoom.*?Version\s*v?(\d+(?:\.\d+)+)/i)
   end
 
   pkg "PhotoZoom Pro #{version.major} Installer.mpkg"
 
   uninstall pkgutil: "com.benvista.pkg.PhotoZoom-Pro-#{version.major}.app"
+
+  zap trash: [
+    "~/Library/Application Support/BenVista",
+    "~/Library/Preferences/com.benvista.PhotoZoom-Pro-#{version.major}.app.plist",
+    "~/Library/Saved Application State/com.benvista.PhotoZoom-Pro-#{version.major}.app.savedState",
+  ]
 end

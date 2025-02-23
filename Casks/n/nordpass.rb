@@ -1,20 +1,28 @@
 cask "nordpass" do
-  version "5.14.23"
+  arch arm: "arm/"
+
   sha256 :no_check
 
-  url "https://downloads.npass.app/mac/NordPass.dmg",
+  on_arm do
+    version "5.28.13"
+  end
+  on_intel do
+    version "5.27.12"
+  end
+
+  url "https://downloads.npass.app/mac/#{arch}NordPass.dmg",
       verified: "downloads.npass.app/mac/"
   name "NordPass"
   desc "Password manager"
   homepage "https://nordpass.com/"
 
   livecheck do
-    url "https://downloads.npass.app/mac/latest-mac.yml"
+    url "https://downloads.npass.app/mac/#{arch}latest-mac.yml"
     strategy :electron_builder
   end
 
   auto_updates true
-  depends_on macos: ">= :el_capitan"
+  depends_on macos: ">= :high_sierra"
 
   app "NordPass.app"
 

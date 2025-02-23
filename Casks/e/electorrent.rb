@@ -10,4 +10,14 @@ cask "electorrent" do
   auto_updates true
 
   app "Electorrent.app"
+
+  zap trash: [
+    "~/Library/Application Support/Electorrent",
+    "~/Library/Preferences/com.github.tympanix.Electorrent.plist",
+    "~/Library/Saved Application State/com.github.tympanix.Electorrent.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

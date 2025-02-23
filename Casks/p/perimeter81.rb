@@ -1,19 +1,21 @@
 cask "perimeter81" do
   # NOTE: "81" is not a version number, but an intrinsic part of the product name
-  version "10.4.2.1198"
-  sha256 "fc8f897197c0157067a4e3368a5c6a90a24bf113736afecd3a9be4ceb90b7f11"
+  version "11.2.1.3411"
+  sha256 "0674143d208627a64ee9fc1b1a5a57f2cd7d7e1690edca1ddf43a0171ed93219"
 
-  url "https://static.perimeter81.com/agents/mac/Perimeter81_#{version}.pkg"
+  url "https://static.perimeter81.com/agents/mac/Harmony_SASE_#{version}.pkg"
   name "Perimeter 81"
   desc "Zero trust network as a service client"
   homepage "https://perimeter81.com/"
 
   livecheck do
-    url "https://support.perimeter81.com/v1/docs/en/downloading-the-agent"
-    regex(/href=.*?Perimeter81[._-]v?(\d+(?:\.\d+)+)\.pkg/i)
+    url "https://support.perimeter81.com/v1/docs/downloading-the-agent"
+    regex(/href=.*?Harmony[._-]SASE[._-]v?(\d+(?:\.\d+)+)\.pkg/i)
   end
 
-  pkg "Perimeter81_#{version}.pkg"
+  depends_on macos: ">= :big_sur"
+
+  pkg "Harmony_SASE_#{version}.pkg"
 
   uninstall launchctl: [
               "com.perimeter81.osx.HelperTool",

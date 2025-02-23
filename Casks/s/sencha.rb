@@ -1,6 +1,6 @@
 cask "sencha" do
-  version "7.7.0.36"
-  sha256 "ce90a05124d257c543d74dfd890c58704d34cb6ff15453252cbb9ecf0dd61b81"
+  version "7.8.0.59"
+  sha256 "28b8f10473fb8f444a265fef74e63d07debe79f64c1e0d73c36e7744937392e2"
 
   url "https://trials.sencha.com/cmd/#{version.major_minor_patch}/SenchaCmd-#{version}-osx.app.zip"
   name "Sencha Cmd"
@@ -8,8 +8,7 @@ cask "sencha" do
   homepage "https://www.sencha.com/products/sencha-cmd/"
 
   livecheck do
-    url "https://www.sencha.com/products/extjs/cmd-download/"
-    regex(/href=.*?SenchaCmd[._-]v?(\d+(?:\.\d+)+)[._-]osx\.app\.zip/i)
+    skip "No reliable way to get version info"
   end
 
   installer script: {

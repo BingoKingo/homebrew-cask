@@ -5,9 +5,16 @@ cask "haroopad" do
   url "https://bitbucket.org/rhiokim/haroopad-download/downloads/Haroopad-v#{version}-x64.dmg",
       verified: "bitbucket.org/rhiokim/haroopad-download/"
   name "Haroopad"
+  desc "Markdown editor"
   homepage "http://pad.haroopress.com/"
+
+  deprecate! date: "2025-01-05", because: :unmaintained
 
   app "Haroopad.app"
 
   zap trash: "~/Library/Application Support/Haroopad"
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -1,11 +1,12 @@
 cask "plugdata" do
-  version "0.8.3"
-  sha256 "f1dc46b31d6ded4c6ab578fd00ab57faa666eec69ec79c5daf565c4a6b2a9be3"
+  version "0.9.1"
+  sha256 "ae45c3a214e56035b6aa663a92919de4d2f5b4b316778194436749a5fdbbc1b6"
 
-  url "https://github.com/timothyschoen/PlugData/releases/download/v#{version}/plugdata-macOS-Universal.pkg"
+  url "https://github.com/plugdata-team/plugdata/releases/download/v#{version}/plugdata-macOS-Universal.pkg",
+      verified: "github.com/plugdata-team/plugdata/"
   name "PlugData"
   desc "Plugin wrapper for PureData"
-  homepage "https://github.com/timothyschoen/PlugData"
+  homepage "https://plugdata.org/"
 
   livecheck do
     url :url
@@ -13,6 +14,7 @@ cask "plugdata" do
   end
 
   auto_updates true
+  conflicts_with cask: "plugdata@nightly"
 
   pkg "plugdata-macOS-Universal.pkg"
 

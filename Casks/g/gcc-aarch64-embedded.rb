@@ -3,11 +3,11 @@ cask "gcc-aarch64-embedded" do
   # https://github.com/Homebrew/homebrew-core/pull/45780#issuecomment-569246452
   arch arm: "arm64", intel: "x86_64"
 
-  version "13.2.rel1"
-  pkg_version = "13.2.Rel1"
-  gcc_version = "13.2.1"
-  sha256 arm:   "88e51daf993dfc93d7ced3908b81f077ea18a89784ce5f398cdcd2ac6197435b",
-         intel: "bbf320eb0a9115ba0f6a7de936805dfc6e19f767ed290032014a67443af87c20"
+  version "14.2.rel1"
+  pkg_version = "14.2.rel1"
+  gcc_version = "14.2.1"
+  sha256 arm:   "20d81586e22fa811b7052520e98fe0db44294b038d70c41693808db7818325fe",
+         intel: "4e0da7bc82d316deb7f385d249bf7f87ce06d31b9d6f8b63f9b981a2203cf2ce"
 
   url "https://developer.arm.com/-/media/Files/downloads/gnu/#{version}/binrel/arm-gnu-toolchain-#{version}-darwin-#{arch}-aarch64-none-elf.pkg"
   name "GCC ARM Embedded"
@@ -16,7 +16,7 @@ cask "gcc-aarch64-embedded" do
 
   livecheck do
     url "https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
-    regex(/href=.*?arm-gnu-toolchain-(\d+\.\d+\.\w+)-darwin-(?:\w+)-aarch64-none-elf.pkg/i)
+    regex(/href=.*?arm-gnu-toolchain-(\d+\.\d+\.\w+)-darwin-(?:\w+)-aarch64-none-elf\.pkg/i)
   end
 
   pkg "arm-gnu-toolchain-#{version}-darwin-#{arch}-aarch64-none-elf.pkg"

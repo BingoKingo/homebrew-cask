@@ -1,6 +1,6 @@
 cask "eaglefiler" do
-  version "1.9.13"
-  sha256 "4e008f28248186253e0c7872419d6473b70704dcc8874026c3ea5c9db930b7fa"
+  version "1.9.16"
+  sha256 "1a0d828b4078e0efcb6a0ffadf3d4ddc328ae503ad70f23387da8fcb377610e8"
 
   url "https://c-command.com/downloads/EagleFiler-#{version}.dmg"
   name "EagleFiler"
@@ -28,4 +28,8 @@ cask "eaglefiler" do
     "~/Library/Preferences/com.c-command.EagleFiler.plist",
     "~/Library/Saved Application State/com.c-command.EagleFiler.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

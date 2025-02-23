@@ -1,6 +1,6 @@
 cask "activitywatch" do
-  version "0.12.2"
-  sha256 "804dd3eda377d62ac2e2d0590eced2d93ff9759594299858b7cf783294c25908"
+  version "0.13.2"
+  sha256 "22f3bce0e169457902b2c8d2967701cde887171f737d281dd414a210bd3090ed"
 
   url "https://github.com/ActivityWatch/activitywatch/releases/download/v#{version}/activitywatch-v#{version}-macos-x86_64.dmg",
       verified: "github.com/ActivityWatch/activitywatch/"
@@ -20,4 +20,8 @@ cask "activitywatch" do
     "~/Library/Caches/activitywatch",
     "~/Library/Logs/activitywatch",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

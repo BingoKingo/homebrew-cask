@@ -1,5 +1,5 @@
 cask "mylio" do
-  version "24.2.7731"
+  version "24.5.7799"
   sha256 :no_check
 
   url "https://myliodownloads.com/Mylio.dmg",
@@ -13,6 +13,7 @@ cask "mylio" do
     strategy :extract_plist
   end
 
+  auto_updates true
   depends_on macos: ">= :mojave"
 
   app "Mylio.app"
@@ -22,6 +23,7 @@ cask "mylio" do
     "~/Library/Caches/mylollc.Mylio",
     "~/Library/HTTPStorages/mylollc.Mylio",
     "~/Library/Preferences/mylollc.Mylio.plist",
+    "~/Library/WebKit/mylollc.Mylio/",
     "~/Mylio",
   ]
 end

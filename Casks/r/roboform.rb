@@ -1,6 +1,6 @@
 cask "roboform" do
-  version "9.5.5"
-  sha256 "401ac8f2e06a39fc644c2cf86fb70aeed53f1dd5a46fca89235491b97c875de0"
+  version "9.6.5"
+  sha256 :no_check
 
   url "https://www.roboform.com/dist/roboform-mac-v#{version.major}.dmg"
   name "RoboForm"
@@ -13,7 +13,7 @@ cask "roboform" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "RoboForm.app"
 

@@ -1,9 +1,9 @@
 cask "rustdesk" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "1.2.3"
-  sha256 arm:   "647bc014238086d7a73a3d8f1543a1a559b5240f1796e1311a2142be0b57152e",
-         intel: "63f1f5bbe2a308495be039604886adc83937bc36e97b09d4fd9b675ee108ee09"
+  version "1.3.8"
+  sha256 arm:   "39bbcf0c9d4b095f71b35d61c493a6e2364694284e8c3f87eca7dd92481023e9",
+         intel: "2fdc61be683f26a1bf9c681deae09aa4e7539471843bc93770ffa262732065e9"
 
   url "https://github.com/rustdesk/rustdesk/releases/download/#{version}/rustdesk-#{version}-#{arch}.dmg",
       verified: "github.com/rustdesk/rustdesk/"
@@ -13,6 +13,7 @@ cask "rustdesk" do
 
   livecheck do
     url :url
+    regex(/^v?(\d+(?:[.-]\d+)+)$/i)
     strategy :github_latest
   end
 

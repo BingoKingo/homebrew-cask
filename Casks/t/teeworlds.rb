@@ -8,9 +8,13 @@ cask "teeworlds" do
 
   livecheck do
     url "https://teeworlds.com/?page=downloads"
-    regex(%r{href=.*?/teeworlds-(\d+(?:\.\d+)*)-osx\.dmg}i)
+    regex(%r{href=.*?/teeworlds[._-](\d+(?:\.\d+)*)[._-]osx\.dmg}i)
   end
 
   app "Teeworlds.app"
   app "Teeworlds Server.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

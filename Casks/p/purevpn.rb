@@ -1,16 +1,18 @@
 cask "purevpn" do
-  version "9.14.0,12"
+  version "9.29.0"
   sha256 :no_check
 
-  url "https://purevpn-dialer-assets.s3.amazonaws.com/mac-2.0/packages/Production/PureVPN.pkg",
-      verified: "purevpn-dialer-assets.s3.amazonaws.com/"
+  url "https://dzglif4kkvz04.cloudfront.net/mac-2.0/packages/Production/PureVPN.pkg",
+      verified: "dzglif4kkvz04.cloudfront.net/"
   name "PureVPN"
   desc "VPN client"
   homepage "https://www.purevpn.com/"
 
   livecheck do
     url :url
-    strategy :extract_plist
+    strategy :extract_plist do |items|
+      items["com.purevpn.app.mac"]&.short_version
+    end
   end
 
   pkg "PureVPN.pkg"

@@ -1,15 +1,17 @@
 cask "sqlworkbenchj" do
-  version "124"
-  sha256 "2173c7f00172bef3fed23e7f57e168a9d156c72c311af032ba469139f80d9fe9"
+  version "132"
+  sha256 "917cdad945bc2f634df0e95ef192c6e6238542618970b82129a993871344a326"
 
-  url "https://www.sql-workbench.eu/archive/Workbench-Build#{version}-Mac.tgz"
+  url "https://www.sql-workbench.eu/Workbench-Build#{version}-Mac-with-optional-libs.tgz"
   name "SQL Workbench/J"
   desc "DBMS-independent SQL query tool"
   homepage "https://www.sql-workbench.eu/"
 
   livecheck do
-    url "https://www.sql-workbench.eu/download-archive.html"
-    regex(/Workbench[._-]Build(\d+)[._-]Mac\.t/i)
+    url "https://www.sql-workbench.eu/workbench_pad.xml"
+    strategy :xml do |xml|
+      xml.elements["//Program_Version"]&.text&.strip
+    end
   end
 
   app "SQLWorkbenchJ.app"

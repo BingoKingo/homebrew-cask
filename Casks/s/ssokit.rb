@@ -12,7 +12,13 @@ cask "ssokit" do
     strategy :github_latest
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "SSokit.app"
 
   zap trash: "~/Library/Preferences/cn.rangaofei.SSokit.plist"
+
+  caveats do
+    requires_rosetta
+  end
 end

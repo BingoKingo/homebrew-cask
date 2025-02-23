@@ -8,7 +8,12 @@ cask "drata-agent" do
   desc "Security audit software"
   homepage "https://drata.com/"
 
-  depends_on macos: ">= :high_sierra"
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
+  depends_on macos: ">= :catalina"
 
   app "Drata Agent.app"
 

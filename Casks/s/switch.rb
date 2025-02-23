@@ -1,5 +1,5 @@
 cask "switch" do
-  version "11.09"
+  version "13.00"
   sha256 :no_check
 
   url "https://www.nch.com.au/components/switchmaci.zip"
@@ -8,8 +8,8 @@ cask "switch" do
   homepage "https://www.nch.com.au/switch/"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://www.nch.com.au/switch/versions.html"
+    regex(%r{Version\s+v?(\d+(?:\.\d+)+)\s*</h\d>\s*macOS\s+Release}im)
   end
 
   app "Switch.app"
@@ -22,4 +22,8 @@ cask "switch" do
     "~/Library/Preferences/ByHost/com.nchsoftware.switch.*.plist",
     "~/Library/Preferences/com.nchsoftware.switch.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

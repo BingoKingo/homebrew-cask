@@ -1,18 +1,18 @@
 cask "xmplify" do
-  version "1.11.3"
-  sha256 "ab76d2e9dc0b18c6201b3776a2917c4d96575c6e5de253bb1f0120a2efc55992"
+  version "1.11.7"
+  sha256 "74d04e7d1f77af262497c5d3ead4636f0103dcb8157cbdc1dd23074c7c1d40bf"
 
-  url "http://xmplifyapp.com/releases/Xmplify-#{version}.dmg"
+  url "https://xmplifyapp.com/releases/Xmplify-#{version}.dmg"
   name "Xmplify"
   desc "XML editor"
-  homepage "http://xmplifyapp.com/"
+  homepage "https://xmplifyapp.com/"
 
   livecheck do
-    url "http://xmplifyapp.com/appcast.xml"
+    url "https://xmplifyapp.com/appcast.xml"
     strategy :sparkle
   end
 
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :high_sierra"
 
   app "Xmplify.app"
 

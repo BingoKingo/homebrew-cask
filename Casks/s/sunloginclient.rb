@@ -2,9 +2,9 @@ cask "sunloginclient" do
   arch arm: "arm64", intel: "x86_64"
   livecheck_id = on_arch_conditional arm: "187", intel: "89"
 
-  version "15.2.0.62925"
-  sha256 arm:   "379b14b1d2c6dda4013d3c201114968994176eb6ae6ca14d193eeba40d52942c",
-         intel: "91e7093806119e440f7047e6f6d1e8f012e4fce0887c860d4c4821ece89e08da"
+  version "15.6.2.13600"
+  sha256 arm:   "484f998abe98b704508e16a664118271432246e2983194b61b10604511016302",
+         intel: "e8414b31c0e16026bdf6ea36175f1dd2dd883d3cdcde0c793a17dd1306a76380"
 
   url "https://down.oray.com/sunlogin/mac/SunloginClient_#{version}_#{arch}.dmg"
   name "Sunlogin Client"

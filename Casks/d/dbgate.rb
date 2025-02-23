@@ -1,6 +1,6 @@
 cask "dbgate" do
-  version "5.2.7"
-  sha256 "0f69344bbe00f77a40f1219c493a9c27c8c24f2ac658b481af2b55c7bb471e74"
+  version "6.2.0"
+  sha256 "71216d03fae3904ea5c71b350d1eb2bcfe9647d6b8823cec754a3cfe8cb3e3f2"
 
   url "https://github.com/dbgate/dbgate/releases/download/v#{version}/dbgate-#{version}-mac_universal.dmg",
       verified: "github.com/dbgate/dbgate/"
@@ -13,7 +13,9 @@ cask "dbgate" do
     strategy :github_latest
   end
 
-  app "dbgate.app"
+  depends_on macos: ">= :catalina"
+
+  app "DbGate.app"
 
   zap trash: [
     "~/dbgate-data",

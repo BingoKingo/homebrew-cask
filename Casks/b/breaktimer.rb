@@ -1,6 +1,6 @@
 cask "breaktimer" do
-  version "1.2.0"
-  sha256 "feebd9f838df0892664a1377f4e2cd568ffe823132390b82f6592da17d164566"
+  version "1.3.2"
+  sha256 "d6e46421ec302431132040cbdd148e3ba634b609c42a152ad85c27f00ea440b0"
 
   url "https://github.com/tom-james-watson/breaktimer-app/releases/download/v#{version}/BreakTimer.dmg",
       verified: "github.com/tom-james-watson/breaktimer-app/"
@@ -9,6 +9,7 @@ cask "breaktimer" do
   homepage "https://breaktimer.app/"
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   app "BreakTimer.app"
   binary "#{appdir}/BreakTimer.app/Contents/MacOS/BreakTimer", target: "breaktimer"

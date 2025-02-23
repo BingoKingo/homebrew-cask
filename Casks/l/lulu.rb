@@ -1,12 +1,12 @@
 cask "lulu" do
-  version "2.6.3"
-  sha256 "fa677999f1f6eeac725d235de64e24235c34ca71d93040f26ac69e76ea4a68e5"
+  version "3.1.2"
+  sha256 "b19ee034c4aadf44ad7303deb6d1e85058d3198b446312177ce19074048b8882"
 
   url "https://github.com/objective-see/LuLu/releases/download/v#{version}/LuLu_#{version}.dmg",
       verified: "github.com/objective-see/LuLu/"
   name "LuLu"
   desc "Open-source firewall to block unknown outgoing connections"
-  homepage "https://objective-see.com/products/lulu.html"
+  homepage "https://objective-see.org/products/lulu.html"
 
   livecheck do
     url :url

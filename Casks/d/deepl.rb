@@ -3,25 +3,47 @@ cask "deepl" do
     version "3.7.292629"
     sha256 "efcac4988a606d9793a3bdb8e7e73dce8e3d06ed2249a4434eb54c1624b40b87"
 
-    url "https://www.deepl.com/macos/download/#{version}/DeepL_#{version}.zip"
+    url "https://www.deepl.com/macos/download/old/#{version.major_minor}/#{version.patch}/DeepL.zip"
 
     livecheck do
-      url "https://appdownload.deepl.com/macos/update.json"
-      strategy :json do |json|
-        json["currentRelease"]
+      url "https://appdownload.deepl.com/macos/"
+      regex(%r{^old/v?(\d+(?:\.\d+)+)/(\d+(?:\.\d+)*)/DeepL\.(?:zip|t)}i)
+      strategy :xml do |xml, regex|
+        xml.get_elements("//Contents/Key").map do |item|
+          match = item.text&.strip&.match(regex)
+          next if match.blank?
+
+          "#{match[1]}.#{match[2]}"
+        end
       end
     end
   end
-  on_big_sur :or_newer do
-    version "24.1.2756848"
-    sha256 "ca6dc9700e4134925c0e3d74cddbc1b63e80b2e4edb3be5273fca1059236d8ad"
+  on_big_sur do
+    version "24.2.1798840"
+    sha256 "dacbf3dbd42eab3b1d3c4b48e0f0672146d07d94627b7ad073985fe41e9e9217"
 
-    url "https://www.deepl.com/macos/download/#{version.major_minor}/#{version.patch}/DeepL_#{version}.tar.gz"
+    url "https://www.deepl.com/macos/download/#{version.major_minor}/#{version.patch}/DeepL.tar.gz"
 
     livecheck do
-      url "https://appdownload.deepl.com/macos/bigsur/update.json"
-      strategy :json do |json|
-        json["currentRelease"]
+      skip "Legacy version"
+    end
+  end
+  on_monterey :or_newer do
+    version "25.2.11731739"
+    sha256 "2cc747a743611a4d5d32c49ceba95527a68531f1e60f164c6c51bcb5c12b6ca1"
+
+    url "https://www.deepl.com/macos/download/#{version.major_minor}/#{version.patch}/DeepL.tar.gz"
+
+    livecheck do
+      url "https://appdownload.deepl.com/macos/"
+      regex(%r{^v?(\d+(?:\.\d+)+)/(\d+(?:\.\d+)*)/DeepL\.t}i)
+      strategy :xml do |xml, regex|
+        xml.get_elements("//Contents/Key").map do |item|
+          match = item.text&.strip&.match(regex)
+          next if match.blank?
+
+          "#{match[1]}.#{match[2]}"
+        end
       end
     end
   end
@@ -31,6 +53,7 @@ cask "deepl" do
   homepage "https://www.deepl.com/"
 
   auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "DeepL.app"
 

@@ -1,6 +1,6 @@
 cask "mmex" do
-  version "1.7.0"
-  sha256 "84b8dc7e93cfeb216bf956ee6328e28ef4efefb2dec46a8b99ceb64b1c2cff05"
+  version "1.9.0"
+  sha256 "49542aaa6eefb9ea079df68082c8aef8156710bcf8eb6316cadc34a15f03146a"
 
   url "https://github.com/moneymanagerex/moneymanagerex/releases/download/v#{version}/mmex-#{version}-Darwin.dmg",
       verified: "github.com/moneymanagerex/moneymanagerex/"

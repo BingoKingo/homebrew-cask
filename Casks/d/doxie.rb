@@ -1,6 +1,6 @@
 cask "doxie" do
-  version "3.1"
-  sha256 "e0d53143ed018d101a2a5797398c1be3d6533b77b38580d0bacff4d01a6f47f1"
+  version "3.4.1"
+  sha256 "9acdf6557b837072d3ddec5c29e2b14149af1c2d1fbc762567314f2892bae087"
 
   url "https://download.getdoxie.com/Doxie-#{version}.dmg"
   name "Doxie"
@@ -8,8 +8,8 @@ cask "doxie" do
   homepage "https://www.getdoxie.com/"
 
   livecheck do
-    url "https://r.getdoxie.com/app/doxie/release-notes-latest.html"
-    regex(/Doxie.(\d+(?:\.\d+)+)/i)
+    url "https://r.getdoxie.com/app/download_mac/"
+    strategy :header_match
   end
 
   app "Doxie.app"

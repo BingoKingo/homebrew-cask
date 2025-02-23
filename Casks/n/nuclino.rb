@@ -1,9 +1,9 @@
 cask "nuclino" do
-  version "1.6.4"
-  sha256 "74c351a3e3b4e3c37e1fa9ef0cd9a8af13a36ea3e75daf3f397002bd52d68f60"
+  version "1.6.8"
+  sha256 "dcebeef913bdb8b7f1b3badd418b3599069aac9cceb9b31916f88999d814b927"
 
-  url "https://s3.eu-central-1.amazonaws.com/repository.nuclino.com/mac/Nuclino-#{version}-x64.dmg",
-      verified: "s3.eu-central-1.amazonaws.com/repository.nuclino.com/"
+  url "https://s3-eu-central-1.amazonaws.com/repository.nuclino.com/mac/Nuclino-#{version}-universal.dmg",
+      verified: "s3-eu-central-1.amazonaws.com/repository.nuclino.com/"
   name "Nuclino"
   desc "Collaborative wiki and knowledgebase"
   homepage "https://www.nuclino.com/"
@@ -12,6 +12,8 @@ cask "nuclino" do
     url "https://s3-eu-central-1.amazonaws.com/repository.nuclino.com/mac/stable-mac.yml"
     strategy :electron_builder
   end
+
+  depends_on macos: ">= :catalina"
 
   app "Nuclino.app"
 

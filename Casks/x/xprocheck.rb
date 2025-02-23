@@ -1,20 +1,25 @@
 cask "xprocheck" do
-  version "1.5,2023.04"
-  sha256 "882c1ee83a3bee4372d7afcd9a65b3fa8342282534cbdf21565fe0aa4c87839d"
+  version "1.6,2024.07"
+  sha256 "6775fd9beb44d018a0287a00b944dc39a402763985cdaa19598b7d11167dabaa"
 
-  url "https://eclecticlightdotcom.files.wordpress.com/#{version.csv.second.major}/#{version.csv.second.minor}/xprocheck#{version.csv.first.no_dots}.zip",
-      verified: "eclecticlightdotcom.files.wordpress.com/"
+  url "https://eclecticlight.co/wp-content/uploads/#{version.csv.second.major}/#{version.csv.second.minor}/xprocheck#{version.csv.first.no_dots}-1.zip"
   name "XProCheck"
   desc "Anti-malware scan logging tool"
   homepage "https://eclecticlight.co/consolation-t2m2-and-log-utilities/"
 
   livecheck do
-    url :homepage
-    regex(%r{/(\d+)/(\d+)/xprocheck(\d+)\.zip}i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map do |match|
-        "#{match[2].split("", 2).join(".")},#{match[0]}.#{match[1]}"
-      end
+    url "https://raw.githubusercontent.com/hoakleyelc/updates/master/eclecticapps.plist"
+    regex(%r{/(\d+)/(\d+)/[^/]+?$}i)
+    strategy :xml do |xml, regex|
+      item = xml.elements["//dict[key[text()='AppName']/following-sibling::*[1][text()='XProCheck']]"]
+      next unless item
+
+      version = item.elements["key[text()='Version']"]&.next_element&.text
+      url = item.elements["key[text()='URL']"]&.next_element&.text
+      match = url.strip.match(regex) if url
+      next if version.blank? || match.blank?
+
+      "#{version.strip},#{match[1]}.#{match[2]}"
     end
   end
 
@@ -22,5 +27,10 @@ cask "xprocheck" do
 
   app "xprocheck#{version.csv.first.no_dots}/XProCheck.app"
 
-  zap trash: "~/Library/Saved Application State/co.eclecticlight.XProCheck.savedState"
+  zap trash: [
+    "~/Library/Caches/co.eclecticlight.XProCheck",
+    "~/Library/HTTPStorages/co.eclecticlight.XProCheck",
+    "~/Library/Preferences/co.eclecticlight.XProCheck.plist",
+    "~/Library/Saved Application State/co.eclecticlight.XProCheck.savedState",
+  ]
 end

@@ -1,6 +1,6 @@
 cask "kvirc" do
-  version "5.2.2,Quasar"
-  sha256 "8b231c9919e50dfaef5df640c67bb8b292c843141b6e8bc45001a0a308039a74"
+  version "5.2.6,Quasar"
+  sha256 "2aeb70d17289a6921018aa696c9ecb529d6c77c3cb98e1599098d8fc62106f9f"
 
   url "https://github.com/kvirc/KVIrc/releases/download/#{version.csv.first}/KVIrc-#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "github.com/kvirc/KVIrc/"
@@ -34,4 +34,8 @@ cask "kvirc" do
     "~/Library/Preferences/com.kvirc.kvirc.plist",
     "~/Library/Saved Application State/com.kvirc.kvirc.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -8,11 +8,7 @@ cask "waterfox-classic" do
   desc "Web browser"
   homepage "https://classic.waterfox.net/"
 
-  livecheck do
-    url :url
-    regex(/v?(\d+(?:\.\d+)+)-classic/i)
-    strategy :github_latest
-  end
+  deprecate! date: "2024-11-09", because: :unmaintained
 
   app "Waterfox Classic.app"
 
@@ -22,4 +18,8 @@ cask "waterfox-classic" do
     "~/Library/Caches/Waterfox",
     "~/Library/Preferences/org.waterfoxproject.waterfox.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

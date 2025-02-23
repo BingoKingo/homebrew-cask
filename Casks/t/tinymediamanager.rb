@@ -1,20 +1,26 @@
 cask "tinymediamanager" do
-  version "4.3.15"
-  sha256 "e2271a0ebcfd50cddbfa53bb1074f907ec612d54d34c3345f70eb15716938785"
+  arch arm: "aarch64", intel: "x86_64"
 
-  url "https://release.tinymediamanager.org/v#{version.major}/dist/tmm_#{version}_macos-x86_64.zip"
+  version "5.1.2"
+  sha256 arm:   "be6158ef43427fbcba77d832aa711688535a4553c82e129c17906dece2e04cc3",
+         intel: "98307c118aadcb92286a61ca314abb3cf8f5a414d046d97e081a7cbb3a3f452f"
+
+  url "https://release.tinymediamanager.org/v#{version.major}/dist/tinyMediaManager-#{version}-macos-#{arch}.dmg"
   name "tinyMediaManager"
   desc "Media management tool"
   homepage "https://www.tinymediamanager.org/"
 
   livecheck do
     url "https://release.tinymediamanager.org/"
-    regex(%r{href=.*?/tmm[._-]v?(\d+(?:\.\d+)+)[._-]macos[._-]x86[._-]64\.zip}i)
+    regex(/href=.*?v?(\d+(?:\.\d+)+)[._-]macos[._-]#{arch}\.dmg/i)
   end
 
   auto_updates true
 
   app "tinyMediaManager.app"
 
-  # No zap stanza required
+  zap trash: [
+    "~/Library/Application Support/tinyMediaManager",
+    "~/Library/Saved Application State/org.tinyMediaManager.tinymediamanager.savedState",
+  ]
 end

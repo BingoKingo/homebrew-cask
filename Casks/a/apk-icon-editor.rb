@@ -8,5 +8,11 @@ cask "apk-icon-editor" do
   desc "Editor for changing APK icons, name, version and other data"
   homepage "https://kefir500.github.io/apk-icon-editor/"
 
+  disable! date: "2024-10-14", because: "is 32-bit only"
+
   app "APK Icon Editor.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

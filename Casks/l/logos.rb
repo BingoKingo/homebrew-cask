@@ -1,9 +1,9 @@
 cask "logos" do
   arch arm: "-arm"
 
-  version "32.1.0.0031"
-  sha256 arm:   "fcbd23087345a8568ad7dd95fb75ef4f430d1157d8c3ab740cb1fd9b2803e208",
-         intel: "86a13f627050361ff1784c6dd3fd084f7d0b43a3484f3eb4de9c31b7c19894dc"
+  version "39.1.0.0006"
+  sha256 arm:   "3b401cd48468cd7baf2882582dd7992db270b4ae11578052959edfbfb842b3be",
+         intel: "d0acc20801093e0c175cc1c353e7a0539bcd2df525e9c3d37f17b7a2769367ae"
 
   url "https://downloads.logoscdn.com/LBS10/Installer/#{version}/LogosMac#{arch}.dmg",
       verified: "downloads.logoscdn.com/"
@@ -13,11 +13,13 @@ cask "logos" do
 
   livecheck do
     url "https://clientservices.logos.com/update/v1/feed/logos10-mac/stable.xml"
-    regex(%r{<logos:version[^>]*>(\d+(?:\.\d+)+)</logos:version>}i)
+    strategy :xml do |xml|
+      xml.get_elements("//logos:version")&.map { |item| item.text&.strip }
+    end
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  depends_on macos: ">= :ventura"
 
   app "Logos.app"
 

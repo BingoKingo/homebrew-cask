@@ -1,9 +1,9 @@
 cask "mps" do
   arch arm: "macos-aarch64", intel: "macos"
 
-  version "2023.3,233.13135.979"
-  sha256 arm:   "133e5bae81d675a6ee7780efec18dd96dfed059dbfdd2ad4a1028d9956a1ec6e",
-         intel: "c1e46dcb3429772b164f423cedc644f388217d1e7310d682b2341f9e744333bf"
+  version "2024.3,243.21565.447"
+  sha256 arm:   "9c7118db757ba4fa7b6725efa5b006f4e6db47ca2b2948a92e43c435329c9c79",
+         intel: "a5476c8aa604f3c37c192a5301eebf1c33d2ae733be018f485f3bf48d2a52366"
 
   url "https://download.jetbrains.com/mps/#{version.major_minor}/MPS-#{version.csv.first}-#{arch}.dmg"
   name "JetBrains MPS"
@@ -13,8 +13,12 @@ cask "mps" do
   livecheck do
     url "https://data.services.jetbrains.com/products/releases?code=MPS&latest=true&type=release"
     strategy :json do |json|
-      json["MPS"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+      json["MPS"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end

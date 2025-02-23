@@ -1,16 +1,31 @@
 cask "creality-print" do
-  version "4.3.8.6984"
-  sha256 "d2febf68dce011ffa317837e5e63d6729cdd254894ba34129a57118869b5cf91"
+  arch arm: "-macx-arm64"
 
-  url "https://file2-cdn.creality.com/file/8dcd085c64cc389dacd21cd851593d42/Creality_Print-v#{version}-macx-Release.dmg"
+  on_arm do
+    version "5.1.7.10514"
+    sha256 "a45d861399ef48110aaffa76a94972c780bd06177121f818127af810534b135e"
+
+    url "https://github.com/CrealityOfficial/CrealityPrint/releases/download/v#{version.csv.first.major_minor_patch}/Creality_Print-v#{version.csv.first}#{arch}-Release.dmg",
+        verified: "github.com/CrealityOfficial/CrealityPrint/"
+  end
+  on_intel do
+    version "6.0.3.1591"
+    sha256 "bc423a2842c064beb9572eb389632c9f2e3474166fec3b971f1d9dbf8bd7e3b2"
+
+    url "https://github.com/CrealityOfficial/CrealityPrint/releases/download/v#{version.csv.first.major_minor_patch}/CrealityPrint_#{version.csv.first}_Release.dmg",
+        verified: "github.com/CrealityOfficial/CrealityPrint/"
+  end
+
   name "Creality Print"
   desc "Slicer and cloud services for some Creality FDM 3D printers"
   homepage "https://www.creality.com/pages/download-software"
 
   livecheck do
     url :homepage
-    regex(/Creality[._-]Print[._-]v?(\d+(?:\.\d+)+)[._-]macx[._-]Release\.dmg/i)
+    regex(/href=.*?Creality[._-]?Print[._-]v?(\d+(?:\.\d+)+)#{arch}[._-]Release\.dmg/i)
   end
+
+  depends_on macos: ">= :catalina"
 
   app "Creality Print.app"
 
@@ -19,8 +34,4 @@ cask "creality-print" do
     "~/Library/Caches/Creality",
     "~/Library/Saved Application State/com.creality.crealityprint.savedState",
   ]
-
-  caveats do
-    requires_rosetta
-  end
 end

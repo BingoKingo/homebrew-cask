@@ -9,6 +9,7 @@ cask "qtox" do
   homepage "https://qtox.github.io/"
 
   deprecate! date: "2024-02-13", because: :discontinued
+  disable! date: "2025-02-13", because: :discontinued
 
   app "qTox.app"
 
@@ -16,4 +17,8 @@ cask "qtox" do
     "~/Library/Preferences/chat.tox.qtox.plist",
     "~/Library/Saved Application State/chat.tox.qtox.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

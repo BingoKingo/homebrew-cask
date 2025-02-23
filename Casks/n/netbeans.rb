@@ -1,6 +1,6 @@
 cask "netbeans" do
-  version "21"
-  sha256 "954224389a407519a2668830c262094f7580e138095097b5cfe36c647310d408"
+  version "25"
+  sha256 "74ba5b7f2013b7c08bb258f615918879f0f26d210af1126b36a4fa17ca871d1f"
 
   url "https://dlcdn.apache.org/netbeans/netbeans-installers/#{version}/Apache-NetBeans-#{version}.pkg"
   name "NetBeans IDE"
@@ -13,6 +13,8 @@ cask "netbeans" do
     url "https://netbeans.apache.org/front/main/download/"
     regex(/>\s*Apache\s*NetBeans\s*v?(\d+(?:\.\d+)*)\s*</im)
   end
+
+  depends_on macos: ">= :big_sur"
 
   pkg "Apache-NetBeans-#{version}.pkg"
 

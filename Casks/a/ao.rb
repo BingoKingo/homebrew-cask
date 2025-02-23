@@ -7,5 +7,11 @@ cask "ao" do
   desc "Elegant Microsoft To-Do desktop app"
   homepage "https://github.com/klaussinani/ao"
 
+  deprecate! date: "2024-11-10", because: :unmaintained
+
   app "Ao.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -27,10 +27,16 @@ cask "polkadot-js" do
     end
   end
 
+  depends_on macos: ">= :high_sierra"
+
   app "Polkadot-JS Apps.app"
 
   zap trash: [
     "~/Library/Preferences/com.polkadotjs.polkadotjs-apps.plist",
     "~/Library/Saved Application State/com.polkadotjs.polkadotjs-apps.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

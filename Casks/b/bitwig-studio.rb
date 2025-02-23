@@ -1,8 +1,8 @@
 cask "bitwig-studio" do
-  version "5.1.6"
-  sha256 "049a54be98523450abb5258df3d8be2eb2dc90e7f53e6975dd4d5a338598ebb1"
+  version "5.3.1"
+  sha256 "d4642a9d362ad97a85194b6e6a1c8cb06c8410e826e55bfe490f4ebef40b5b25"
 
-  url "https://downloads.bitwig.com/stable/#{version}/Bitwig%20Studio%20#{version}.dmg"
+  url "https://www.bitwig.com/dl/Bitwig%20Studio/#{version}/installer_mac"
   name "Bitwig Studio"
   desc "Digital audio workstation"
   homepage "https://www.bitwig.com/"

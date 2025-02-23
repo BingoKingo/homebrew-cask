@@ -1,15 +1,18 @@
 cask "pktriot" do
-  version "0.15.3"
-  sha256 "e964bce70aa4bf9b7078d70b343b60c83262c8f47952301d652bbfd77aac200f"
+  arch arm: ".arm64"
 
-  url "https://download.packetriot.com/macos/pktriot-#{version}.macos.tar.gz"
+  version "0.15.5"
+  sha256 arm:   "49635508237f108e2d9815641abb3555b01f831d38bbfed1b055a62d8de40998",
+         intel: "38d2c9667aecd91ac13dbe4a5f15a21f12c98ce9162b48c92e448b27dd32fa6b"
+
+  url "https://download.packetriot.com/macos/pktriot-#{version}.macos#{arch}.tar.gz"
   name "pktriot"
   desc "Host server applications and static websites"
   homepage "https://packetriot.com/"
 
   livecheck do
     url "https://packetriot.com/downloads"
-    regex(/href=.*?pktriot[._-](\d+(?:\.\d+)+)\.macos\.t/i)
+    regex(/href=.*?pktriot[._-](\d+(?:\.\d+)+)\.macos#{arch}\.t/i)
   end
 
   binary "pktriot-#{version}/pktriot"

@@ -1,6 +1,6 @@
 cask "drawbot" do
-  version "3.130"
-  sha256 "9cb6bd3cb0061ad6e3e2cc3b78e58fddaa4d5a00dc6c3ab7a3fa08cb1ebebe97"
+  version "3.131"
+  sha256 "da03cd73d2c7ea221977fddd0b77856d0076f4d3833fdd0580823cc76dcaa0dc"
 
   url "https://github.com/typemytype/drawbot/releases/download/#{version}/DrawBot.dmg",
       verified: "github.com/typemytype/drawbot/"
@@ -9,4 +9,10 @@ cask "drawbot" do
   homepage "https://www.drawbot.com/"
 
   app "DrawBot.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.drawbot.sfl*",
+    "~/Library/Preferences/com.drawbot.plist",
+    "~/Library/Saved Application State/com.drawbot.savedState",
+  ]
 end

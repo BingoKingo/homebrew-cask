@@ -1,6 +1,6 @@
 cask "oscar" do
-  version "1.5.2"
-  sha256 "fd1a116169d510bb14515d183611fe26eb69ec4b17894ebbf3c1facae21b1749"
+  version "1.6.0"
+  sha256 "79b005dde8dcd9cc39edefa83f54e937b6ca2be7645b7ad4a98fe6c22f816540"
 
   url "https://www.apneaboard.com/OSCAR/#{version}/OSCAR-#{version}.dmg",
       verified: "apneaboard.com/OSCAR/"
@@ -21,4 +21,8 @@ cask "oscar" do
     "~/Library/Preferences/org.oscar-team.OSCAR.plist",
     "~/Library/Saved Application State/org.oscar-team.OSCAR.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

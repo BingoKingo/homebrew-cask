@@ -11,11 +11,13 @@ cask "clock-bar" do
     url :url
     regex(/^v?(\d+(?:\.\d+)+)$/i)
     strategy :github_latest do |json, regex|
-      v = json["tag_name"][regex, 1]
-      id = json["body"][%r{/(\d+)/Clock\.Bar\.app\.zip}i, 1]
-      next if v.blank? || id.blank?
+      version_match = json["tag_name"]&.match(regex)
+      next if version_match.blank?
 
-      "#{v},#{id}"
+      id_match = json["body"]&.match(%r{/(\d+)/Clock\.Bar\.app\.zip}i)
+      next if id_match.blank?
+
+      "#{version_match[1]},#{id_match[1]}"
     end
   end
 
@@ -27,4 +29,8 @@ cask "clock-bar" do
     "~/Library/Application Scripts/nihalsharma.clock-bar",
     "~/Library/Containers/nihalsharma.clock-bar",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

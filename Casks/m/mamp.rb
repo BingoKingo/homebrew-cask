@@ -1,11 +1,11 @@
 cask "mamp" do
-  arch arm: "M1-arm", intel: "Intel-x86"
+  arch arm: "Apple-chip", intel: "Intel-x86"
 
-  version "6.9"
-  sha256 arm:   "e66a67fad914a065c882ffa137c9c9dc5ae8c24de53320d560b6b5cc0f4a890a",
-         intel: "7a3ff488c9c8d3f8f6730edfb06822e2640303cfcd03d75d14bb977d85518570"
+  version "7.2"
+  sha256 arm:   "0d29199aba83315dc4008dfbe88b59c8c046a95bb88f4d9b35037906c6ccc44a",
+         intel: "ab354660acdc3f24b1ddc49302a88fce9d9f8cd85fe534408df200b122c0fd14"
 
-  url "https://downloads.mamp.info/MAMP-PRO/releases/#{version}/MAMP_MAMP_PRO_#{version}-#{arch}.pkg"
+  url "https://downloads.mamp.info/MAMP-PRO/macOS/MAMP-PRO/MAMP-MAMP-PRO-#{version}-#{arch}.pkg"
   name "MAMP"
   desc "Web development solution with Apache, Nginx, PHP & MySQL"
   homepage "https://www.mamp.info/"
@@ -18,7 +18,7 @@ cask "mamp" do
   auto_updates true
   depends_on macos: ">= :sierra"
 
-  pkg "MAMP_MAMP_PRO_#{version}-#{arch}.pkg"
+  pkg "MAMP-MAMP-PRO-#{version}-#{arch}.pkg"
 
   postflight do
     set_ownership ["/Applications/MAMP", "/Applications/MAMP PRO"]

@@ -3,33 +3,35 @@ cask "sketch" do
     version "96.3,167315"
     sha256 "3ba2c147aab6b2fcb4b5cc3e3ee7fce3f63551e6ef743a7afe459bd0a87bb4a6"
 
-    url "https://download.sketch.com/sketch-#{version.csv.first}-#{version.csv.second}.zip"
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_monterey do
+    version "100.3,180165"
+    sha256 "e51efde061eb3d5b9b999f7821d0d547114ce5b3ed06c0ca3278d60fb4d92678"
 
     livecheck do
       skip "Legacy version"
     end
-
-    depends_on macos: ">= :big_sur"
   end
-  on_monterey :or_newer do
-    version "99.5,178873"
-    sha256 "c2ccf4ff45e54ad9310fd6042bd5b9f474c02ffe59f3a83b8c3523212be4e521"
-
-    url "https://download.sketch.com/sketch-#{version.csv.first}-#{version.csv.second}.zip"
+  on_ventura :or_newer do
+    version "101.8,182106"
+    sha256 "619913f16a7ec019748b1c5c4ed1a39cbb7bc26c9b68038f02ca330e5ab31725"
 
     livecheck do
       url "https://download.sketch.com/sketch-versions.xml"
       strategy :sparkle
     end
-
-    depends_on macos: ">= :monterey"
   end
 
+  url "https://download.sketch.com/sketch-#{version.csv.first}-#{version.csv.second}.zip"
   name "Sketch"
   desc "Digital design and prototyping platform"
   homepage "https://www.sketch.com/"
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   app "Sketch.app"
 

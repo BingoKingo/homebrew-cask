@@ -1,25 +1,26 @@
 cask "actual" do
-  arch arm: "-arm64"
+  arch arm: "arm64", intel: "x64"
 
-  version "0.0.148"
-  sha256 arm:   "df9e2139a3a5b1355f1ed1a28863115ac574eb15ec856d6e95de13b02bc26ae0",
-         intel: "95159e54c011aba02f64b0d126a497b99544e1086429a11e67587e3ffc0533d4"
+  version "25.2.1"
+  sha256 arm:   "d5251581f0f3d29f5df45b86d0e3d0627510dbb3a3402c3b462d60fef7e45fde",
+         intel: "373c64bb6acf151bb1ac239f0838f7fdb6e6a46b614539c6592de2c5ea298e99"
 
-  url "https://github.com/actualbudget/releases/releases/download/#{version}/Actual-#{version}#{arch}.dmg",
-      verified: "github.com/actualbudget/releases/"
+  url "https://github.com/actualbudget/actual/releases/download/v#{version}/Actual-mac-#{arch}.dmg",
+      verified: "github.com/actualbudget/actual/"
   name "Actual"
   desc "Privacy-focused app for managing your finances"
-  homepage "https://actualbudget.com/"
+  homepage "https://actualbudget.org/"
 
-  deprecate! date: "2023-12-17", because: :discontinued
+  depends_on macos: ">= :catalina"
 
   app "Actual.app"
 
   zap trash: [
     "~/Documents/Actual",
     "~/Library/Application Support/Actual",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.actualbudget.actual.sfl*",
     "~/Library/Logs/Actual",
-    "~/Library/Preferences/com.shiftreset.actual.plist",
-    "~/Library/Saved Application State/com.shiftreset.actual.savedState",
+    "~/Library/Preferences/com.actualbudget.actual.plist",
+    "~/Library/Saved Application State/com.actualbudget.actual.savedState",
   ]
 end

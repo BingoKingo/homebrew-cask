@@ -1,6 +1,6 @@
 cask "musicbrainz-picard" do
-  version "2.11"
-  sha256 "a0f04274b71fadb43e9082cee4d1465f183475b8043411de559efad6de44c923"
+  version "2.13.3"
+  sha256 "ed854df1dc7ad29a092e582ad7211359d0ee7b55f8df20e906d431fb92e92124"
 
   url "https://data.musicbrainz.org/pub/musicbrainz/picard/MusicBrainz-Picard-#{version}-macOS-10.14.dmg"
   name "MusicBrainz Picard"
@@ -22,4 +22,8 @@ cask "musicbrainz-picard" do
     "~/Library/Preferences/org.musicbrainz.picard.plist",
     "~/Library/Saved Application State/org.musicbrainz.picard.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

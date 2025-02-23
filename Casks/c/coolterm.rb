@@ -1,6 +1,6 @@
 cask "coolterm" do
-  version "2.1.1.3.0.1288"
-  sha256 "24a2ca96132258a5080412de44e8e7e309dbb4e61a1ada85dbe6e079e7a2c046"
+  version "2.3.0.3.0.1359"
+  sha256 "fe54d4291dfe387751e0c393a485861895bcbf697facb9e4b99f6cf3d3133ab7"
 
   url "https://freeware.the-meiers.org/previous/CoolTermMac#{version.major_minor_patch.no_dots}.dmg"
   name "CoolTerm"

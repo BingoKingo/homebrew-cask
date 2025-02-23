@@ -1,6 +1,6 @@
 cask "height" do
-  version "0.24.0"
-  sha256 "5b298b86b95a2e84a672baab6e889c55fda6a8ab834cd2116cca7ea6b19ab024"
+  version "0.28.2"
+  sha256 "d1bc02ef43598842d0a96533127ce0f2d38a56397e43ab1df31f2c02662ef17d"
 
   url "https://storage.googleapis.com/height-statics/_app/Height-#{version}-universal.dmg",
       verified: "storage.googleapis.com/height-statics/_app/"
@@ -14,6 +14,7 @@ cask "height" do
   end
 
   auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "Height.app"
 

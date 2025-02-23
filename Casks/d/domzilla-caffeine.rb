@@ -16,12 +16,12 @@ cask "domzilla-caffeine" do
     end
   end
   on_sonoma :or_newer do
-    version "1.4.2"
-    sha256 "2f65f1d083987f455d6a4678ec29ecdd1c346adb6995a0b0936c2d4bfba81207"
+    version "1.5"
+    sha256 "e53e4c223166d4087d6276aba1e72d7bc0e28b50d7626ccc048d72d04068230a"
 
     livecheck do
-      url "https://www.caffeine-app.net/download"
-      strategy :header_match
+      url "https://dr-caffeine-mac.s3.amazonaws.com/appcast.xml"
+      strategy :sparkle, &:short_version
     end
   end
 

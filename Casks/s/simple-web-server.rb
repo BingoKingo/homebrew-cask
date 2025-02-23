@@ -1,15 +1,17 @@
 cask "simple-web-server" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.2.10"
-  sha256 arm:   "da0968ca40e144b555ffc895f88609fc470c6bbec9ee8b0dd1cedff59f065aa3",
-         intel: "13fdd6f5d6e7725459487060628c7de47f90ac809eb8ba7b85d9f4c720c5a19c"
+  version "1.2.15"
+  sha256 arm:   "9ab97199053d56d67f227dcd79f25d2844dbee99dabc50eef33fe50607f184f5",
+         intel: "705e080ddbb47c028e077ef1c22af675b2b4e75b31520dbc4adadcc66fc73175"
 
   url "https://github.com/terreng/simple-web-server/releases/download/v#{version}/Simple-Web-Server-macOS-#{version}-#{arch}.dmg",
       verified: "github.com/terreng/simple-web-server/"
   name "Simple Web Server"
   desc "Create local web servers"
   homepage "https://simplewebserver.org/"
+
+  depends_on macos: ">= :big_sur"
 
   app "Simple Web Server.app"
 

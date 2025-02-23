@@ -1,6 +1,6 @@
 cask "qq" do
-  version "6.9.31_240401_01"
-  sha256 "9476be5ade87dda0c3addb3618483cab90f4bc65f4db883f6397e367182dbc20"
+  version "6.9.65_250110_01"
+  sha256 "fc0cc8ab446dd651c7da16f99001a391613877d852ed97bca15e62709e6f3147"
 
   url "https://dldir1.qq.com/qqfile/qq/QQNT/Mac/QQ_#{version}.dmg"
   name "QQ"
@@ -13,6 +13,7 @@ cask "qq" do
   end
 
   auto_updates true
+  depends_on macos: ">= :mojave"
 
   app "QQ.app"
 
@@ -22,8 +23,10 @@ cask "qq" do
     "~/Library/Application Scripts/com.tencent.qq",
     "~/Library/Application Scripts/FN2V63AD2J.com.tencent.localserver2",
     "~/Library/Application Scripts/FN2V63AD2J.com.tencent.ScreenCapture2",
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.tencent.qq.sfl*",
     "~/Library/Caches/com.tencent.qq",
     "~/Library/Containers/com.tencent.qq",
+    "~/Library/Containers/com.tencent.qq.share",
     "~/Library/Containers/FN2V63AD2J.com.tencent.localserver2",
     "~/Library/Containers/FN2V63AD2J.com.tencent.ScreenCapture2",
     "~/Library/Group Containers/FN2V63AD2J.com.tencent",

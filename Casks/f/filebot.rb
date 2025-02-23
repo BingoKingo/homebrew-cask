@@ -1,9 +1,9 @@
 cask "filebot" do
   arch arm: "arm64", intel: "x64"
 
-  version "5.1.3"
-  sha256 arm:   "2b9fc1cf0349eadac549f26e3509fdee2e6d3296d12d85c5004be4ec1360fc99",
-         intel: "e9971b8a412deb08e7d8bccdb05b415eb099a9948bcab5127dad811b39ad7b27"
+  version "5.1.6"
+  sha256 arm:   "abab420f18ef537df6e460e0f87fc2814eb4f9e41eee9938728ea4d7280c8cdf",
+         intel: "d9457eb1be1f4f7b2e94c60c65d1cbaa41129da2922bf7ebd193d12cdc1acf29"
 
   url "https://get.filebot.net/filebot/FileBot_#{version}/FileBot_#{version}_#{arch}.app.tar.xz"
   name "FileBot"
@@ -14,6 +14,8 @@ cask "filebot" do
     url "https://www.filebot.net/download.html"
     regex(/href=.*?FileBot[._-]v?(\d+(?:\.\d+)+)[._-]#{arch}\.pkg/i)
   end
+
+  depends_on macos: ">= :catalina"
 
   app "FileBot.app"
   binary "#{appdir}/FileBot.app/Contents/MacOS/filebot.sh", target: "filebot"

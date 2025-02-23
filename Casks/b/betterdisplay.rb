@@ -7,9 +7,17 @@ cask "betterdisplay" do
       skip "Legacy version"
     end
   end
-  on_monterey :or_newer do
-    version "2.2.6"
-    sha256 "6a7e6faa7cb55dc53bd34edc88a8779e800e5fbc1bfd725b372c2b24a40375ca"
+  on_monterey do
+    version "2.3.9"
+    sha256 "3ee043fd5893ab354efbc4c9a92295a21b365e55af34cc64612255878b746722"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_ventura :or_newer do
+    version "3.3.4"
+    sha256 "c62c5c12f913d173dec846190f4264ee61013c48058c24d5ad2422e19c3d8a8f"
 
     livecheck do
       url :url

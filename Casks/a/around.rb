@@ -1,7 +1,7 @@
 cask "around" do
   arch arm: "-arm64"
 
-  version "1.2.21"
+  version "1.2.35"
   sha256 :no_check
 
   url "https://downloads.around.co/Around#{arch}.dmg"
@@ -10,12 +10,12 @@ cask "around" do
   homepage "https://www.around.co/"
 
   livecheck do
-    url "https://downloads.around.co/latest.yml"
-    regex(/version: (\d+(?:\.\d+)+)/i)
+    url "https://downloads.around.co/latest-mac.yml"
+    strategy :electron_builder
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "Around.app"
 

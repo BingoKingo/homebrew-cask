@@ -8,12 +8,7 @@ cask "osculator" do
   desc "Connect MIDI and OSC Controllers"
   homepage "https://osculator.net/"
 
-  livecheck do
-    url "https://backend.wildora.net/v1/products/osculator-v#{version.major}/revisions.rss"
-    strategy :sparkle do |item|
-      "#{item.version},#{item.url[%r{revisions/([\w-]+)/}i, 1]}"
-    end
-  end
+  disable! date: "2024-12-31", because: :discontinued
 
   app "Osculator.app"
 
@@ -22,4 +17,8 @@ cask "osculator" do
     "~/Library/Caches/net.osculator.OSCulator",
     "~/Library/Preferences/net.osculator.OSCulator.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

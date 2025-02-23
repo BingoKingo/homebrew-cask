@@ -8,10 +8,11 @@ cask "foldingtext" do
   desc "Markdown text editor with productivity features"
   homepage "https://www.foldingtext.com/"
 
-  livecheck do
-    url "https://foldingtext.s3.amazonaws.com/FoldingText.rss"
-    regex(/FoldingText\s+(\d+(?:\.\d+)+)/i)
-  end
+  deprecate! date: "2024-11-01", because: :unmaintained
 
   app "FoldingText.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

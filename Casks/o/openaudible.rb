@@ -1,6 +1,6 @@
 cask "openaudible" do
-  version "4.1.1"
-  sha256 "5d369e569a6b65191f40b94a0d62bd037f1439a717f3ab587c9be0cf4e15f282"
+  version "4.5.2"
+  sha256 "e8b9b2e63a8c199493ad0d8fbca699015a48b8b1722f435899289997d60d6dc6"
 
   url "https://github.com/openaudible/openaudible/releases/download/v#{version}/OpenAudible_#{version}.dmg",
       verified: "github.com/openaudible/openaudible/"

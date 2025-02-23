@@ -1,7 +1,7 @@
 cask "foobar2000" do
   # NOTE: "2000" is not a version number, but an intrinsic part of the product name
-  version "2.6.3"
-  sha256 "7b318d58beee75374e6a9e3ca285b359f4a619564040c6d1a59897debd6bd010"
+  version "2.24.2"
+  sha256 "849e24f3e5d636ace52f5c1ad2798156474cdb6a1b2be6368b26e3623e7b0498"
 
   url "https://www.foobar2000.org/files/foobar2000-v#{version}.dmg"
   name "foobar2000"
@@ -13,7 +13,7 @@ cask "foobar2000" do
     regex(%r{href=.*?/foobar2000[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :big_sur"
 
   app "foobar2000.app"
 

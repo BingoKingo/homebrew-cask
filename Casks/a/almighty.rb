@@ -1,12 +1,12 @@
 cask "almighty" do
-  version "2.6.6"
+  version "2.8.0"
   sha256 :no_check
 
-  url "https://almighty-app.s3.eu-north-1.amazonaws.com/Almighty.zip",
-      verified: "almighty-app.s3.eu-north-1.amazonaws.com/"
+  url "https://almighty-app.s3.amazonaws.com/Almighty.zip",
+      verified: "almighty-app.s3.amazonaws.com/"
   name "Almighty"
   desc "Settings and tweaks configurator"
-  homepage "https://onmyway133.com/almighty/"
+  homepage "https://indiegoodies.com/almighty"
 
   livecheck do
     url "https://raw.githubusercontent.com/onmyway133/archives/master/AlmightyCast.xml"
@@ -14,7 +14,7 @@ cask "almighty" do
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  depends_on macos: ">= :monterey"
 
   app "Almighty.app"
 

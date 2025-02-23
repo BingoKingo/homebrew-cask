@@ -1,22 +1,22 @@
 cask "workspace-one-intelligent-hub" do
-  version "24.01.0.10"
+  version "24.11"
   sha256 :no_check
 
-  url "https://packages.vmware.com/wsone/VMwareWorkspaceONEIntelligentHub.pkg",
-      verified: "packages.vmware.com/wsone/"
+  url "https://packages.omnissa.com/wsone/WorkspaceONEIntelligentHub.pkg",
+      verified: "packages.omnissa.com/wsone/"
   name "Workspace ONE Intelligent Hub"
   desc "VMware workspace"
   homepage "https://www.getwsone.com/"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://docs-be.omnissa.com/api/bundle/workspace-one-intelligent-hub-for-macos-release-notesVSaaS/page/WorkspaceONEIntelligenHubmacOS-ReleaseNotes.html"
+    regex(/Intelligent\s+Hub\s+v?(\d+(?:\.\d+)+)/i)
   end
 
   auto_updates true
   depends_on macos: ">= :catalina"
 
-  pkg "VMwareWorkspaceONEIntelligentHub.pkg"
+  pkg "WorkspaceONEIntelligentHub.pkg"
 
   uninstall launchctl: [
               "com.airwatch.awcmd",

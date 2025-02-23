@@ -1,26 +1,25 @@
 cask "elecom-mouse-util" do
-  version "5.2.13.000"
-  sha256 "9896a8efa0cb6de3f8e0ecf1d39f21e14f9c2f7a0798dbf36649bcd9d4944e2e"
+  version "6.0.1"
+  sha256 "24bc432459f8184899fddbb1633ee532827139f0c700f978a04eb14c8671ba75"
 
-  url "https://dl.elecom.co.jp/support/download/peripheral/mouse/assistant/mac/ELECOM_Mouse_Installer_#{version}.zip"
+  url "https://dl.elecom.co.jp/support/download/peripheral/mouse/assistant/mac/ELECOM_MA_Setup_#{version}.zip"
   name "ELECOM Mouse Assistant"
   desc "Software to more effectively use an ELECOM mouse"
   homepage "https://www.elecom.co.jp/global/download-list/utility/mouse_assistant/mac/"
 
   livecheck do
-    url "https://www.elecom.co.jp/global/download-list/utility/mouse_assistant/mac/"
-    regex(/ELECOM[._-]Mouse[._-]Installer[._-]v?(\d+(?:\.\d+)+)\.zip/i)
+    url :homepage
+    regex(/ELECOM[._-]MA[._-]Setup[._-]v?(\d+(?:\.\d+)+)\.zip/i)
   end
 
-  depends_on macos: ">= :el_capitan"
+  depends_on macos: ">= :ventura"
 
-  pkg "ELECOM_Mouse_Installer_#{version}.pkg"
+  pkg "ELECOM_MA_Setup_#{version}.pkg"
 
-  uninstall launchctl: "jp.com.ELECOM.autorun",
+  uninstall launchctl: "jp.com.ELECOM.autorun.MouseAssistant",
             pkgutil:   [
-              "jp.co.elecom.ELECOM-Mouse-Util",
-              "jp.co.elecom.mouse.ELECOM-Uninstall",
-              "jp.co.elecom.mousePane",
+              "jp.co.ELECOM.MA5UninstallScript",
+              "jp.co.ELECOM.MouseAssistant",
             ]
 
   # No zap stanza required

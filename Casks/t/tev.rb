@@ -1,6 +1,6 @@
 cask "tev" do
-  version "1.26"
-  sha256 "40a71c355171d4fc2159482ce6c7e56ce05b6d9e4e4a035e97a6d1c7c24d718b"
+  version "1.29"
+  sha256 "f93cd2906dd7ad191f32326115fd5a854206c0db3b14934c6d646c64b31dfe4e"
 
   url "https://github.com/Tom94/tev/releases/download/v#{version}/tev.dmg"
   name "tev"

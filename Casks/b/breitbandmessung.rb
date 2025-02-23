@@ -1,6 +1,6 @@
 cask "breitbandmessung" do
-  version "3.6.0"
-  sha256 "66f4e2835fdf9b5191a0e62e4d106267c8f80916d949af79aba6b4b31a37f46b"
+  version "3.8.0"
+  sha256 "972b0edb9a03343b3ce84b3654edd749a7d5a5953999c28065711d927d001e28"
 
   url "https://download.breitbandmessung.de/bbm/Breitbandmessung-#{version}-mac.dmg"
   name "Breitbandmessung"
@@ -12,7 +12,7 @@ cask "breitbandmessung" do
     strategy :electron_builder
   end
 
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :catalina"
 
   app "Breitbandmessung.app"
 

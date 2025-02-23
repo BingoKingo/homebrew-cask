@@ -1,8 +1,8 @@
 cask "offset-explorer" do
-  version "3.0"
+  version "3.0.2"
   sha256 :no_check
 
-  url "https://www.kafkatool.com/download2/offsetexplorer.dmg"
+  url "https://www.kafkatool.com/download#{version.major}/offsetexplorer.dmg"
   name "Offset Explorer"
   name "Kafka Tool"
   desc "GUI for managing and using Apache Kafka clusters"
@@ -13,7 +13,7 @@ cask "offset-explorer" do
     regex(/Offset\s*Explorer\s*v?(\d+(?:\.\d+)+)/i)
   end
 
-  app "Offset Explorer 2.app"
+  app "Offset Explorer #{version.major}.app"
 
-  zap trash: "~/.kafkatool2"
+  zap trash: "~/.kafkatool#{version.major}"
 end

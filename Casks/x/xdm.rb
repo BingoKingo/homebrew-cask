@@ -8,9 +8,8 @@ cask "xdm" do
   desc "Tool to increase download speed"
   homepage "https://xtremedownloadmanager.com/"
 
-  livecheck do
-    skip "No reliable way to get version info"
-  end
+  deprecate! date: "2024-01-26", because: :unmaintained
+  disable! date: "2025-01-30", because: :unmaintained
 
   installer script: {
     executable: "#{staged_path}/install",

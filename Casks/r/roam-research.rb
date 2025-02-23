@@ -1,20 +1,22 @@
 cask "roam-research" do
   arch arm: "-arm64"
 
-  version "0.0.18"
-  sha256 arm:   "027caf1426f2522ead720c584008feccf2e5e3f91587d65eba97ad461cc7d0f5",
-         intel: "8f214d1f7aab82bb1fb44c4bfdbdadf1b6375b77d8573f86a75d40b9a20cc5b8"
+  version "0.0.25"
+  sha256 arm:   "97a5802de1f6e534b48366f0bafad568b49a5966a84a9868e737469cd029ac76",
+         intel: "40a566727fecdd2519253104600bab9cb354a21bf534ae2012383216ed8879c6"
 
-  url "https://roam-electron-deploy.s3.us-east-2.amazonaws.com/Roam+Research-#{version}#{arch}.dmg",
-      verified: "roam-electron-deploy.s3.us-east-2.amazonaws.com/"
+  url "https://roam-electron-deploy.s3.amazonaws.com/Roam+Research-#{version}#{arch}.dmg",
+      verified: "roam-electron-deploy.s3.amazonaws.com/"
   name "Roam Research"
   desc "Note-taking tool for networked thought"
   homepage "https://roamresearch.com/"
 
   livecheck do
-    url "https://roam-electron-deploy.s3.us-east-2.amazonaws.com/latest-mac.yml"
+    url "https://roam-electron-deploy.s3.amazonaws.com/latest-mac.yml"
     strategy :electron_builder
   end
+
+  depends_on macos: ">= :catalina"
 
   app "Roam Research.app"
 

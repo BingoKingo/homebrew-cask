@@ -1,9 +1,9 @@
 cask "darktable" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "4.6.1"
-  sha256 arm:   "145a11c3965b4c5cc2c53c9277f5896569fe55c05f2445f3185de94cd9667585",
-         intel: "a7676fb36f208a41e026d806a0408d2364251d843810fd7dc2003e251ae09773"
+  version "5.0.1"
+  sha256 arm:   "66296ab8d26e4ac14061a5407eafe0f31ddb7ac1de9995bd2e05043e9c0b0c60",
+         intel: "ce05f2a9efa4cde090a939e42813ee98cf98f5b5e6a14304c9d8c3d71a589a01"
 
   url "https://github.com/darktable-org/darktable/releases/download/release-#{version.major_minor_patch}/darktable-#{version}-#{arch}.dmg",
       verified: "github.com/darktable-org/darktable/"
@@ -15,6 +15,8 @@ cask "darktable" do
     url "https://www.darktable.org/install/"
     regex(/href=.*?darktable[._-]v?(\d+(?:\.\d+)+)[._-]#{arch}\.dmg/i)
   end
+
+  depends_on macos: ">= :ventura"
 
   app "darktable.app"
 

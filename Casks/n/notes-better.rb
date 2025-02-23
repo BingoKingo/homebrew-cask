@@ -1,6 +1,6 @@
 cask "notes-better" do
-  version "2.2.1"
-  sha256 "8148f8239abc5352e8abc9adac181f109994c616ff652d505e93b341c94138aa"
+  version "2.3.1"
+  sha256 "c89fde7f77137c3d19170191c775b3ce097021d3d74741429d166b7f9686e272"
 
   url "https://github.com/nuttyartist/notes/releases/download/v#{version}/Notes.#{version}.dmg",
       verified: "github.com/nuttyartist/notes/"
@@ -8,7 +8,7 @@ cask "notes-better" do
   desc "Simple note-taking app for markdown and kanban"
   homepage "https://get-notes.com/"
 
-  depends_on macos: ">= :catalina"
+  depends_on macos: ">= :big_sur"
 
   app "Notes Better.app"
 

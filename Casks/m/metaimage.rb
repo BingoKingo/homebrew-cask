@@ -1,10 +1,10 @@
 cask "metaimage" do
-  version "2.6.3"
-  sha256 "e841ab98b173a4b95206df275c74de19c13eadab2d5a1b4cc5fa80902fe6ecff"
+  version "2.6.7"
+  sha256 "851f9585b4137ce173dcce915d8252f8610ee001e9f8c88c3fa05bb39c5d24a8"
 
   url "https://neededapps.com/appcasts/metaimage/versions/#{version}"
   name "MetaImage"
-  desc "Editor to read, write and edit images metadata"
+  desc "Image metadata and geographical tag viewer & editor"
   homepage "https://neededapps.com/metaimage/"
 
   livecheck do
@@ -12,6 +12,7 @@ cask "metaimage" do
     strategy :sparkle, &:short_version
   end
 
+  auto_updates true
   depends_on macos: ">= :big_sur"
 
   app "MetaImage.app"

@@ -1,5 +1,5 @@
 cask "minecraft" do
-  version "1.8.2"
+  version "2.1.3,1"
   sha256 :no_check
 
   url "https://launcher.mojang.com/download/Minecraft.dmg",
@@ -22,4 +22,8 @@ cask "minecraft" do
     "~/Library/Caches/com.mojang.minecraftlauncher",
     "~/Library/Caches/com.mojang.minecraftlauncherupdater",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

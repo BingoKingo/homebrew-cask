@@ -11,10 +11,14 @@ cask "noxappplayer" do
     url "https://www.bignox.com/en/download/fullPackage/mac_fullzip"
     regex(%r{/(\d+)/([^/]+)\.dmg\?filename=NoxInstaller_(\d+(?:\.\d+)*)_en\.dmg}i)
     strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map { |match| "#{match[2]},#{match[0]},#{match[1]}" }
+      match = headers["location"]&.match(regex)
+      next if match.blank?
+
+      "#{match[3]},#{match[1]},#{match[2]}"
     end
   end
 
+  depends_on macos: ">= :sierra"
   container nested: "NoxAppPlayerInstaller.app/Contents/MacOS/NoxAppPlayer.zip"
 
   app "NoxAppPlayer.app"
@@ -23,4 +27,8 @@ cask "noxappplayer" do
     "~/Library/Application Support/NoxAppPlayer",
     "~/Library/Saved Application State/com.nox.NoxAppPlayer.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

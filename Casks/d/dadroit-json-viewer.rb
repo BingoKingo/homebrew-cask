@@ -1,5 +1,5 @@
 cask "dadroit-json-viewer" do
-  version "2.0.1,845"
+  version "3.1.0,533"
   sha256 :no_check
 
   url "https://dadroit.com/releases/mac/DadroitJSONViewer.zip"
@@ -22,4 +22,8 @@ cask "dadroit-json-viewer" do
     "~/.config/Dadroit",
     "~/Library/Saved Application State/com.dadroit.Viewer.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

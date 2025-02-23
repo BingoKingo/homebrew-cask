@@ -1,8 +1,8 @@
 cask "dogecoin" do
-  version "1.14.7"
-  sha256 "cbdd14693e6e4e81d53c034ef05d806495f00d7946c3c1463a5e1550629cf635"
+  version "1.14.9"
+  sha256 "c87c956834a87da8200274a097364c986ccca045d71ce92d0f7d407129d25a83"
 
-  url "https://github.com/dogecoin/dogecoin/releases/download/v#{version}/dogecoin-#{version}-osx-signed.dmg",
+  url "https://github.com/dogecoin/dogecoin/releases/download/v#{version}/dogecoin-#{version}-osx-unsigned.dmg",
       verified: "github.com/dogecoin/dogecoin/"
   name "Dogecoin"
   desc "Cryptocurrency"
@@ -20,4 +20,8 @@ cask "dogecoin" do
   end
 
   zap trash: "~/Library/com.dogecoin.Dogecoin-Qt.plist"
+
+  caveats do
+    requires_rosetta
+  end
 end

@@ -7,13 +7,16 @@ cask "android-messages" do
   desc "Desktop client for Android Messages"
   homepage "https://github.com/chrisknepper/android-messages-desktop"
 
-  deprecate! date: "2023-12-17", because: :discontinued
+  disable! date: "2024-12-16", because: :discontinued
+
+  conflicts_with cask: "orangedrangon-android-messages"
 
   app "Android Messages.app"
 
   zap trash: "~/Library/Application Support/Android Messages"
 
   caveats do
+    requires_rosetta
     <<~EOS
       #{token} has been deprecated in favor of OrangeDrangon Android Messages.
         brew install --cask orangedrangon-android-messages

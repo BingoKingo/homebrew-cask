@@ -1,5 +1,5 @@
 cask "to-audio-converter" do
-  version "1.0.19,1233"
+  version "1.0.23,1297"
   sha256 :no_check
 
   url "https://amvidia.com/downloads/to-audio-converter-mac.dmg"
@@ -8,9 +8,14 @@ cask "to-audio-converter" do
   homepage "https://amvidia.com/to-audio-converter"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://amvidia.com/to-audio-converter/support"
+    regex(/Version:.*?v?(\d+(?:\.\d+)+)\s+\((\d+)\)/i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+    end
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "To Audio Converter.app"
 

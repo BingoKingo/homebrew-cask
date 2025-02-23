@@ -1,11 +1,11 @@
 cask "plexamp" do
-  arch arm: "-arm64"
+  arch arm: "arm64", intel: "x64"
 
-  version "4.10.1"
-  sha256 arm:   "9fbd45ca92e36adc984a21eda363bde14aa7fe7706d79c3de74e68bf63538f2d",
-         intel: "507e05584149694e338c621686a9662dae814ec98e74bd58af7f4abc7875f481"
+  version "4.11.5"
+  sha256 arm:   "0ef7a8b8ccc930e9a815994158414f6e21462c286f41b612ef9c201ab82b5d1e",
+         intel: "15f21271ca8f128fdc3ea1ff090164cd555e0e1cf04822b277839f309a1ba9d3"
 
-  url "https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-#{version}#{arch}.dmg",
+  url "https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-#{version}-#{arch}.dmg",
       verified: "plexamp.plex.tv/"
   name "Plexamp"
   desc "Music player focusing on visuals"
@@ -17,6 +17,7 @@ cask "plexamp" do
   end
 
   auto_updates true
+  depends_on macos: ">= :catalina"
 
   app "Plexamp.app"
 

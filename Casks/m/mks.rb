@@ -8,4 +8,10 @@ cask "mks" do
   homepage "https://github.com/x0054/MKS"
 
   app "MKS.app"
+
+  zap trash: "~/Library/Preferences/com.zynath.MKS.plist"
+
+  caveats do
+    requires_rosetta
+  end
 end

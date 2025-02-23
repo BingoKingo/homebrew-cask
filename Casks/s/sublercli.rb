@@ -8,4 +8,10 @@ cask "sublercli" do
   homepage "https://bitbucket.org/galad87/sublercli/"
 
   binary "SublerCLI"
+
+  # No zap stanza required
+
+  caveats do
+    requires_rosetta
+  end
 end

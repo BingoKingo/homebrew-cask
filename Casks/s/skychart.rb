@@ -10,9 +10,8 @@ cask "skychart" do
   homepage "https://www.ap-i.net/skychart/"
 
   livecheck do
-    url "https://sourceforge.net/projects/skychart/rss?path=/1-software/"
-    regex(/skychart[._-]v?(\d+(?:.\d+)+)[._-]x86[._-]64[._-]macosx\.dmg/i)
-    strategy :page_match
+    url "https://sourceforge.net/projects/skychart/rss?path=/1-software"
+    regex(%r{url=.*?/skychart[._-]v?(\d+(?:[.-]\d+)+[a-z]?)[^"' >]*?\.dmg}i)
   end
 
   pkg "Install Skychart.pkg"
@@ -24,4 +23,8 @@ cask "skychart" do
     "~/Library/Preferences/net.ap-i.skychart.plist",
     "~/Library/Saved Application State/net.ap-i.skychart.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

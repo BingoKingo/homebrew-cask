@@ -1,5 +1,5 @@
 cask "superduper" do
-  version "3.8,132"
+  version "3.9.1,134"
   sha256 :no_check
 
   url "https://shirtpocket.s3.amazonaws.com/SuperDuper/SuperDuper!.dmg",
@@ -9,9 +9,10 @@ cask "superduper" do
   homepage "https://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html"
 
   livecheck do
-    url "https://s3.amazonaws.com/shirtpocket/SuperDuper/superduperinfo.rtf"
-    strategy :page_match do |page|
-      match = page.match(/SuperDuper!\s*v?(\d+(?:\.\d+)+)\s*\(v(\d+)\)/i)
+    url "https://shirtpocket.s3.amazonaws.com/SuperDuper/superduperinfo.rtf"
+    regex(/SuperDuper!\s*v?(\d+(?:\.\d+)+)\s*\(v(\d+)\)/i)
+    strategy :page_match do |page, regex|
+      match = page.match(regex)
       next if match.blank?
 
       "#{match[1]},#{match[2]}"
@@ -19,6 +20,7 @@ cask "superduper" do
   end
 
   auto_updates true
+  depends_on macos: ">= :high_sierra"
 
   app "SuperDuper!.app"
 

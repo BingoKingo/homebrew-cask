@@ -1,6 +1,6 @@
 cask "plover" do
-  version "4.0.0rc2"
-  sha256 "46659da04b7fe04b9b21bda469e292ac53ec005713e5d2d970a90e99e9c2014f"
+  version "4.0.0"
+  sha256 "48e1d2c1f32b411f09ced0b618fd9934d9429d74d36a2d417654487462ba97e2"
 
   url "https://github.com/openstenoproject/plover/releases/download/v#{version}/plover-#{version}-macosx_10_13_x86_64.dmg",
       verified: "github.com/openstenoproject/plover/"
@@ -18,8 +18,11 @@ cask "plover" do
 
   zap trash: "~/Library/Application Support/plover/"
 
-  caveats <<~EOS
-    Version 4 is a major change and the configuration file it creates is not
-    compatible with Plover 3 or earlier. Please backup your plover.cfg.
-  EOS
+  caveats do
+    requires_rosetta
+    <<~EOS
+      Version 4 is a major change and the configuration file it creates is not
+      compatible with Plover 3 or earlier. Please backup your plover.cfg.
+    EOS
+  end
 end

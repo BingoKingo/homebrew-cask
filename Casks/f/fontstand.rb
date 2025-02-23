@@ -11,10 +11,10 @@ cask "fontstand" do
     url :url
     regex(/Fontstand[._-]v?(\d+(?:[.-]\d+)+)\.zip/i)
     strategy :header_match do |headers, regex|
-      match = headers["content-disposition"].match(regex)[1]
+      match = headers["content-disposition"]&.match(regex)
       next if match.blank?
 
-      match.tr("-", ".")
+      match[1].tr("-", ".")
     end
   end
 
@@ -28,4 +28,8 @@ cask "fontstand" do
     "~/Library/LaunchAgents/com.fontstand-bv.mac.Fontstand-Agent.plist",
     "~/Library/Preferences/com.fontstand-bv.mac.Fontstand.plist",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

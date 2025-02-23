@@ -10,4 +10,14 @@ cask "leocad" do
   depends_on macos: ">= :sierra"
 
   app "LeoCAD.app"
+
+  zap trash: [
+    "~/Library/Caches/LeoCAD Software",
+    "~/Library/Preferences/org.leocad.LeoCAD.plist",
+    "~/Library/Saved Application State/org.leozide.LeoCAD.savedState",
+  ]
+
+  caveats do
+    requires_rosetta
+  end
 end

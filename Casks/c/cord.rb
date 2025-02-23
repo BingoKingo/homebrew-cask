@@ -7,10 +7,7 @@ cask "cord" do
   desc "Remote desktop client"
   homepage "https://cord.sourceforge.net/"
 
-  livecheck do
-    url "https://cord.sourceforge.net/sparkle.xml"
-    strategy :sparkle, &:short_version
-  end
+  deprecate! date: "2024-07-17", because: :discontinued
 
   app "CoRD.app"
 
@@ -19,4 +16,8 @@ cask "cord" do
     "~/Library/Preferences/net.sf.cord.plist",
     "~/Library/Saved Application State/net.sf.cord.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

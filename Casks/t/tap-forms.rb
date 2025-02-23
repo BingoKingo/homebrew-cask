@@ -10,13 +10,16 @@ cask "tap-forms" do
 
   livecheck do
     url "https://vendors.paddle.com/download/product/503174"
-    strategy :header_match do |headers|
-      version = headers["location"].match(/([A-z0-9]+)[._-]Tap%20Forms%20Install%20(\d+(?:\.\d+)+)\.dmg/)
-      next if version.blank?
+    regex(/([A-z0-9]+)[._-]Tap%20Forms%20Install%20v?(\d+(?:\.\d+)+)\.dmg/i)
+    strategy :header_match do |headers, regex|
+      match = headers["location"]&.match(regex)
+      next if match.blank?
 
-      "#{version[2]},#{version[1]}"
+      "#{match[2]},#{match[1]}"
     end
   end
+
+  depends_on macos: ">= :mojave"
 
   app "Tap Forms Mac #{version.major}.app"
 
@@ -24,4 +27,8 @@ cask "tap-forms" do
     "~/Library/Application Scripts/com.tapzapp.tapforms-mac",
     "~/Library/Containers/com.tapzapp.tapforms-mac",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

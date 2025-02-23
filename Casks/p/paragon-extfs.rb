@@ -1,5 +1,5 @@
 cask "paragon-extfs" do
-  version "12.1.19"
+  version "14.0.33"
   sha256 :no_check
 
   url "https://dl.paragon-software.com/demo/trial_extfs#{version.major}.dmg"
@@ -10,11 +10,11 @@ cask "paragon-extfs" do
   livecheck do
     url :url
     strategy :extract_plist do |items|
-      items["com.paragon-software.filesystems.extfs"].short_version
+      items["com.paragon-software.filesystems.extfs"]&.short_version
     end
   end
 
-  conflicts_with cask: "paragon-extfs11"
+  conflicts_with cask: "paragon-extfs@11"
   depends_on macos: ">= :sierra"
 
   installer manual: "FSInstaller.app"

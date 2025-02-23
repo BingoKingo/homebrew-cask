@@ -7,10 +7,11 @@ cask "functionflip" do
   desc "Function key control"
   homepage "https://kevingessner.com/software/functionflip/"
 
-  livecheck do
-    url "https://kevingessner.com/update/functionflip/"
-    regex(/v?(\d+(?:\.\d+)+)/i)
-  end
+  deprecate! date: "2024-10-14", because: :unmaintained
 
   prefpane "FunctionFlip.prefPane"
+
+  caveats do
+    requires_rosetta
+  end
 end

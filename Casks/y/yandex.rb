@@ -1,7 +1,7 @@
 cask "yandex" do
   arch arm: "&arch=arm64"
 
-  version "24.1.4"
+  version "25.2.0"
   sha256 :no_check
 
   url "https://browser.yandex.ru/download/?os=mac#{arch}&full=1",
@@ -14,13 +14,15 @@ cask "yandex" do
     url :url
     regex(/(\d+)_(\d+)_(\d+)/i)
     strategy :header_match do |headers, regex|
-      headers["location"].scan(regex).map do |match|
-        "#{match[0]}.#{match[1]}.#{match[2]}"
-      end
+      match = headers["location"]&.match(regex)
+      next if match.blank?
+
+      "#{match[1]}.#{match[2]}.#{match[3]}"
     end
   end
 
   auto_updates true
+  depends_on macos: ">= :big_sur"
 
   app "Yandex.app"
 

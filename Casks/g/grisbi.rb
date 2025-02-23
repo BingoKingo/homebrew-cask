@@ -1,6 +1,6 @@
 cask "grisbi" do
-  version "3.0.3"
-  sha256 "b207088a92749515845f886c265c10fbc3247478fb94132f398898285c856979"
+  version "3.0.4"
+  sha256 "ff016c36ec113c1cf3733c5363e843834a610a52f42a481c2bc0fd9d589217a1"
 
   url "https://downloads.sourceforge.net/grisbi/Grisbi-#{version}.dmg",
       verified: "downloads.sourceforge.net/grisbi/"
@@ -9,8 +9,8 @@ cask "grisbi" do
   homepage "https://www.grisbi.org/"
 
   livecheck do
-    url "https://sourceforge.net/projects/grisbi/files/grisbi%20stable/"
-    regex(%r{url=.*?/grisbi/files/grisbi%20stable/.*?[-_/](\d+(?:[-.]\d+)+)\.dmg[-_/%.]}i)
+    url "https://sourceforge.net/projects/grisbi/rss?path=/grisbi%20stable"
+    regex(%r{url=.*?/Grisbi[^"' >]*?[._-]v?(\d+(?:[.-]\d+)+)\.dmg}i)
   end
 
   app "Grisbi.app"
@@ -20,4 +20,8 @@ cask "grisbi" do
     "~/Library/Preferences/org.grisbi.Grisbi.plist",
     "~/Library/Saved Application State/org.grisbi.Grisbi.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

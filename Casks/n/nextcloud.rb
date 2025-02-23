@@ -6,41 +6,33 @@ cask "nextcloud" do
     livecheck do
       skip "Legacy version"
     end
-
-    depends_on macos: ">= :mojave"
   end
   on_monterey :or_newer do
-    version "3.12.3"
-    sha256 "1c020cb3163b9c1da950f8a6c4876e58f80ebdc59b07b38c742c5159d0112e06"
+    version "3.15.3"
+    sha256 "0a205646371515a4d92a4dbb91898b97b773ddd0bcc2d64e65ad84d772a222c4"
 
     livecheck do
-      url :url
-      regex(/^Nextcloud[._-]v?(\d+(?:\.\d+)+)\.pkg$/i)
-      strategy :github_latest do |json, regex|
-        json["assets"]&.map do |asset|
-          match = asset["name"]&.match(regex)
-          next if match.blank?
-
-          match[1]
-        end
-      end
+      url "https://download.nextcloud.com/desktop/releases/Mac/Installer/"
+      regex(/href=.*?Nextcloud[._-]v?(\d+(?:\.\d+)+)\.pkg/i)
     end
   end
 
-  url "https://github.com/nextcloud-releases/desktop/releases/download/v#{version}/Nextcloud-#{version}.pkg",
-      verified: "github.com/nextcloud-releases/desktop/"
+  url "https://download.nextcloud.com/desktop/releases/Mac/Installer/Nextcloud-#{version}.pkg"
   name "Nextcloud"
   desc "Desktop sync client for Nextcloud software products"
   homepage "https://nextcloud.com/"
 
   auto_updates true
+  conflicts_with cask: "nextcloud-vfs"
+  depends_on macos: ">= :mojave"
 
   pkg "Nextcloud-#{version}.pkg"
   binary "/Applications/Nextcloud.app/Contents/MacOS/nextcloudcmd"
 
-  uninstall quit:    "com.nextcloud.desktopclient",
-            pkgutil: "com.nextcloud.desktopclient",
-            delete:  "/Applications/Nextcloud.app"
+  uninstall launchctl: "com.nextcloud.desktopclient",
+            quit:      "com.nextcloud.desktopclient",
+            pkgutil:   "com.nextcloud.desktopclient",
+            delete:    "/Applications/Nextcloud.app"
 
   zap trash: [
     "~/Library/Application Scripts/com.nextcloud.desktopclient.FinderSyncExt",

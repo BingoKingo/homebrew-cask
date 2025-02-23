@@ -1,6 +1,6 @@
 cask "roaringapps" do
-  version "1.6.2"
-  sha256 "d2afb90bb245bd885a9962d75a1947a56163d4fc315f1210401a83186cea1de8"
+  version "1.7.2"
+  sha256 "e818ba7edf1020dc4a5a3a97c49e947ca2336e33e77087015a2d8f46f13fe7b9"
 
   url "https://roaringapps.com/downloads/RoaringApps-#{version}.zip"
   name "RoaringApps"
@@ -11,6 +11,8 @@ cask "roaringapps" do
     url :homepage
     regex(%r{href=.*?/RoaringApps-(\d+(?:\.\d+)*)\.zip}i)
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "RoaringApps.app"
 

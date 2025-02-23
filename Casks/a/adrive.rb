@@ -1,12 +1,13 @@
 cask "adrive" do
   arch arm: "-arm64"
 
-  version "4.13.0"
-  sha256 arm:   "937a00f7da3319e8be884f040b6b015aef3a65bf9c02ebbc806349ef169ab0bf",
-         intel: "7490dffa6013977ae75a4ce2cf0baab13c3a8f7f0cc9fd0e1df1b879769fa2d9"
+  version "6.8.5"
+  sha256 arm:   "9b15dc9b1b6281c74adccf1a19135f68ece4aab33c0c427a1f96a3128035208f",
+         intel: "6e8c605e8576b50b98c8f12e514f48c50c079a0c1ae8cbef6a7dbb9a46e10401"
 
   url "https://cdn.aliyundrive.net/downloads/apps/desktop/aDrive-#{version}#{arch}.dmg",
-      verified: "cdn.aliyundrive.net/"
+      verified:   "cdn.aliyundrive.net/",
+      user_agent: :fake
   name "Aliyundrive"
   name "阿里云盘"
   desc "Intelligent cloud storage platform"
@@ -14,7 +15,7 @@ cask "adrive" do
 
   livecheck do
     url "https://www.aliyundrive.com/download"
-    regex(/aDrive[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
+    regex(/aDrive[._-]v?(\d+(?:\.\d+)+)#{arch}\.dmg/i)
   end
 
   auto_updates true

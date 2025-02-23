@@ -8,7 +8,14 @@ cask "cocoarestclient" do
   desc "App for testing HTTP/REST endpoints"
   homepage "https://mmattozzi.github.io/cocoa-rest-client/"
 
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :mojave"
 
   app "CocoaRestClient.app"
+
+  zap trash: [
+    "~/Library/Application Support/CocoaRestClient",
+    "~/Library/HTTPStorages/org.restlesscode.cocoarestclient",
+    "~/Library/Preferences/org.restlesscode.cocoarestclient.plist",
+    "~/Library/Saved Application State/org.restlesscode.cocoarestclient.savedState",
+  ]
 end

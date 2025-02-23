@@ -1,25 +1,23 @@
 cask "appgate-sdp-client" do
   on_mojave :or_older do
-    version "5.4.3"
-    sha256 "cb40c9dbfc1c6df1c611d9538ce22447cf234945a15ccf5acc7c09b877bc4137"
+    version "5.4.4"
+    sha256 "d9d0ffbaf628ee0b8e2d3457dc7b82d1a65ce34952d1f5edc4c4bf407a3d0f1b"
 
     livecheck do
-      url "https://www.appgate.com/support/software-defined-perimeter-support/sdp-v5-4"
-      regex(%r{href=.*?/Appgate[._-]SDP[._-]v?(\d+(?:\.\d+)+)[._-]Installer\.dmg}i)
+      skip "Legacy version"
     end
   end
   on_catalina do
-    version "6.0.3"
-    sha256 "ff8f7f3f2f934d935ec3353ab8ca544e8b0a2ccd3a608bc16fe3f5ed8b935bf9"
+    version "6.0.4"
+    sha256 "bceed509db9fd8dab10f31686264ff7f073048d78470f85f06bbd6233eb9b111"
 
     livecheck do
-      url "https://www.appgate.com/support/software-defined-perimeter-support/sdp-v6-0"
-      regex(%r{href=.*?/Appgate[._-]SDP[._-]v?(\d+(?:\.\d+)+)[._-]Installer\.dmg}i)
+      skip "Legacy version"
     end
   end
   on_big_sur :or_newer do
-    version "6.3.0"
-    sha256 "864df348fcbe28e5444efdb1ee5ef73dbc8d9aaa3278580619f0a884a671a200"
+    version "6.4.2"
+    sha256 "174fe4b127a5aa6e8aa3c168a54400957bfc11a87584b91a949dd08b7ce5a4df"
 
     livecheck do
       url :homepage
@@ -28,7 +26,7 @@ cask "appgate-sdp-client" do
         support_versions =
           page.scan(%r{href=["']?([^"' >]*?/software-defined-perimeter-support/sdp[._-]v?(\d+(?:[.-]\d+)+))["' >]}i)
               .sort_by { |match| Version.new(match[1]) }
-        next [] if support_versions.blank?
+        next if support_versions.blank?
 
         # Assume the last-sorted version is newest
         version_page_path, = support_versions.last
@@ -38,7 +36,7 @@ cask "appgate-sdp-client" do
         version_page = Homebrew::Livecheck::Strategy.page_content(
           URI.join("https://www.appgate.com/", version_page_path).to_s,
         )
-        next [] if version_page[:content].blank?
+        next if version_page[:content].blank?
 
         version_page[:content].scan(regex).map(&:first)
       end

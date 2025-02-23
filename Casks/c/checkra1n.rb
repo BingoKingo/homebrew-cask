@@ -13,4 +13,11 @@ cask "checkra1n" do
   end
 
   app "checkra1n.app"
+  binary "#{appdir}/checkra1n.app/Contents/MacOS/checkra1n"
+
+  # No zap stanza required
+
+  caveats do
+    requires_rosetta
+  end
 end

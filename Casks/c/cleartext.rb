@@ -7,5 +7,11 @@ cask "cleartext" do
   desc "Text editor"
   homepage "https://github.com/mortenjust/cleartext-mac"
 
+  deprecate! date: "2024-10-12", because: :discontinued
+
   app "Cleartext.app"
+
+  caveats do
+    requires_rosetta
+  end
 end

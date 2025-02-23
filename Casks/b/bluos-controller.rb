@@ -1,6 +1,6 @@
 cask "bluos-controller" do
-  version "4.2.1,2024,01"
-  sha256 "9096f1f2ace71eab9e819ce4c404e9004c4ca3a4d768a4cc01e2a861764cf606"
+  version "4.8.0,2025,01"
+  sha256 "4dacd98aefa1c8e834732c02d27c9f3a01484ced509223f9bf298fcb2155d262"
 
   url "https://content-bluesound-com.s3.amazonaws.com/uploads/#{version.csv.second}/#{version.csv.third}/BluOS-Controller-#{version.csv.first}-MacOS.zip",
       verified: "content-bluesound-com.s3.amazonaws.com/uploads/"
@@ -16,7 +16,7 @@ cask "bluos-controller" do
     end
   end
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :catalina"
 
   app "BluOS Controller.app"
 
@@ -26,4 +26,8 @@ cask "bluos-controller" do
     "~/Library/Preferences/com.bluesound.bluos.plist",
     "~/Library/Saved Application State/com.bluesound.bluos.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

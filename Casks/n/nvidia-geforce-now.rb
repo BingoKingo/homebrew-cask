@@ -1,5 +1,5 @@
 cask "nvidia-geforce-now" do
-  version "2.0.61.148"
+  version "2.0.71.161"
   sha256 :no_check
 
   url "https://download.nvidia.com/gfnpc/GeForceNOW-release.dmg"
@@ -8,8 +8,10 @@ cask "nvidia-geforce-now" do
   homepage "https://www.nvidia.com/en-us/geforce-now/download/"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://play.geforcenow.com/mall/shared/assets/config/config.json"
+    strategy :json do |json|
+      json.dig("build", "version")
+    end
   end
 
   depends_on macos: ">= :el_capitan"
@@ -19,6 +21,9 @@ cask "nvidia-geforce-now" do
 
   zap trash: [
     "~/Library/Application Support/NVIDIA/GeForceNOW",
+    "~/Library/HTTPStorages/com.nvidia.gfnpc.mall",
     "~/Library/Preferences/com.nvidia.gfnpc.mall.helper.plist",
+    "~/Library/Preferences/com.nvidia.gfnpc.mall.helper.renderer.plist",
+    "~/Library/Saved Application State/com.nvidia.gfnpc.mall.savedState",
   ]
 end

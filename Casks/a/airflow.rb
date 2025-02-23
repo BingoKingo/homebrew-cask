@@ -1,6 +1,6 @@
 cask "airflow" do
-  version "3.3.5"
-  sha256 "8e180cb4809b250537824514fd376694e281543241856ac3996807d48700275b"
+  version "3.3.9"
+  sha256 "fb7fa83fd4662ffdf5237b683556ef13ccb15ec5f1572a8e86ff9b1779764644"
 
   url "https://cdn.downloads.iocave.net/Airflow/Airflow%20#{version}.zip",
       verified: "cdn.downloads.iocave.net/Airflow/"
@@ -14,7 +14,7 @@ cask "airflow" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :mojave"
 
   app "Airflow.app"
 

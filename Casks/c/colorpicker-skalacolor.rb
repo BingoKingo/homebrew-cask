@@ -7,10 +7,7 @@ cask "colorpicker-skalacolor" do
   desc "Colour picker"
   homepage "https://bjango.com/help/skalacolor/gettingstarted/"
 
-  livecheck do
-    url "https://download.bjango.com/skalacolor/"
-    strategy :header_match
-  end
+  disable! date: "2024-09-30", because: :unmaintained
 
   colorpicker "Skala Color Installer.app/Contents/Resources/SkalaColor.colorPicker"
 end

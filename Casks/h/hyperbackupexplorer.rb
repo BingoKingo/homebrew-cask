@@ -8,9 +8,13 @@ cask "hyperbackupexplorer" do
   homepage "https://www.synology.com/en-us/dsm/feature/hyper_backup"
 
   livecheck do
-    url "https://www.synology.com/en-global/releaseNote/HyperBackupExplorer"
-    regex(/Version:\s*(\d+(?:\.\d+)*-\d+)/i)
+    url "https://www.synology.com/api/releaseNote/findChangeLog?identify=HyperBackupExplorer&lang=en-global"
+    strategy :json do |json|
+      json.dig("info", "versions", "", "all_versions").map { |item| item["version"] }
+    end
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "HyperBackupExplorer.app"
 
@@ -18,4 +22,8 @@ cask "hyperbackupexplorer" do
     "~/Library/Preferences/com.synology.HyperBackupExplorer.plist",
     "~/Library/Saved Application State/com.synology.HyperBackupExplorer.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

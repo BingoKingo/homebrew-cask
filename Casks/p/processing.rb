@@ -1,9 +1,9 @@
 cask "processing" do
   arch arm: "aarch64", intel: "x64"
 
-  version "4.3,1293"
-  sha256 arm:   "bccec62845344357533f83c6777cda8ea127308219f23d1d94416b8cc0c0612a",
-         intel: "6e5593c107439b199e14c4b0fd2bef88cf09e7cba7550c5ca6f2f912ce999b82"
+  version "4.3.3,1296"
+  sha256 arm:   "eb3e65033709aa9f24dd4fdf82e0c90a75000480b768a859c4c16541f131e6fb",
+         intel: "8eb1f798a1ec772d2cade9a0b46b5b5d460e99c0f1ba0de23411846a4d016dc9"
 
   url "https://github.com/processing/processing4/releases/download/processing-#{version.csv.second}-#{version.csv.first}/processing-#{version.csv.first}-macos-#{arch}.zip",
       verified: "github.com/processing/processing4/"
@@ -19,11 +19,8 @@ cask "processing" do
     end
   end
 
-  conflicts_with cask: [
-    "homebrew/cask-versions/processing2",
-    "homebrew/cask-versions/processing3",
-  ]
-  depends_on macos: ">= :catalina"
+  conflicts_with cask: "processing@3"
+  depends_on macos: ">= :mojave"
 
   app "Processing.app"
 

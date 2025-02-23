@@ -1,5 +1,5 @@
 cask "license-control-center" do
-  version "6.12.10.1325"
+  version "6.12.10.1326"
   sha256 :no_check
 
   url "https://download.steinberg.net/downloads/eLicenserControl.dmg",
@@ -9,8 +9,8 @@ cask "license-control-center" do
   homepage "https://helpcenter.steinberg.de/hc/en-us/articles/360008841379"
 
   livecheck do
-    url :url
-    strategy :extract_plist
+    url "https://r.mb.steinberg.net/rc-elc-mac"
+    strategy :header_match
   end
 
   installer manual: "eLicenserControlSetup.app"

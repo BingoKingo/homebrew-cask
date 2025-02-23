@@ -1,6 +1,6 @@
 cask "openscad" do
   version "2021.01"
-  sha256 "54d169cab899ff0647407c42d378d3fc4611c62a85b463446cdf21c3463afae7"
+  sha256 "4e4568e19992636ba497c04bc2238399c92314fcb7bf75dc3632aa623ca3635e"
 
   url "https://files.openscad.org/OpenSCAD-#{version}.dmg"
   name "OpenSCAD"
@@ -12,14 +12,18 @@ cask "openscad" do
     regex(/href=.*?OpenSCAD[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
   end
 
-  conflicts_with cask: "homebrew/cask-versions/openscad-snapshot"
+  conflicts_with cask: "openscad@snapshot"
 
-  app "OpenSCAD.app"
-  binary "#{appdir}/OpenSCAD.app/Contents/MacOS/OpenSCAD", target: "openscad"
+  app "OpenSCAD-#{version}.app"
+  binary "#{appdir}/OpenSCAD-#{version}.app/Contents/MacOS/OpenSCAD", target: "openscad"
 
   zap trash: [
     "~/Library/Caches/org.openscad.OpenSCAD",
     "~/Library/Preferences/org.openscad.OpenSCAD.plist",
     "~/Library/Saved Application State/org.openscad.OpenSCAD.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

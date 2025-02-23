@@ -6,12 +6,9 @@ cask "kindle-comic-creator" do
       verified: "kc2.s3.amazonaws.com/"
   name "Kindle Comic Creator"
   desc "Turns comics, graphic novels and manga into Kindle books"
-  homepage "https://www.amazon.com/gp/feature.html?ie=UTF8&docId=1001103761"
+  homepage "https://www.amazon.com/b?node=23496309011"
 
-  livecheck do
-    url :url
-    strategy :extract_plist
-  end
+  deprecate! date: "2025-02-09", because: :unmaintained
 
   pkg "Kindle Comic Creator.pkg"
 

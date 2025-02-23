@@ -1,6 +1,6 @@
 cask "canon-eos-utility" do
-  version "3.17.2.1,0200006949,9"
-  sha256 "aa14d8d2681b6473fffcdde3a15944ddfb6bb5463af157c442816bef48027205"
+  version "3.18.41.0,0200007212,2"
+  sha256 "fff7e826c51712e81d37ff52c25209676be46937901b040272da8ff9832e3f2d"
 
   url "https://gdlp01.c-wss.com/gds/#{version.csv.third}/#{version.csv.second}/01/EU-Installset-M#{version.csv.first}.dmg.zip",
       verified: "gdlp01.c-wss.com/"
@@ -14,17 +14,14 @@ cask "canon-eos-utility" do
   livecheck do
     url "https://gdlp01.c-wss.com/rmds/ic/autoupdate/common/tls_eu_updater_url.xml"
     regex(%r{http.*?/(\d+)/(\d+)/\d+/EU[._-]Installset[._-]v?M?(\d+(?:\.\d+)+)\.dmg\.zip}i)
-    strategy :page_match do |page, regex|
-      match = page.match(/<Component\sID="[^"]+mac_11[^"]+".*\n?.*(https.*)\n/i)
-      next if match.blank?
-
-      url = match[1].strip
+    strategy :xml do |xml, regex|
+      url = xml.elements["//Component[contains(@ID,'mac_14')]"]&.text&.strip
       next if url.blank?
 
       headers = Homebrew::Livecheck::Strategy.page_headers(url)
       next if headers.blank?
 
-      match = headers[0]["location"].match(regex)
+      match = headers[0]["location"]&.match(regex)
       next if match.blank?
 
       "#{match[3]},#{match[2]},#{match[1]}"

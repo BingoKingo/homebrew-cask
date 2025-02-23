@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# Standalone scripts are fine to use top-level methods
 # rubocop:disable Style/TopLevelMethodDefinition
 
+require "fileutils"
 require "find"
 require "json"
 require "open-uri"
@@ -13,11 +15,11 @@ require "tmpdir"
 
 # Exit cleanup
 TMP_DIR = Pathname.new(Dir.mktmpdir).freeze
-at_exit { TMP_DIR.rmtree }
+at_exit { FileUtils.rm_r(TMP_DIR) }
 
 # Constants
 ONLINE_ISSUE = "https://github.com/Homebrew/homebrew-cask/issues/88469"
-CASK_REPOS = %w[homebrew-cask homebrew-cask-versions].freeze
+CASK_REPOS = %w[homebrew-cask].freeze
 CASK_JSON_URL = "https://formulae.brew.sh/api/analytics/cask-install/365d.json"
 
 # Download the file and save it to the specified directory
@@ -29,6 +31,8 @@ end
 
 CASK_JSON = File.read("#{TMP_DIR}/cask.json").freeze
 CASK_DATA = JSON.parse(CASK_JSON).freeze
+
+EXCLUSION_PATTERNS = [/\s+(# No )?zap /, /\s+discontinued /, /\s+deprecate! /, /\s+disable! /].freeze
 
 # Helpers
 def cask_name(cask_path)
@@ -74,7 +78,7 @@ ALL_CASKS = CASK_DIRS.each_with_object({}) do |tap_dir, casks|
   casks[tap_dir] = []
 
   # Recursively find all Ruby files in the tap directory
-  Find.find(tap_dir) do |path|
+  Find.find(tap_dir.to_s) do |path|
     # Skip if not a file or not a Ruby file
     next unless File.file?(path)
     next if File.extname(path) != ".rb"
@@ -87,9 +91,9 @@ end.freeze
 # Filter casks that are missing a 'zap' stanza and are not discontinued
 CASKS_NO_ZAP = ALL_CASKS.each_with_object({}) do |(tap_dir, casks), without_zap|
   without_zap[tap_dir] = casks.reject do |file|
-    # Read file content and check if it contains 'zap' or 'discontinued'
+    # Read file content and check if it matches any pattern in the exclusion list
     file_content = file.read
-    file_content.match?(/\s+(# No )?zap /) || file_content.match?(/\s+discontinued /)
+    EXCLUSION_PATTERNS.any? { |pattern| file_content.match?(pattern) }
   end
 
   # Remove the tap directory from the result if it has no casks missing 'zap'

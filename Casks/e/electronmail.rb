@@ -1,16 +1,16 @@
 cask "electronmail" do
   arch arm: "arm64", intel: "x64"
 
-  version "5.2.2"
-  sha256 arm:   "ec4f2c7ceb3ebc65d94be6dc2a5f5bb2dc8bb15de1125735d642e20d16fafd8e",
-         intel: "dfa234848f3bcb3752ca78cf142bf51a6216953922c122940558f9eadd319ecb"
+  version "5.3.0"
+  sha256 arm:   "29d6aa0687dba05ed557d711eb551a67b6da4a4288855d37e39c57548564b1bd",
+         intel: "10c4aec7838aa0842ab25329c7309a692efca228a3c828f916188baacd01bec5"
 
   url "https://github.com/vladimiry/ElectronMail/releases/download/v#{version}/electron-mail-#{version}-mac-#{arch}.dmg"
   name "ElectronMail"
   desc "Unofficial ProtonMail Desktop App"
   homepage "https://github.com/vladimiry/ElectronMail"
 
-  depends_on macos: ">= :high_sierra"
+  depends_on macos: ">= :big_sur"
 
   app "ElectronMail.app"
 

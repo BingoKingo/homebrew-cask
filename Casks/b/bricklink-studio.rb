@@ -1,6 +1,6 @@
 cask "bricklink-studio" do
-  version "2.24.2_4"
-  sha256 "03196bccf271fe9ff6983fafef47c94bc8b98f44175bbc73bb09834eba47b36f"
+  version "2.25.2_1"
+  sha256 "a910d810f3eb2c13f0a33cc2205fea20256b2e109310ffe3953d04f52553314e"
 
   url "https://blstudio.s3.amazonaws.com/Studio#{version.major}.0/Archive/#{version}/Studio+#{version.major}.0.pkg",
       verified: "blstudio.s3.amazonaws.com/"
@@ -27,4 +27,8 @@ cask "bricklink-studio" do
     "~/Library/Saved Application State/unity.BrickLink.Patcher.savedState",
     "~/Library/Saved Application State/unity.BrickLink.Studio.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
 end

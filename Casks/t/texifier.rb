@@ -1,6 +1,6 @@
 cask "texifier" do
-  version "1.9.26,799,573d472"
-  sha256 "918e2f880e8d16385c21822495ed4520db89ddc505d281fe03bee1b4c67f24c9"
+  version "1.9.30,823,0da464d"
+  sha256 "34558ad459277f9615b0460d8ca7853fcdf2cb1c2d89d638373a7d41c6527557"
 
   url "https://download.texifier.com/apps/osx/updates/Texifier_#{version.csv.first.dots_to_underscores}__#{version.csv.second}__#{version.csv.third}.dmg"
   name "Texifier"
@@ -8,15 +8,18 @@ cask "texifier" do
   homepage "https://www.texifier.com/mac"
 
   livecheck do
-    url :homepage
-    regex(/href=["'].*?download\.texifier\.com.*?osx.*?Texifier_(\d+(?:_\d+)+)__(\d+)__([^_]+)\.dmg/i)
-    strategy :page_match do |page, regex|
-      page.scan(regex).map { |match| "#{match[0].tr("_", ".")},#{match[1]},#{match[2]}" }
+    url "https://www.texifier.com/apps/updates/texifier/appcast-stable.xml"
+    regex(/Texifier[._-]v?(\d+(?:[._]\d+)+)__(\d+)__(\h+)\.dmg/i)
+    strategy :sparkle do |item, regex|
+      match = item.url.match(regex)
+      next if match.blank?
+
+      "#{match[1].tr("_", ".")},#{match[2]},#{match[3]}"
     end
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  depends_on macos: ">= :monterey"
 
   app "Texifier.app"
 
